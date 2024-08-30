@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Instalación en Ubuntu | Instalación del Entorno de Prácticas</title>
+  <meta name="description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Instalación en Ubuntu | Instalación del Entorno de Prácticas" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Instalación en Ubuntu | Instalación del Entorno de Prácticas" />
+  
+  <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="win.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SIG</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objetivo</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#observaciones"><i class="fa fa-check"></i><b>1.1</b> Observaciones</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#requisitos"><i class="fa fa-check"></i><b>1.2</b> Requisitos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#contenido"><i class="fa fa-check"></i><b>1.3</b> Contenido</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="herramientas.html"><a href="herramientas.html"><i class="fa fa-check"></i><b>2</b> Herramientas a Instalar</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="herramientas.html"><a href="herramientas.html#postgresql-y-pgadmin-4"><i class="fa fa-check"></i><b>2.1</b> <em>PostgreSQL</em> y <em>PgAdmin 4</em></a></li>
+<li class="chapter" data-level="2.2" data-path="herramientas.html"><a href="herramientas.html#power-bi"><i class="fa fa-check"></i><b>2.2</b> <em>Power BI</em></a></li>
+<li class="chapter" data-level="2.3" data-path="herramientas.html"><a href="herramientas.html#pentaho-data-integration-pdi"><i class="fa fa-check"></i><b>2.3</b> <em>Pentaho Data Integration (PDI)</em></a></li>
+<li class="chapter" data-level="2.4" data-path="herramientas.html"><a href="herramientas.html#power-bi-y-power-query"><i class="fa fa-check"></i><b>2.4</b> <em>Power BI</em> y <em>Power Query</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="win.html"><a href="win.html"><i class="fa fa-check"></i><b>3</b> Instalación en <em>Windows</em></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="win.html"><a href="win.html#postgresql-y-pgadmin-4-1"><i class="fa fa-check"></i><b>3.1</b> <em>PostgreSQL</em> y <em>PgAdmin 4</em></a></li>
+<li class="chapter" data-level="3.2" data-path="win.html"><a href="win.html#power-bi-1"><i class="fa fa-check"></i><b>3.2</b> <em>Power BI</em></a></li>
+<li class="chapter" data-level="3.3" data-path="win.html"><a href="win.html#pentaho-data-integration-pdi-1"><i class="fa fa-check"></i><b>3.3</b> <em>Pentaho Data Integration (PDI)</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ubu.html"><a href="ubu.html"><i class="fa fa-check"></i><b>4</b> Instalación en <em>Ubuntu</em></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ubu.html"><a href="ubu.html#postgresql-postgis-y-pgadmin"><i class="fa fa-check"></i><b>4.1</b> <em>PostgreSQL</em>, <em>PostGIS</em> y <em>PgAdmin</em></a></li>
+<li class="chapter" data-level="4.2" data-path="ubu.html"><a href="ubu.html#power-bi-2"><i class="fa fa-check"></i><b>4.2</b> <em>Power BI</em></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="ubu.html"><a href="ubu.html#virtualbox"><i class="fa fa-check"></i><b>4.2.1</b> <em>VirtualBox</em></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="ubu.html"><a href="ubu.html#pentaho-data-integration-pdi-2"><i class="fa fa-check"></i><b>4.3</b> <em>Pentaho Data Integration (PDI)</em></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Instalación del Entorno de Prácticas</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ubu" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Instalación en <em>Ubuntu</em><a href="ubu.html#ubu" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>La instalación la he realizado en <em>Ubuntu 22.04.4 LTS</em>.</p>
+<div id="postgresql-postgis-y-pgadmin" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> <em>PostgreSQL</em>, <em>PostGIS</em> y <em>PgAdmin</em><a href="ubu.html#postgresql-postgis-y-pgadmin" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Instalar <em>PostgreSQL</em> junto con un conjunto de módulos y extensiones adicionales que amplían sus funcionalidades básicas:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="ubu.html#cb1-1" tabindex="-1"></a><span class="fu">sudo</span> apt install postgresql postgresql-contrib</span></code></pre></div>
+<ul>
+<li><p>Cambiar la contraseña del <em>Usuario del Sistema</em> llamado <code>postgres</code> que se crea automáticamente cuando instalamos <em>PostgreSQL</em> y se utiliza para administrar el servidor de este SGBD a nivel de sistema operativo:</p>
+<ul>
+<li>Introducimos una contraseña que tenemos que recordar.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="ubu.html#cb2-1" tabindex="-1"></a><span class="fu">sudo</span> passwd postgres</span></code></pre></div>
+<ul>
+<li><p>Cambiar la contraseña del <em>Superusuario del SGBD</em> también llamado <code>postgres</code> en <em>PostgreSQL</em>.</p>
+<ul>
+<li>Sustituimos <code>XXXXXXX</code> por la contraseña que también debemos recordar.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="ubu.html#cb3-1" tabindex="-1"></a><span class="fu">su</span> <span class="at">-</span> postgres</span>
+<span id="cb3-2"><a href="ubu.html#cb3-2" tabindex="-1"></a><span class="ex">psql</span> <span class="at">-c</span> <span class="st">&quot;ALTER USER postgres WITH PASSWORD &#39;XXXXXXX&#39;;&quot;</span></span></code></pre></div>
+<ul>
+<li>Salimos del entorno de <em>PostgreSQL</em>:</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="ubu.html#cb4-1" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div>
+<ul>
+<li>Reiniciamos el servidor para que tengan efecto los cambios realizados:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="ubu.html#cb5-1" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart postgresql</span></code></pre></div>
+<ul>
+<li>Comprobamos la versión de <em>PostgreSQL</em> instalada:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="ubu.html#cb6-1" tabindex="-1"></a><span class="ex">psql</span> <span class="at">--version</span></span></code></pre></div>
+<ul>
+<li><p>Instalar <em>PgAdmin</em>, (obtenido de <a href="https://www.pgadmin.org/download/pgadmin-4-apt/">https://www.pgadmin.org/download/pgadmin-4-apt/</a>):</p>
+<ul>
+<li>Si no se ha hecho antes, instalar la clave pública del repositorio. Es posible que también necesitemos instalar la herramienta <code>curl</code> para transferir datos:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="ubu.html#cb7-1" tabindex="-1"></a><span class="fu">sudo</span> snap install curl</span>
+<span id="cb7-2"><a href="ubu.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="ubu.html#cb7-3" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsS</span> https://www.pgadmin.org/static/packages_pgadmin_org.pub <span class="kw">|</span> <span class="fu">sudo</span> gpg <span class="at">--dearmor</span> <span class="at">-o</span> /usr/share/keyrings/packages-pgadmin-org.gpg</span></code></pre></div>
+<ul>
+<li>Crear el archivo de configuración del repositorio:</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="ubu.html#cb8-1" tabindex="-1"></a><span class="fu">sudo</span> sh <span class="at">-c</span> <span class="st">&#39;echo &quot;deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main&quot; &gt; /etc/apt/sources.list.d/pgadmin4.list &amp;&amp; apt update&#39;</span></span></code></pre></div>
+<ul>
+<li><p>Para instalar <em>PgAdmin 4</em> se pueden elegir tres opciones ya que hay dos versiones de <em>PgAdmin 4</em> (nos basta con tener una) pero nos permite instalar cada una de ellas o las dos a la vez:</p>
+<ul>
+<li>Instalar la versión de escritorio, la versión Web o instalar ambas versiones. Los comandos de instalación respectivos son los siguientes:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="ubu.html#cb9-1" tabindex="-1"></a><span class="fu">sudo</span> apt install pgadmin4-desktop</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="ubu.html#cb10-1" tabindex="-1"></a><span class="fu">sudo</span> apt install pgadmin4-web</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="ubu.html#cb11-1" tabindex="-1"></a><span class="fu">sudo</span> apt install pgadmin4</span></code></pre></div>
+<ul>
+<li>Si hemos elegido alguna de las opciones en las que se instala la versión web, tenemos que configurarla mediante el siguiente comando (definiremos usuario y contraseña que deberemos recordar):</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="ubu.html#cb12-1" tabindex="-1"></a><span class="fu">sudo</span> /usr/pgadmin4/bin/setup-web.sh</span></code></pre></div>
+<ul>
+<li><p>En la versión web, accedemos en el navegador desde <a href="http://127.0.0.1/pgadmin4">http://127.0.0.1/pgadmin4</a>.</p></li>
+<li><p>Comprobamos la instalación abriendo <em>pgAdmin 4</em> y conectándonos al servidor, como se muestra en la figura <a href="ubu.html#fig:pgadmin-01">4.1</a>.</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pgadmin-01"></span>
+<img src="figuras_original/pgadmin-01.png" alt="Definir conexión al servirdor *PostgreSQL*." width="100%" />
+<p class="caption">
+Figura 4.1: Definir conexión al servirdor <em>PostgreSQL</em>.
+</p>
+</div>
+<ul>
+<li><p>En la ventana que se abre debemos rellenar datos en dos pestañas:</p>
+<ul>
+<li><em>General &gt; Name</em>: mombre que queramos darle al servidor.</li>
+<li><em>Connection &gt; Host name / address</em>: indicamos el valor <code>localhost</code>.</li>
+<li><em>Connection &gt; Username</em>: <code>postgres</code>.</li>
+<li><em>Connection &gt; Password</em>: la contraseña que hemos indicado en la instalación para el SGBD.</li>
+</ul></li>
+</ul>
+</div>
+<div id="power-bi-2" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> <em>Power BI</em><a href="ubu.html#power-bi-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Disponible en <a href="https://www.microsoft.com/es-es/download/details.aspx?id=58494">https://www.microsoft.com/es-es/download/details.aspx?id=58494</a>.</p></li>
+<li><p>Solo funciona sobre <em>Windows</em>.</p>
+<ul>
+<li><em>VirtualBox</em>: <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>.</li>
+<li><em>Windows 10</em>: <a href="https://www.microsoft.com/es-es/software-download/windows10">https://www.microsoft.com/es-es/software-download/windows10</a>.</li>
+</ul></li>
+</ul>
+<div id="virtualbox" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> <em>VirtualBox</em><a href="ubu.html#virtualbox" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>VirtualBox</em> es una herramienta de virtualización que te permite ejecutar otros sistemas operativos en tu máquina.</p>
+<ul>
+<li>Descargar de <a href="https://www.virtualbox.org/wiki/Linux_Downloads">https://www.virtualbox.org/wiki/Linux_Downloads</a>
+<ul>
+<li><p><a href="https://download.virtualbox.org/virtualbox/7.0.20/virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb">https://download.virtualbox.org/virtualbox/7.0.20/virtualbox-7.0_7.0.20-163906<sub>Ubuntu</sub>jammy_amd64.deb</a></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="ubu.html#cb13-1" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb</span>
+<span id="cb13-2"><a href="ubu.html#cb13-2" tabindex="-1"></a><span class="fu">sudo</span> apt <span class="at">--fix-broken</span> install</span>
+<span id="cb13-3"><a href="ubu.html#cb13-3" tabindex="-1"></a><span class="fu">sudo</span> /sbin/vboxconfig</span></code></pre></div></li>
+</ul></li>
+</ul>
+<p>Aparece el siguiente error:</p>
+<ul>
+<li><em>If your system is using EFI Secure Boot you may need to sign the kernel modules (vboxdrv, vboxnetflt, vboxnetadp, vboxpci) before you can load them.</em></li>
+</ul>
+<p>Cómo arreglarlo:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/61248315/sign-virtual-box-modules-vboxdrv-vboxnetflt-vboxnetadp-vboxpci-centos-8">https://stackoverflow.com/questions/61248315/sign-virtual-box-modules-vboxdrv-vboxnetflt-vboxnetadp-vboxpci-centos-8</a></li>
+</ul>
+<p>He optado por la solución 1: <em>disable secure boot</em>.</p>
+</div>
+</div>
+<div id="pentaho-data-integration-pdi-2" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> <em>Pentaho Data Integration (PDI)</em><a href="ubu.html#pentaho-data-integration-pdi-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Instrucciones de instalación: <a href="https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf">https://www.hitachivantara.com/en-us/pdf/implementation-guide/three-steps-to-install-pentaho-data-integration-ce.pdf</a></p></li>
+<li><p>Descarga: <a href="https://privatefilesbucket-community-edition.s3.us-west-2.amazonaws.com/9.4.0.0-343/ce/client-tools/pdi-ce-9.4.0.0-343.zip">https://privatefilesbucket-community-edition.s3.us-west-2.amazonaws.com/9.4.0.0-343/ce/client-tools/pdi-ce-9.4.0.0-343.zip</a></p></li>
+<li><p>Situándonos en la carpeta de descarga, lo descomprimimos en la carpeta que hemos creado:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="ubu.html#cb14-1" tabindex="-1"></a><span class="fu">sudo</span> unzip pdi-ce-9.4.0.0-343.zip <span class="at">-d</span> /usr/share</span></code></pre></div></li>
+<li><p>Para evitar problemas de permisos, nos hacemos propietarios de los archivos extraídos:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="ubu.html#cb15-1" tabindex="-1"></a><span class="fu">sudo</span> chown <span class="at">-R</span> <span class="va">$USER</span>:<span class="va">$USER</span> /usr/share/data-integration</span></code></pre></div></li>
+<li><p>Para instalar <code>libwebkitgtk-1.0-0</code> hay que añadir un repositorio antiguo de <em>Ubuntu</em>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="ubu.html#cb16-1" tabindex="-1"></a><span class="fu">sudo</span> nano /etc/apt/sources.list</span></code></pre></div>
+<ul>
+<li>Añadir la siguiente entrada y guardar el archivo</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="ubu.html#cb17-1" tabindex="-1"></a><span class="ex">deb</span> http://cz.archive.ubuntu.com/ubuntu bionic main universe</span></code></pre></div>
+<ul>
+<li>Después se puede actualizar:</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="ubu.html#cb18-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span></code></pre></div>
+<ul>
+<li>Si da un error sobre la clave pública, ejecutar lo siguiente sustituyendo si es distinto el número hexadecimal por el que indique el mensaje de error:</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="ubu.html#cb19-1" tabindex="-1"></a><span class="fu">sudo</span> apt-key adv <span class="at">--keyserver</span> keyserver.ubuntu.com <span class="at">--recv-keys</span> 3B4FE6ACC0B21F32</span></code></pre></div>
+<ul>
+<li>Después se puede instalar:</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="ubu.html#cb20-1" tabindex="-1"></a><span class="fu">sudo</span> apt-get update</span>
+<span id="cb20-2"><a href="ubu.html#cb20-2" tabindex="-1"></a><span class="fu">sudo</span> apt-get install libwebkitgtk-1.0-0</span></code></pre></div></li>
+<li><p>Iniciar <em>PDI</em> cambiando a la carpeta <code>/usr/share/data-integration</code> y ejecutando el script <code>spoon.sh</code>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="ubu.html#cb21-1" tabindex="-1"></a><span class="bu">cd</span> /usr/share/data-integration</span>
+<span id="cb21-2"><a href="ubu.html#cb21-2" tabindex="-1"></a><span class="fu">sh</span> spoon.sh</span></code></pre></div></li>
+<li><p>Si da error cargando el módulo <code>canberra-gtk-module</code>, instalarlo:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="ubu.html#cb22-1" tabindex="-1"></a><span class="fu">sudo</span> apt install libcanberra-gtk-module libcanberra-gtk3-module <span class="at">-y</span></span></code></pre></div></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="win.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
