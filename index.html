@@ -4,24 +4,24 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Sistemas Multidimensionales</title>
-  <meta name="description" content="<p>Sistemas Multidimensionales.
+  <title>Sistemas de Información Geográfica</title>
+  <meta name="description" content="<p>Sistemas de Información Geográfica.
 Dpto. de Lenguajes y Sistemas Informáticos
 Universidad de Granada</p>" />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Sistemas Multidimensionales" />
+  <meta property="og:title" content="Sistemas de Información Geográfica" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>Sistemas Multidimensionales.
+  <meta property="og:description" content="<p>Sistemas de Información Geográfica.
 Dpto. de Lenguajes y Sistemas Informáticos
 Universidad de Granada</p>" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Sistemas Multidimensionales" />
+  <meta name="twitter:title" content="Sistemas de Información Geográfica" />
   
-  <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
+  <meta name="twitter:description" content="<p>Sistemas de Información Geográfica.
 Dpto. de Lenguajes y Sistemas Informáticos
 Universidad de Granada</p>" />
   
@@ -77,7 +77,7 @@ Universidad de Granada</p>" />
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">SMD</a></li>
+<li><a href="./">SIG</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introducción</a></li>
@@ -85,7 +85,13 @@ Universidad de Granada</p>" />
 <ul>
 <li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#contenido"><i class="fa fa-check"></i>Contenido</a>
 <ul>
-<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#fundamentos-del-modelo-de-datos-multidimensional"><i class="fa fa-check"></i>1. Fundamentos del modelo de datos multidimensional</a></li>
+<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#fundamentos-de-los-sistemas-de-información-geográfica"><i class="fa fa-check"></i>1. Fundamentos de los Sistemas de Información Geográfica</a></li>
+<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#obtención-de-información-geográfica"><i class="fa fa-check"></i>2. Obtención de Información Geográfica</a></li>
+<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#transformación-e-integración-de-información-geográfica"><i class="fa fa-check"></i>3. Transformación e Integración de Información Geográfica</a></li>
+<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#almacenamiento-de-información-geográfica"><i class="fa fa-check"></i>4. Almacenamiento de Información Geográfica</a></li>
+<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#presentación-servidores-de-mapas"><i class="fa fa-check"></i>5. Presentación (Servidores de Mapas)</a></li>
+<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#aplicaciones-y-sistemas-3d"><i class="fa fa-check"></i>6. Aplicaciones y Sistemas 3D</a></li>
+<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#análisis-espacial"><i class="fa fa-check"></i>7. Análisis Espacial</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="prácticas.html"><a href="prácticas.html"><i class="fa fa-check"></i>Prácticas</a>
@@ -104,7 +110,7 @@ Universidad de Granada</p>" />
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sistemas Multidimensionales</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sistemas de Información Geográfica</a>
           </h1>
         </div>
 
@@ -113,17 +119,95 @@ Universidad de Granada</p>" />
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Sistemas Multidimensionales</h1>
+<h1 class="title">Sistemas de Información Geográfica</h1>
 <p class="author"><em><p>José Samos Jiménez (<a href="mailto:jsamos@ugr.es" class="email">jsamos@ugr.es</a>)<br>
 Dpto. de Lenguajes y Sistemas Informáticos<br>
 Universidad de Granada</p></em></p>
 <p class="date"><em><p>Curso 2024-2025<br><br>
-Citar y Licencia: <a href="https://doi.org/10.6084/m9.figshare.28172039.v1" class="uri">https://doi.org/10.6084/m9.figshare.28172039.v1</a></p></em></p>
+Citar y Licencia: <a href="https://doi.org/10.6084/m9.figshare.27043507.v1" class="uri">https://doi.org/10.6084/m9.figshare.27043507.v1</a></p></em></p>
 </div>
 <div id="introducción" class="section level1 unnumbered hasAnchor">
 <h1>Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><em>Sistemas Multidimensionales</em> (<em>SMD</em>), es una asignatura de tercer curso de la especialidad <em>Sistemas de Información</em> del <em>Grado en Ingeniería Informática</em>, que se imparte en la <em>Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación</em> de la <em>Universidad de Granada</em>.</p>
-<p>Cada semana se asignan 2 horas para teoría y 2 horas para prácticas.</p>
+<p><em>Sistemas de Información Geográfica</em> (<em>SIG</em>), es una asignatura optativa de cuarto curso del <em>Grado en Ingeniería Informática</em>, que se imparte en la <em>Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación</em> de la <em>Universidad de Granada</em>.</p>
+<p>Esta es la única asignatura relacionada con Información Geográfica y SIG del plan de estudios de Ingeniería Informática de la <em>Universidad de Granada</em>.</p>
+<p>Cada semana se asignan 2 horas para teoría y 2 horas para prácticas. A continuación, se presenta una propuesta de planificación para los materiales incluidos en este documento.</p>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="53%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Semana</th>
+<th>Teoría</th>
+<th>Prácticas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><a href="https://etsiit.ugr.es/informacion-academica/grados/graduadoa-ingenieria-informatica/sistemas-informacion-geografica-especialidad-sistemas-informacion/11/guia-docente">Presentación de la asignatura</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/01instalacion/">Instalación del entorno de prácticas</a></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1. Fundamentos de los Sistemas de Información Geográfica<br>- <a href="https://josesamos.github.io/sig/teoria/01fundamentos/01mod-datos.html#/">Modelos de Datos Geográficos</a><br>- <a href="https://josesamos.github.io/sig/teoria/01fundamentos/02historia-sig.html#/">Historia de los Sistemas de Información Geográfica</a><br>- <a href="https://josesamos.github.io/sig/teoria/01fundamentos/03software-sig.html#/">Software relacionado con Sistemas de Información Geográfica</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/02qgis/">P1.1. Cartografía con QGIS</a></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>1. Fundamentos de los Sistemas de Información Geográfica<br>- <a href="https://josesamos.github.io/sig/teoria/01fundamentos/04src.html#/">Sistema de Referencia de Coordenadas (SRC)</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/03carto-r/intro-r-mediante-ejemplos.html">Introducción a R mediante ejemplos</a></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>2. Obtención de Información Geográfica<br>- <a href="https://josesamos.github.io/sig/teoria/02obtencion/01teledeteccion.html#/">Teledetección</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/03carto-r/">P1.2. Cartografía con R</a></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>2. Obtención de Información Geográfica<br>- <a href="https://josesamos.github.io/sig/teoria/02obtencion/02ide.html#/">Infraestructuras de Datos Espaciales (IDE) y estándares OGC</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/04obtener/">P2. Obtener Información Geográfica</a></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>2. Obtención de Información Geográfica<br>- <a href="https://josesamos.github.io/sig/teoria/02obtencion/03generar.html#/">Generar Información Geográfica</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/04obtener/">P2. Obtener Información Geográfica</a></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>3. Transformación e Integración de Información Geográfica<br>- <a href="https://josesamos.github.io/sig/teoria/03transformacion/01transformar.html#/">Transformación e Integración de IG</a><br>- <a href="https://josesamos.github.io/sig/teoria/03transformacion/02metadatos.html#/">Metadatos</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/05trans-integra/">P3. Transformar e Integrar Información Geográfica</a></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>4. Almacenamiento de Información Geográfica<br>- <a href="https://josesamos.github.io/sig/teoria/04almacenamiento/01bde.html#/">Bases de Datos Espaciales</a><br>- <a href="https://josesamos.github.io/sig/teoria/04almacenamiento/02geo.html#/">Geometry y Geography en PostGIS</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/05trans-integra/">P3. Transformar e Integrar Información Geográfica</a></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>4. Almacenamiento de Información Geográfica<br>- Índices<br>- <a href="https://josesamos.github.io/sig/teoria/04almacenamiento/03ope.html#/">Operaciones de la clase Geometry</a><br>- <a href="https://josesamos.github.io/sig/teoria/04almacenamiento/04simplify.html#/">Operación Simplify</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/06almacenar/">P4. Almacenar Información Geográfica en PostGIS</a></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>5. Presentación (Servidores de Mapas)<br>- <a href="https://josesamos.github.io/sig/teoria/05publicacion/01web.html#/">Publicación de Información Geográfica (Servidores de Mapas)</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/07publicar/">P5. Publicar Información Geográfica en la Web mediante GeoServer</a></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>6. Aplicaciones y Sistemas 3D<br>- <a href="https://josesamos.github.io/sig/teoria/06sistemas3d/01modelos3d.html#/">Modelos de Datos 3D</a><br>- <a href="https://josesamos.github.io/sig/teoria/06sistemas3d/02ta3d.html#/">Tecnologías y Aplicaciones 3D</a></td>
+<td><a href="https://josesamos.github.io/sig/practicas/08-25y3d/">P6. Presentar Información Geográfica en 2.5D y 3D</a></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>7. Análisis Espacial<br>- <a href="https://josesamos.github.io/sig/teoria/07analisis/01analisis.html#/">Introducción al Análisis Espacial</a><br>- <a href="https://josesamos.github.io/sig/teoria/07analisis/02consultas.html#/">Consultas Espaciales y Cálculo de Distancias</a><br>- Análisis de Superficies<br>- Otras Técnicas de Análisis Espacial</td>
+<td><a href="https://josesamos.github.io/sig/practicas/09analizar/">P7. Analizar Información Geográfica</a></td>
+</tr>
+</tbody>
+</table>
+<p>Además de estas sesiones, cada curso incluye una sesión dedicada a la exposición de proyectos desarrollados por los estudiantes. Si el calendario lo permite y hay una sesión adicional disponible, esta se destina al tema de Análisis Espacial.</p>
 </div>
             </section>
 
