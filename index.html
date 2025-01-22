@@ -8,7 +8,7 @@
   <meta name="description" content="<p>Sistemas Multidimensionales.
 Dpto. de Lenguajes y Sistemas Informáticos
 Universidad de Granada</p>" />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Sistemas Multidimensionales" />
   <meta property="og:type" content="book" />
@@ -85,7 +85,7 @@ Universidad de Granada</p>" />
 <ul>
 <li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#contenido"><i class="fa fa-check"></i>Contenido</a>
 <ul>
-<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#fundamentos-del-modelo-de-datos-multidimensional"><i class="fa fa-check"></i>1. Fundamentos del modelo de datos multidimensional</a></li>
+<li class="chapter" data-level="" data-path="teoría.html"><a href="teoría.html#fundamentos-del-modelo-de-datos-multidimensional"><i class="fa fa-check"></i>1. Fundamentos del Modelo de Datos Multidimensional</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="prácticas.html"><a href="prácticas.html"><i class="fa fa-check"></i>Prácticas</a>
@@ -123,7 +123,84 @@ Citar y Licencia: <a href="https://doi.org/10.6084/m9.figshare.28172039.v1" clas
 <div id="introducción" class="section level1 unnumbered hasAnchor">
 <h1>Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Sistemas Multidimensionales</em> (<em>SMD</em>), es una asignatura de tercer curso de la especialidad <em>Sistemas de Información</em> del <em>Grado en Ingeniería Informática</em>, que se imparte en la <em>Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación</em> de la <em>Universidad de Granada</em>.</p>
-<p>Cada semana se asignan 2 horas para teoría y 2 horas para prácticas.</p>
+<p>Cada semana se asignan 2 horas para teoría y 2 horas para prácticas. A continuación, se presenta una propuesta de planificación para los materiales incluidos en este documento.</p>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="53%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Semana</th>
+<th>Teoría</th>
+<th>Prácticas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Presentación de la asignatura<br>1. Fundamentos del Modelo de Datos Multidimensional</td>
+<td><a href="https://josesamos.github.io/smd/practicas/01instalacion/">Instalación del entorno de prácticas</a><br>1. Consultas Multidimensionales<br>- Obtención de los datos</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1. Fundamentos del Modelo de Datos Multidimensional<br>- <a href="https://josesamos.github.io/smd/teoria/01fundamentos/01oltp_olap.html#/">Sistemas OLTP y OLAP</a><br>- <a href="https://josesamos.github.io/smd/teoria/01fundamentos/02mdmd.html#/">Modelo de Datos Multidimensional</a></td>
+<td>1. Consultas Multidimensionales<br>- PostgreSQL</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>1. Fundamentos del Modelo de Datos Multidimensional<br>- Implementación de Sistemas OLAP<br>- Modelo de Datos Multidimensional (Nivel Conceptual)<br>- Hitos en la Historia</td>
+<td>1. Consultas Multidimensionales<br>- Metabase</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>2. Diseño Multidimensional<br>- Ciclo de Desarrollo Multidimensional<br>- Desarrollo del Componente ETL</td>
+<td>1. Consultas Multidimensionales<br>- Power BI</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>2. Diseño Multidimensional<br>- Diseño Conceptual<br>- Diseño Lógico</td>
+<td>2. Diseño e Implementación del Componente ETL<br>- Power Query</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>2. Diseño Multidimensional<br>- Dimensiones Lentamente Cambiantes (SCD)<br>- Uso de llaves generadas en las dimensiones</td>
+<td>2. Diseño e Implementación del Componente ETL<br>- Power Query, PDI</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>2. Diseño Multidimensional<br>- Diseño Físico<br>- Ejemplos</td>
+<td>2. Diseño e Implementación del Componente ETL<br>- PDI</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>3. Procesamiento de Consultas y Optimización<br>- Agregados<br>- MDX y XMLA</td>
+<td>2. Diseño e Implementación del Componente ETL<br>- PDI</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>3. Procesamiento de Consultas y Optimización<br>- Procesamiento de SQL</td>
+<td>3. Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>4. Integración de Sistemas<br>- Proliferación de Sistemas OLAP<br>- Integración de Sistemas OLAP</td>
+<td>3. Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>4. Integración de Sistemas<br>- Metadatos<br>- Implementación de proyectos</td>
+<td>3. Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Repaso<br>Conclusiones</td>
+<td>3. Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</td>
+</tr>
+</tbody>
+</table>
+<p>Si el calendario lo permite y hay una sesión adicional disponible, esta se destina al tema de Diseño Multidimensional.</p>
 </div>
             </section>
 
