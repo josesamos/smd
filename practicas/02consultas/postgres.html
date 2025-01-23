@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 PostgreSQL | Consultas multidimensionales</title>
+  <title>3 PostgreSQL | Consultas Multidimensionales</title>
   <meta name="description" content="<p>Sistemas Multidimensionales.
 Dpto. de Lenguajes y Sistemas Informáticos
 Universidad de Granada</p>" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 PostgreSQL | Consultas multidimensionales" />
+  <meta property="og:title" content="3 PostgreSQL | Consultas Multidimensionales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>Sistemas Multidimensionales.
@@ -19,7 +19,7 @@ Universidad de Granada</p>" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 PostgreSQL | Consultas multidimensionales" />
+  <meta name="twitter:title" content="3 PostgreSQL | Consultas Multidimensionales" />
   
   <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
 Dpto. de Lenguajes y Sistemas Informáticos
@@ -194,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Consultas multidimensionales</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Consultas Multidimensionales</a>
           </h1>
         </div>
 
@@ -246,23 +246,23 @@ Figura 3.1: Base de datos OLTP.
 <li>Qué: Todo</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="postgres.html#cb1-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb1-2"><a href="postgres.html#cb1-2" tabindex="-1"></a>    <span class="fu">TO_CHAR</span>(<span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>), <span class="st">&#39;YYYY-MM&#39;</span>) <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>,</span>
-<span id="cb1-3"><a href="postgres.html#cb1-3" tabindex="-1"></a>    ti.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>,</span>
-<span id="cb1-4"><a href="postgres.html#cb1-4" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
-<span id="cb1-5"><a href="postgres.html#cb1-5" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad <span class="op">*</span> lt.pvp) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
-<span id="cb1-6"><a href="postgres.html#cb1-6" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb1-7"><a href="postgres.html#cb1-7" tabindex="-1"></a>    linea_ticket lt</span>
-<span id="cb1-8"><a href="postgres.html#cb1-8" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb1-9"><a href="postgres.html#cb1-9" tabindex="-1"></a>    ticket t <span class="kw">ON</span> lt.ticket <span class="op">=</span> t.numero_ticket</span>
-<span id="cb1-10"><a href="postgres.html#cb1-10" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb1-11"><a href="postgres.html#cb1-11" tabindex="-1"></a>    tienda ti <span class="kw">ON</span> t.tienda <span class="op">=</span> ti.codigo</span>
-<span id="cb1-12"><a href="postgres.html#cb1-12" tabindex="-1"></a><span class="kw">WHERE</span> </span>
-<span id="cb1-13"><a href="postgres.html#cb1-13" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>)) <span class="op">=</span> <span class="dv">2024</span></span>
-<span id="cb1-14"><a href="postgres.html#cb1-14" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb1-15"><a href="postgres.html#cb1-15" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia</span>
-<span id="cb1-16"><a href="postgres.html#cb1-16" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb1-17"><a href="postgres.html#cb1-17" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="postgres.html#cb3-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb3-2"><a href="postgres.html#cb3-2" tabindex="-1"></a>    <span class="fu">TO_CHAR</span>(<span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>), <span class="st">&#39;YYYY-MM&#39;</span>) <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>,</span>
+<span id="cb3-3"><a href="postgres.html#cb3-3" tabindex="-1"></a>    ti.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>,</span>
+<span id="cb3-4"><a href="postgres.html#cb3-4" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
+<span id="cb3-5"><a href="postgres.html#cb3-5" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad <span class="op">*</span> lt.pvp) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
+<span id="cb3-6"><a href="postgres.html#cb3-6" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb3-7"><a href="postgres.html#cb3-7" tabindex="-1"></a>    linea_ticket lt</span>
+<span id="cb3-8"><a href="postgres.html#cb3-8" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb3-9"><a href="postgres.html#cb3-9" tabindex="-1"></a>    ticket t <span class="kw">ON</span> lt.ticket <span class="op">=</span> t.numero_ticket</span>
+<span id="cb3-10"><a href="postgres.html#cb3-10" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb3-11"><a href="postgres.html#cb3-11" tabindex="-1"></a>    tienda ti <span class="kw">ON</span> t.tienda <span class="op">=</span> ti.codigo</span>
+<span id="cb3-12"><a href="postgres.html#cb3-12" tabindex="-1"></a><span class="kw">WHERE</span> </span>
+<span id="cb3-13"><a href="postgres.html#cb3-13" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>)) <span class="op">=</span> <span class="dv">2024</span></span>
+<span id="cb3-14"><a href="postgres.html#cb3-14" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb3-15"><a href="postgres.html#cb3-15" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia</span>
+<span id="cb3-16"><a href="postgres.html#cb3-16" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb3-17"><a href="postgres.html#cb3-17" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia;</span></code></pre></div>
 </div>
 <div id="roll-up" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Roll-Up<a href="postgres.html#roll-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -275,20 +275,20 @@ Figura 3.1: Base de datos OLTP.
 <li>Qué: Todo</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="postgres.html#cb2-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb2-2"><a href="postgres.html#cb2-2" tabindex="-1"></a>    <span class="fu">TO_CHAR</span>(<span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>), <span class="st">&#39;YYYY-MM&#39;</span>) <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>,</span>
-<span id="cb2-3"><a href="postgres.html#cb2-3" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
-<span id="cb2-4"><a href="postgres.html#cb2-4" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad <span class="op">*</span> lt.pvp) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
-<span id="cb2-5"><a href="postgres.html#cb2-5" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb2-6"><a href="postgres.html#cb2-6" tabindex="-1"></a>    linea_ticket lt</span>
-<span id="cb2-7"><a href="postgres.html#cb2-7" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb2-8"><a href="postgres.html#cb2-8" tabindex="-1"></a>    ticket t <span class="kw">ON</span> lt.ticket <span class="op">=</span> t.numero_ticket</span>
-<span id="cb2-9"><a href="postgres.html#cb2-9" tabindex="-1"></a><span class="kw">WHERE</span> </span>
-<span id="cb2-10"><a href="postgres.html#cb2-10" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>)) <span class="op">=</span> <span class="dv">2024</span></span>
-<span id="cb2-11"><a href="postgres.html#cb2-11" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb2-12"><a href="postgres.html#cb2-12" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span></span>
-<span id="cb2-13"><a href="postgres.html#cb2-13" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb2-14"><a href="postgres.html#cb2-14" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="postgres.html#cb4-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb4-2"><a href="postgres.html#cb4-2" tabindex="-1"></a>    <span class="fu">TO_CHAR</span>(<span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>), <span class="st">&#39;YYYY-MM&#39;</span>) <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>,</span>
+<span id="cb4-3"><a href="postgres.html#cb4-3" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
+<span id="cb4-4"><a href="postgres.html#cb4-4" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad <span class="op">*</span> lt.pvp) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
+<span id="cb4-5"><a href="postgres.html#cb4-5" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb4-6"><a href="postgres.html#cb4-6" tabindex="-1"></a>    linea_ticket lt</span>
+<span id="cb4-7"><a href="postgres.html#cb4-7" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb4-8"><a href="postgres.html#cb4-8" tabindex="-1"></a>    ticket t <span class="kw">ON</span> lt.ticket <span class="op">=</span> t.numero_ticket</span>
+<span id="cb4-9"><a href="postgres.html#cb4-9" tabindex="-1"></a><span class="kw">WHERE</span> </span>
+<span id="cb4-10"><a href="postgres.html#cb4-10" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>)) <span class="op">=</span> <span class="dv">2024</span></span>
+<span id="cb4-11"><a href="postgres.html#cb4-11" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb4-12"><a href="postgres.html#cb4-12" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span></span>
+<span id="cb4-13"><a href="postgres.html#cb4-13" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb4-14"><a href="postgres.html#cb4-14" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>;</span></code></pre></div>
 </div>
 <div id="drill-down" class="section level3 hasAnchor" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> Drill-Down<a href="postgres.html#drill-down" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -301,24 +301,24 @@ Figura 3.1: Base de datos OLTP.
 <li>Qué: Todo</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="postgres.html#cb3-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb3-2"><a href="postgres.html#cb3-2" tabindex="-1"></a>    <span class="fu">TO_CHAR</span>(<span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>), <span class="st">&#39;YYYY-MM&#39;</span>) <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>,</span>
-<span id="cb3-3"><a href="postgres.html#cb3-3" tabindex="-1"></a>    ti.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>,</span>
-<span id="cb3-4"><a href="postgres.html#cb3-4" tabindex="-1"></a>    ti.municipio <span class="kw">AS</span> <span class="ot">&quot;Municipio&quot;</span>,</span>
-<span id="cb3-5"><a href="postgres.html#cb3-5" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
-<span id="cb3-6"><a href="postgres.html#cb3-6" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad <span class="op">*</span> lt.pvp) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
-<span id="cb3-7"><a href="postgres.html#cb3-7" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb3-8"><a href="postgres.html#cb3-8" tabindex="-1"></a>    linea_ticket lt</span>
-<span id="cb3-9"><a href="postgres.html#cb3-9" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb3-10"><a href="postgres.html#cb3-10" tabindex="-1"></a>    ticket t <span class="kw">ON</span> lt.ticket <span class="op">=</span> t.numero_ticket</span>
-<span id="cb3-11"><a href="postgres.html#cb3-11" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb3-12"><a href="postgres.html#cb3-12" tabindex="-1"></a>    tienda ti <span class="kw">ON</span> t.tienda <span class="op">=</span> ti.codigo</span>
-<span id="cb3-13"><a href="postgres.html#cb3-13" tabindex="-1"></a><span class="kw">WHERE</span> </span>
-<span id="cb3-14"><a href="postgres.html#cb3-14" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>)) <span class="op">=</span> <span class="dv">2024</span></span>
-<span id="cb3-15"><a href="postgres.html#cb3-15" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb3-16"><a href="postgres.html#cb3-16" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia, ti.municipio</span>
-<span id="cb3-17"><a href="postgres.html#cb3-17" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb3-18"><a href="postgres.html#cb3-18" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia, ti.municipio;</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="postgres.html#cb5-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb5-2"><a href="postgres.html#cb5-2" tabindex="-1"></a>    <span class="fu">TO_CHAR</span>(<span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>), <span class="st">&#39;YYYY-MM&#39;</span>) <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>,</span>
+<span id="cb5-3"><a href="postgres.html#cb5-3" tabindex="-1"></a>    ti.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>,</span>
+<span id="cb5-4"><a href="postgres.html#cb5-4" tabindex="-1"></a>    ti.municipio <span class="kw">AS</span> <span class="ot">&quot;Municipio&quot;</span>,</span>
+<span id="cb5-5"><a href="postgres.html#cb5-5" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
+<span id="cb5-6"><a href="postgres.html#cb5-6" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad <span class="op">*</span> lt.pvp) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
+<span id="cb5-7"><a href="postgres.html#cb5-7" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb5-8"><a href="postgres.html#cb5-8" tabindex="-1"></a>    linea_ticket lt</span>
+<span id="cb5-9"><a href="postgres.html#cb5-9" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb5-10"><a href="postgres.html#cb5-10" tabindex="-1"></a>    ticket t <span class="kw">ON</span> lt.ticket <span class="op">=</span> t.numero_ticket</span>
+<span id="cb5-11"><a href="postgres.html#cb5-11" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb5-12"><a href="postgres.html#cb5-12" tabindex="-1"></a>    tienda ti <span class="kw">ON</span> t.tienda <span class="op">=</span> ti.codigo</span>
+<span id="cb5-13"><a href="postgres.html#cb5-13" tabindex="-1"></a><span class="kw">WHERE</span> </span>
+<span id="cb5-14"><a href="postgres.html#cb5-14" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>)) <span class="op">=</span> <span class="dv">2024</span></span>
+<span id="cb5-15"><a href="postgres.html#cb5-15" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb5-16"><a href="postgres.html#cb5-16" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia, ti.municipio</span>
+<span id="cb5-17"><a href="postgres.html#cb5-17" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb5-18"><a href="postgres.html#cb5-18" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia, ti.municipio;</span></code></pre></div>
 </div>
 <div id="slicedice" class="section level3 hasAnchor" number="3.1.4">
 <h3><span class="header-section-number">3.1.4</span> Slice&amp;Dice<a href="postgres.html#slicedice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -331,26 +331,26 @@ Figura 3.1: Base de datos OLTP.
 <li>Qué: Todo</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="postgres.html#cb4-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb4-2"><a href="postgres.html#cb4-2" tabindex="-1"></a>    <span class="fu">TO_CHAR</span>(<span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>), <span class="st">&#39;YYYY-MM&#39;</span>) <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>,</span>
-<span id="cb4-3"><a href="postgres.html#cb4-3" tabindex="-1"></a>    ti.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>,</span>
-<span id="cb4-4"><a href="postgres.html#cb4-4" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
-<span id="cb4-5"><a href="postgres.html#cb4-5" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad <span class="op">*</span> lt.pvp) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
-<span id="cb4-6"><a href="postgres.html#cb4-6" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb4-7"><a href="postgres.html#cb4-7" tabindex="-1"></a>    linea_ticket lt</span>
-<span id="cb4-8"><a href="postgres.html#cb4-8" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb4-9"><a href="postgres.html#cb4-9" tabindex="-1"></a>    ticket t <span class="kw">ON</span> lt.ticket <span class="op">=</span> t.numero_ticket</span>
-<span id="cb4-10"><a href="postgres.html#cb4-10" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb4-11"><a href="postgres.html#cb4-11" tabindex="-1"></a>    tienda ti <span class="kw">ON</span> t.tienda <span class="op">=</span> ti.codigo</span>
-<span id="cb4-12"><a href="postgres.html#cb4-12" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb4-13"><a href="postgres.html#cb4-13" tabindex="-1"></a>    producto_almacen pa <span class="kw">ON</span> lt.producto <span class="op">=</span> pa.codigo_barras</span>
-<span id="cb4-14"><a href="postgres.html#cb4-14" tabindex="-1"></a><span class="kw">WHERE</span> </span>
-<span id="cb4-15"><a href="postgres.html#cb4-15" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>)) <span class="op">=</span> <span class="dv">2024</span></span>
-<span id="cb4-16"><a href="postgres.html#cb4-16" tabindex="-1"></a>    <span class="kw">AND</span> pa.provincia <span class="kw">IN</span> (<span class="st">&#39;Almería&#39;</span>, <span class="st">&#39;Cádiz&#39;</span>, <span class="st">&#39;Córdoba&#39;</span>, <span class="st">&#39;Granada&#39;</span>, <span class="st">&#39;Huelva&#39;</span>, <span class="st">&#39;Jaén&#39;</span>, <span class="st">&#39;Málaga&#39;</span>, <span class="st">&#39;Sevilla&#39;</span>)</span>
-<span id="cb4-17"><a href="postgres.html#cb4-17" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb4-18"><a href="postgres.html#cb4-18" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia</span>
-<span id="cb4-19"><a href="postgres.html#cb4-19" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb4-20"><a href="postgres.html#cb4-20" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia;</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="postgres.html#cb6-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb6-2"><a href="postgres.html#cb6-2" tabindex="-1"></a>    <span class="fu">TO_CHAR</span>(<span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>), <span class="st">&#39;YYYY-MM&#39;</span>) <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>,</span>
+<span id="cb6-3"><a href="postgres.html#cb6-3" tabindex="-1"></a>    ti.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>,</span>
+<span id="cb6-4"><a href="postgres.html#cb6-4" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
+<span id="cb6-5"><a href="postgres.html#cb6-5" tabindex="-1"></a>    <span class="fu">SUM</span>(lt.cantidad <span class="op">*</span> lt.pvp) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
+<span id="cb6-6"><a href="postgres.html#cb6-6" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb6-7"><a href="postgres.html#cb6-7" tabindex="-1"></a>    linea_ticket lt</span>
+<span id="cb6-8"><a href="postgres.html#cb6-8" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb6-9"><a href="postgres.html#cb6-9" tabindex="-1"></a>    ticket t <span class="kw">ON</span> lt.ticket <span class="op">=</span> t.numero_ticket</span>
+<span id="cb6-10"><a href="postgres.html#cb6-10" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb6-11"><a href="postgres.html#cb6-11" tabindex="-1"></a>    tienda ti <span class="kw">ON</span> t.tienda <span class="op">=</span> ti.codigo</span>
+<span id="cb6-12"><a href="postgres.html#cb6-12" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb6-13"><a href="postgres.html#cb6-13" tabindex="-1"></a>    producto_almacen pa <span class="kw">ON</span> lt.producto <span class="op">=</span> pa.codigo_barras</span>
+<span id="cb6-14"><a href="postgres.html#cb6-14" tabindex="-1"></a><span class="kw">WHERE</span> </span>
+<span id="cb6-15"><a href="postgres.html#cb6-15" tabindex="-1"></a>    <span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="fu">TO_DATE</span>(t.fecha, <span class="st">&#39;YYYY-MM-DD&#39;</span>)) <span class="op">=</span> <span class="dv">2024</span></span>
+<span id="cb6-16"><a href="postgres.html#cb6-16" tabindex="-1"></a>    <span class="kw">AND</span> pa.provincia <span class="kw">IN</span> (<span class="st">&#39;Almería&#39;</span>, <span class="st">&#39;Cádiz&#39;</span>, <span class="st">&#39;Córdoba&#39;</span>, <span class="st">&#39;Granada&#39;</span>, <span class="st">&#39;Huelva&#39;</span>, <span class="st">&#39;Jaén&#39;</span>, <span class="st">&#39;Málaga&#39;</span>, <span class="st">&#39;Sevilla&#39;</span>)</span>
+<span id="cb6-17"><a href="postgres.html#cb6-17" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb6-18"><a href="postgres.html#cb6-18" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia</span>
+<span id="cb6-19"><a href="postgres.html#cb6-19" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb6-20"><a href="postgres.html#cb6-20" tabindex="-1"></a>    <span class="ot">&quot;Mes&quot;</span>, ti.provincia;</span></code></pre></div>
 </div>
 </div>
 <div id="base-de-datos-olap" class="section level2 hasAnchor" number="3.2">
@@ -372,23 +372,23 @@ Figura 3.2: Base de datos OLAP.
 <li>Qué: Todo</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="postgres.html#cb5-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb5-2"><a href="postgres.html#cb5-2" tabindex="-1"></a>    dc.anio_mes <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>, </span>
-<span id="cb5-3"><a href="postgres.html#cb5-3" tabindex="-1"></a>    dd.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>, </span>
-<span id="cb5-4"><a href="postgres.html#cb5-4" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
-<span id="cb5-5"><a href="postgres.html#cb5-5" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.pvp <span class="op">*</span> fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
-<span id="cb5-6"><a href="postgres.html#cb5-6" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb5-7"><a href="postgres.html#cb5-7" tabindex="-1"></a>    fact_ventas_dia fv</span>
-<span id="cb5-8"><a href="postgres.html#cb5-8" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb5-9"><a href="postgres.html#cb5-9" tabindex="-1"></a>    dim_cuando dc <span class="kw">ON</span> fv.dim_cuando_key <span class="op">=</span> dc.dim_cuando_key</span>
-<span id="cb5-10"><a href="postgres.html#cb5-10" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb5-11"><a href="postgres.html#cb5-11" tabindex="-1"></a>    dim_donde dd <span class="kw">ON</span> fv.dim_donde_key <span class="op">=</span> dd.dim_donde_key</span>
-<span id="cb5-12"><a href="postgres.html#cb5-12" tabindex="-1"></a><span class="kw">WHERE</span></span>
-<span id="cb5-13"><a href="postgres.html#cb5-13" tabindex="-1"></a>    dc.anio <span class="op">=</span> <span class="st">&#39;2024&#39;</span></span>
-<span id="cb5-14"><a href="postgres.html#cb5-14" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb5-15"><a href="postgres.html#cb5-15" tabindex="-1"></a>    dc.anio_mes, dd.provincia</span>
-<span id="cb5-16"><a href="postgres.html#cb5-16" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb5-17"><a href="postgres.html#cb5-17" tabindex="-1"></a>    dc.anio_mes, dd.provincia;</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="postgres.html#cb7-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb7-2"><a href="postgres.html#cb7-2" tabindex="-1"></a>    dc.anio_mes <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>, </span>
+<span id="cb7-3"><a href="postgres.html#cb7-3" tabindex="-1"></a>    dd.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>, </span>
+<span id="cb7-4"><a href="postgres.html#cb7-4" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
+<span id="cb7-5"><a href="postgres.html#cb7-5" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.pvp <span class="op">*</span> fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
+<span id="cb7-6"><a href="postgres.html#cb7-6" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb7-7"><a href="postgres.html#cb7-7" tabindex="-1"></a>    fact_ventas_dia fv</span>
+<span id="cb7-8"><a href="postgres.html#cb7-8" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb7-9"><a href="postgres.html#cb7-9" tabindex="-1"></a>    dim_cuando dc <span class="kw">ON</span> fv.dim_cuando_key <span class="op">=</span> dc.dim_cuando_key</span>
+<span id="cb7-10"><a href="postgres.html#cb7-10" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb7-11"><a href="postgres.html#cb7-11" tabindex="-1"></a>    dim_donde dd <span class="kw">ON</span> fv.dim_donde_key <span class="op">=</span> dd.dim_donde_key</span>
+<span id="cb7-12"><a href="postgres.html#cb7-12" tabindex="-1"></a><span class="kw">WHERE</span></span>
+<span id="cb7-13"><a href="postgres.html#cb7-13" tabindex="-1"></a>    dc.anio <span class="op">=</span> <span class="st">&#39;2024&#39;</span></span>
+<span id="cb7-14"><a href="postgres.html#cb7-14" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb7-15"><a href="postgres.html#cb7-15" tabindex="-1"></a>    dc.anio_mes, dd.provincia</span>
+<span id="cb7-16"><a href="postgres.html#cb7-16" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb7-17"><a href="postgres.html#cb7-17" tabindex="-1"></a>    dc.anio_mes, dd.provincia;</span></code></pre></div>
 </div>
 <div id="roll-up-1" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Roll-Up<a href="postgres.html#roll-up-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -401,20 +401,20 @@ Figura 3.2: Base de datos OLAP.
 <li>Qué: Todo</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="postgres.html#cb6-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb6-2"><a href="postgres.html#cb6-2" tabindex="-1"></a>    dc.anio_mes <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>, </span>
-<span id="cb6-3"><a href="postgres.html#cb6-3" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
-<span id="cb6-4"><a href="postgres.html#cb6-4" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.pvp <span class="op">*</span> fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
-<span id="cb6-5"><a href="postgres.html#cb6-5" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb6-6"><a href="postgres.html#cb6-6" tabindex="-1"></a>    fact_ventas_dia fv</span>
-<span id="cb6-7"><a href="postgres.html#cb6-7" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb6-8"><a href="postgres.html#cb6-8" tabindex="-1"></a>    dim_cuando dc <span class="kw">ON</span> fv.dim_cuando_key <span class="op">=</span> dc.dim_cuando_key</span>
-<span id="cb6-9"><a href="postgres.html#cb6-9" tabindex="-1"></a><span class="kw">WHERE</span></span>
-<span id="cb6-10"><a href="postgres.html#cb6-10" tabindex="-1"></a>    dc.anio <span class="op">=</span> <span class="st">&#39;2024&#39;</span></span>
-<span id="cb6-11"><a href="postgres.html#cb6-11" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb6-12"><a href="postgres.html#cb6-12" tabindex="-1"></a>    dc.anio_mes</span>
-<span id="cb6-13"><a href="postgres.html#cb6-13" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb6-14"><a href="postgres.html#cb6-14" tabindex="-1"></a>    dc.anio_mes;</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb8-1"><a href="postgres.html#cb8-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb8-2"><a href="postgres.html#cb8-2" tabindex="-1"></a>    dc.anio_mes <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>, </span>
+<span id="cb8-3"><a href="postgres.html#cb8-3" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
+<span id="cb8-4"><a href="postgres.html#cb8-4" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.pvp <span class="op">*</span> fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
+<span id="cb8-5"><a href="postgres.html#cb8-5" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb8-6"><a href="postgres.html#cb8-6" tabindex="-1"></a>    fact_ventas_dia fv</span>
+<span id="cb8-7"><a href="postgres.html#cb8-7" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb8-8"><a href="postgres.html#cb8-8" tabindex="-1"></a>    dim_cuando dc <span class="kw">ON</span> fv.dim_cuando_key <span class="op">=</span> dc.dim_cuando_key</span>
+<span id="cb8-9"><a href="postgres.html#cb8-9" tabindex="-1"></a><span class="kw">WHERE</span></span>
+<span id="cb8-10"><a href="postgres.html#cb8-10" tabindex="-1"></a>    dc.anio <span class="op">=</span> <span class="st">&#39;2024&#39;</span></span>
+<span id="cb8-11"><a href="postgres.html#cb8-11" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb8-12"><a href="postgres.html#cb8-12" tabindex="-1"></a>    dc.anio_mes</span>
+<span id="cb8-13"><a href="postgres.html#cb8-13" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb8-14"><a href="postgres.html#cb8-14" tabindex="-1"></a>    dc.anio_mes;</span></code></pre></div>
 </div>
 <div id="drill-down-1" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Drill-Down<a href="postgres.html#drill-down-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -427,24 +427,24 @@ Figura 3.2: Base de datos OLAP.
 <li>Qué: Todo</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="postgres.html#cb7-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb7-2"><a href="postgres.html#cb7-2" tabindex="-1"></a>    dc.anio_mes <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>, </span>
-<span id="cb7-3"><a href="postgres.html#cb7-3" tabindex="-1"></a>    dd.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>, </span>
-<span id="cb7-4"><a href="postgres.html#cb7-4" tabindex="-1"></a>    dd.municipio <span class="kw">AS</span> <span class="ot">&quot;Municipio&quot;</span>, </span>
-<span id="cb7-5"><a href="postgres.html#cb7-5" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
-<span id="cb7-6"><a href="postgres.html#cb7-6" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.pvp <span class="op">*</span> fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
-<span id="cb7-7"><a href="postgres.html#cb7-7" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb7-8"><a href="postgres.html#cb7-8" tabindex="-1"></a>    fact_ventas_dia fv</span>
-<span id="cb7-9"><a href="postgres.html#cb7-9" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb7-10"><a href="postgres.html#cb7-10" tabindex="-1"></a>    dim_cuando dc <span class="kw">ON</span> fv.dim_cuando_key <span class="op">=</span> dc.dim_cuando_key</span>
-<span id="cb7-11"><a href="postgres.html#cb7-11" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb7-12"><a href="postgres.html#cb7-12" tabindex="-1"></a>    dim_donde dd <span class="kw">ON</span> fv.dim_donde_key <span class="op">=</span> dd.dim_donde_key</span>
-<span id="cb7-13"><a href="postgres.html#cb7-13" tabindex="-1"></a><span class="kw">WHERE</span></span>
-<span id="cb7-14"><a href="postgres.html#cb7-14" tabindex="-1"></a>    dc.anio <span class="op">=</span> <span class="st">&#39;2024&#39;</span></span>
-<span id="cb7-15"><a href="postgres.html#cb7-15" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb7-16"><a href="postgres.html#cb7-16" tabindex="-1"></a>    dc.anio_mes, dd.provincia, dd.municipio</span>
-<span id="cb7-17"><a href="postgres.html#cb7-17" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb7-18"><a href="postgres.html#cb7-18" tabindex="-1"></a>    dc.anio_mes, dd.provincia, dd.municipio;</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb9-1"><a href="postgres.html#cb9-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb9-2"><a href="postgres.html#cb9-2" tabindex="-1"></a>    dc.anio_mes <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>, </span>
+<span id="cb9-3"><a href="postgres.html#cb9-3" tabindex="-1"></a>    dd.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>, </span>
+<span id="cb9-4"><a href="postgres.html#cb9-4" tabindex="-1"></a>    dd.municipio <span class="kw">AS</span> <span class="ot">&quot;Municipio&quot;</span>, </span>
+<span id="cb9-5"><a href="postgres.html#cb9-5" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
+<span id="cb9-6"><a href="postgres.html#cb9-6" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.pvp <span class="op">*</span> fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
+<span id="cb9-7"><a href="postgres.html#cb9-7" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb9-8"><a href="postgres.html#cb9-8" tabindex="-1"></a>    fact_ventas_dia fv</span>
+<span id="cb9-9"><a href="postgres.html#cb9-9" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb9-10"><a href="postgres.html#cb9-10" tabindex="-1"></a>    dim_cuando dc <span class="kw">ON</span> fv.dim_cuando_key <span class="op">=</span> dc.dim_cuando_key</span>
+<span id="cb9-11"><a href="postgres.html#cb9-11" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb9-12"><a href="postgres.html#cb9-12" tabindex="-1"></a>    dim_donde dd <span class="kw">ON</span> fv.dim_donde_key <span class="op">=</span> dd.dim_donde_key</span>
+<span id="cb9-13"><a href="postgres.html#cb9-13" tabindex="-1"></a><span class="kw">WHERE</span></span>
+<span id="cb9-14"><a href="postgres.html#cb9-14" tabindex="-1"></a>    dc.anio <span class="op">=</span> <span class="st">&#39;2024&#39;</span></span>
+<span id="cb9-15"><a href="postgres.html#cb9-15" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb9-16"><a href="postgres.html#cb9-16" tabindex="-1"></a>    dc.anio_mes, dd.provincia, dd.municipio</span>
+<span id="cb9-17"><a href="postgres.html#cb9-17" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb9-18"><a href="postgres.html#cb9-18" tabindex="-1"></a>    dc.anio_mes, dd.provincia, dd.municipio;</span></code></pre></div>
 </div>
 <div id="slicedice-1" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Slice&amp;Dice<a href="postgres.html#slicedice-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -457,26 +457,26 @@ Figura 3.2: Base de datos OLAP.
 <li>Qué: Todo</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb8-1"><a href="postgres.html#cb8-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb8-2"><a href="postgres.html#cb8-2" tabindex="-1"></a>    dc.anio_mes <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>, </span>
-<span id="cb8-3"><a href="postgres.html#cb8-3" tabindex="-1"></a>    dd.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>, </span>
-<span id="cb8-4"><a href="postgres.html#cb8-4" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
-<span id="cb8-5"><a href="postgres.html#cb8-5" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.pvp <span class="op">*</span> fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
-<span id="cb8-6"><a href="postgres.html#cb8-6" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb8-7"><a href="postgres.html#cb8-7" tabindex="-1"></a>    fact_ventas_dia fv</span>
-<span id="cb8-8"><a href="postgres.html#cb8-8" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb8-9"><a href="postgres.html#cb8-9" tabindex="-1"></a>    dim_cuando dc <span class="kw">ON</span> fv.dim_cuando_key <span class="op">=</span> dc.dim_cuando_key</span>
-<span id="cb8-10"><a href="postgres.html#cb8-10" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb8-11"><a href="postgres.html#cb8-11" tabindex="-1"></a>    dim_donde dd <span class="kw">ON</span> fv.dim_donde_key <span class="op">=</span> dd.dim_donde_key</span>
-<span id="cb8-12"><a href="postgres.html#cb8-12" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb8-13"><a href="postgres.html#cb8-13" tabindex="-1"></a>    dim_que dq <span class="kw">ON</span> fv.dim_que_key <span class="op">=</span> dq.dim_que_key</span>
-<span id="cb8-14"><a href="postgres.html#cb8-14" tabindex="-1"></a><span class="kw">WHERE</span></span>
-<span id="cb8-15"><a href="postgres.html#cb8-15" tabindex="-1"></a>    dc.anio <span class="op">=</span> <span class="st">&#39;2024&#39;</span> </span>
-<span id="cb8-16"><a href="postgres.html#cb8-16" tabindex="-1"></a>    <span class="kw">AND</span> dq.fabricante_c_aut <span class="op">=</span> <span class="st">&#39;Andalucía&#39;</span></span>
-<span id="cb8-17"><a href="postgres.html#cb8-17" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb8-18"><a href="postgres.html#cb8-18" tabindex="-1"></a>    dc.anio_mes, dd.provincia</span>
-<span id="cb8-19"><a href="postgres.html#cb8-19" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb8-20"><a href="postgres.html#cb8-20" tabindex="-1"></a>    dc.anio_mes, dd.provincia;</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb10-1"><a href="postgres.html#cb10-1" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb10-2"><a href="postgres.html#cb10-2" tabindex="-1"></a>    dc.anio_mes <span class="kw">AS</span> <span class="ot">&quot;Mes&quot;</span>, </span>
+<span id="cb10-3"><a href="postgres.html#cb10-3" tabindex="-1"></a>    dd.provincia <span class="kw">AS</span> <span class="ot">&quot;Provincia&quot;</span>, </span>
+<span id="cb10-4"><a href="postgres.html#cb10-4" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Cantidad&quot;</span>, </span>
+<span id="cb10-5"><a href="postgres.html#cb10-5" tabindex="-1"></a>    <span class="fu">SUM</span>(fv.pvp <span class="op">*</span> fv.cantidad) <span class="kw">AS</span> <span class="ot">&quot;Importe&quot;</span></span>
+<span id="cb10-6"><a href="postgres.html#cb10-6" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb10-7"><a href="postgres.html#cb10-7" tabindex="-1"></a>    fact_ventas_dia fv</span>
+<span id="cb10-8"><a href="postgres.html#cb10-8" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb10-9"><a href="postgres.html#cb10-9" tabindex="-1"></a>    dim_cuando dc <span class="kw">ON</span> fv.dim_cuando_key <span class="op">=</span> dc.dim_cuando_key</span>
+<span id="cb10-10"><a href="postgres.html#cb10-10" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb10-11"><a href="postgres.html#cb10-11" tabindex="-1"></a>    dim_donde dd <span class="kw">ON</span> fv.dim_donde_key <span class="op">=</span> dd.dim_donde_key</span>
+<span id="cb10-12"><a href="postgres.html#cb10-12" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb10-13"><a href="postgres.html#cb10-13" tabindex="-1"></a>    dim_que dq <span class="kw">ON</span> fv.dim_que_key <span class="op">=</span> dq.dim_que_key</span>
+<span id="cb10-14"><a href="postgres.html#cb10-14" tabindex="-1"></a><span class="kw">WHERE</span></span>
+<span id="cb10-15"><a href="postgres.html#cb10-15" tabindex="-1"></a>    dc.anio <span class="op">=</span> <span class="st">&#39;2024&#39;</span> </span>
+<span id="cb10-16"><a href="postgres.html#cb10-16" tabindex="-1"></a>    <span class="kw">AND</span> dq.fabricante_c_aut <span class="op">=</span> <span class="st">&#39;Andalucía&#39;</span></span>
+<span id="cb10-17"><a href="postgres.html#cb10-17" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb10-18"><a href="postgres.html#cb10-18" tabindex="-1"></a>    dc.anio_mes, dd.provincia</span>
+<span id="cb10-19"><a href="postgres.html#cb10-19" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb10-20"><a href="postgres.html#cb10-20" tabindex="-1"></a>    dc.anio_mes, dd.provincia;</span></code></pre></div>
 </div>
 </div>
 <div id="diferencias-oltp-y-olap" class="section level2 hasAnchor" number="3.3">

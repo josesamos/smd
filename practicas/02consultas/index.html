@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Consultas multidimensionales</title>
+  <title>Consultas Multidimensionales</title>
   <meta name="description" content="<p>Sistemas Multidimensionales.
 Dpto. de Lenguajes y Sistemas Informáticos
 Universidad de Granada</p>" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Consultas multidimensionales" />
+  <meta property="og:title" content="Consultas Multidimensionales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>Sistemas Multidimensionales.
@@ -19,7 +19,7 @@ Universidad de Granada</p>" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Consultas multidimensionales" />
+  <meta name="twitter:title" content="Consultas Multidimensionales" />
   
   <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
 Dpto. de Lenguajes y Sistemas Informáticos
@@ -58,6 +58,70 @@ Universidad de Granada</p>" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -89,11 +153,32 @@ Universidad de Granada</p>" />
 <ul>
 <li class="chapter" data-level="2.1" data-path="obtención-de-los-datos.html"><a href="obtención-de-los-datos.html#restauración-de-las-bases-de-datos-oltp-y-olap-en-postgresql"><i class="fa fa-check"></i><b>2.1</b> Restauración de las bases de datos OLTP y OLAP en PostgreSQL</a></li>
 <li class="chapter" data-level="2.2" data-path="obtención-de-los-datos.html"><a href="obtención-de-los-datos.html#uso-del-archivo-de-power-bi"><i class="fa fa-check"></i><b>2.2</b> Uso del archivo de Power BI</a></li>
+<li class="chapter" data-level="" data-path="obtención-de-los-datos.html"><a href="obtención-de-los-datos.html#ejercicios"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path="obtención-de-los-datos.html"><a href="obtención-de-los-datos.html#ejercicio-recuperación-de-las-bases-de-datos"><i class="fa fa-check"></i>Ejercicio: Recuperación de las bases de datos</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="postgres.html"><a href="postgres.html"><i class="fa fa-check"></i><b>3</b> PostgreSQL</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="postgres.html"><a href="postgres.html#base-de-datos-oltp"><i class="fa fa-check"></i><b>3.1</b> Base de datos OLTP</a></li>
-<li class="chapter" data-level="3.2" data-path="postgres.html"><a href="postgres.html#base-de-datos-olap"><i class="fa fa-check"></i><b>3.2</b> Base de datos OLAP</a></li>
+<li class="chapter" data-level="3.1" data-path="postgres.html"><a href="postgres.html#base-de-datos-oltp"><i class="fa fa-check"></i><b>3.1</b> Base de datos OLTP</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="postgres.html"><a href="postgres.html#informe-de-partida"><i class="fa fa-check"></i><b>3.1.1</b> Informe de partida</a></li>
+<li class="chapter" data-level="3.1.2" data-path="postgres.html"><a href="postgres.html#roll-up"><i class="fa fa-check"></i><b>3.1.2</b> Roll-Up</a></li>
+<li class="chapter" data-level="3.1.3" data-path="postgres.html"><a href="postgres.html#drill-down"><i class="fa fa-check"></i><b>3.1.3</b> Drill-Down</a></li>
+<li class="chapter" data-level="3.1.4" data-path="postgres.html"><a href="postgres.html#slicedice"><i class="fa fa-check"></i><b>3.1.4</b> Slice&amp;Dice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="postgres.html"><a href="postgres.html#base-de-datos-olap"><i class="fa fa-check"></i><b>3.2</b> Base de datos OLAP</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="postgres.html"><a href="postgres.html#informe-de-partida-1"><i class="fa fa-check"></i><b>3.2.1</b> Informe de partida</a></li>
+<li class="chapter" data-level="3.2.2" data-path="postgres.html"><a href="postgres.html#roll-up-1"><i class="fa fa-check"></i><b>3.2.2</b> Roll-Up</a></li>
+<li class="chapter" data-level="3.2.3" data-path="postgres.html"><a href="postgres.html#drill-down-1"><i class="fa fa-check"></i><b>3.2.3</b> Drill-Down</a></li>
+<li class="chapter" data-level="3.2.4" data-path="postgres.html"><a href="postgres.html#slicedice-1"><i class="fa fa-check"></i><b>3.2.4</b> Slice&amp;Dice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="postgres.html"><a href="postgres.html#diferencias-oltp-y-olap"><i class="fa fa-check"></i><b>3.3</b> Diferencias OLTP y OLAP</a></li>
+<li class="chapter" data-level="" data-path="postgres.html"><a href="postgres.html#ejercicios-1"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path="postgres.html"><a href="postgres.html#ejercicio-informes-sql"><i class="fa fa-check"></i>Ejercicio: Informes SQL</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="metabase.html"><a href="metabase.html"><i class="fa fa-check"></i><b>4</b> Metabase</a></li>
 <li class="chapter" data-level="5" data-path="powerbi.html"><a href="powerbi.html"><i class="fa fa-check"></i><b>5</b> Power BI</a></li>
@@ -109,7 +194,7 @@ Universidad de Granada</p>" />
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Consultas multidimensionales</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Consultas Multidimensionales</a>
           </h1>
         </div>
 
@@ -118,7 +203,7 @@ Universidad de Granada</p>" />
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Consultas multidimensionales</h1>
+<h1 class="title">Consultas Multidimensionales</h1>
 <h2 class="subtitle"><em><p>Sistemas Multidimensionales</p></em></h2>
 <p class="author"><em><p>José Samos Jiménez (<a href="mailto:jsamos@ugr.es" class="email">jsamos@ugr.es</a>)<br>
 Dpto. de Lenguajes y Sistemas Informáticos<br>
