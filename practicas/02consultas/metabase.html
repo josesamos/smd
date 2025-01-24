@@ -182,10 +182,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="metabase.html"><a href="metabase.html"><i class="fa fa-check"></i><b>4</b> Metabase</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="metabase.html"><a href="metabase.html#acceder-a-metabase"><i class="fa fa-check"></i><b>4.1</b> Acceder a Metabase:</a></li>
+<li class="chapter" data-level="4.1" data-path="metabase.html"><a href="metabase.html#acceder-a-metabase"><i class="fa fa-check"></i><b>4.1</b> Acceder a Metabase</a></li>
 <li class="chapter" data-level="" data-path="metabase.html"><a href="metabase.html#ejercicios-2"><i class="fa fa-check"></i>Ejercicios</a>
 <ul>
-<li class="chapter" data-level="" data-path="metabase.html"><a href="metabase.html#ejercicio-informes-sql-1"><i class="fa fa-check"></i>Ejercicio: Informes SQL</a></li>
+<li class="chapter" data-level="" data-path="metabase.html"><a href="metabase.html#ejercicio-informes-y-cuadros-de-mando-metabase"><i class="fa fa-check"></i>Ejercicio: Informes y cuadros de mando Metabase</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="powerbi.html"><a href="powerbi.html"><i class="fa fa-check"></i><b>5</b> Power BI</a></li>
@@ -211,22 +211,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="metabase" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Metabase<a href="metabase.html#metabase" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li><em>Vídeo: <a href="https://youtu.be/Ud10hbNNpco" class="uri">https://youtu.be/Ud10hbNNpco</a></em></li>
+</ul>
 <p>Metabase ofrece muchas posibilidades, nos vamos a centrar en lo imprescindible para entenderlo y desarrollar los ejercicios.</p>
 <div id="acceder-a-metabase" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Acceder a Metabase:<a href="metabase.html#acceder-a-metabase" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Em primer lugar, inciamos el servidor.</p>
+<h2><span class="header-section-number">4.1</span> Acceder a Metabase<a href="metabase.html#acceder-a-metabase" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En primer lugar, iniciamos el servidor.</p>
 <ul>
 <li><p>Si hemos instalado la imagen Docker:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="metabase.html#cb1-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 3000:3000 <span class="at">--name</span> metabase metabase/metabase</span></code></pre></div></li>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="metabase.html#cb11-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 3000:3000 <span class="at">--name</span> metabase metabase/metabase</span></code></pre></div></li>
 <li><p>Si hemos descargado el archivo JAR:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="metabase.html#cb2-1" tabindex="-1"></a><span class="ex">java</span> <span class="at">-jar</span> metabase.jar</span></code></pre></div></li>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="metabase.html#cb12-1" tabindex="-1"></a><span class="ex">java</span> <span class="at">-jar</span> metabase.jar</span></code></pre></div></li>
 </ul>
 <p>En ambos casos, accedemos a <a href="http://localhost:3000/" class="uri">http://localhost:3000/</a></p>
+<p>El resto de información necesaria sobre Metabase se encuentra en el vídeo asociado.</p>
 </div>
 <div id="ejercicios-2" class="section level2 unnumbered hasAnchor">
 <h2>Ejercicios<a href="metabase.html#ejercicios-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="ejercicio-informes-sql-1" class="section level3 unnumbered hasAnchor">
-<h3>Ejercicio: Informes SQL<a href="metabase.html#ejercicio-informes-sql-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ejercicio-informes-y-cuadros-de-mando-metabase" class="section level3 unnumbered hasAnchor">
+<h3>Ejercicio: Informes y cuadros de mando Metabase<a href="metabase.html#ejercicio-informes-y-cuadros-de-mando-metabase" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Este apartado no puntúa en la actividad.</p>
 <ol start="0" style="list-style-type: decimal">
 <li><strong>Punto de Partida</strong>: <em>Informe Inicial y Operaciones</em> del ejercicio <em>Informes SQL</em>.
@@ -237,27 +241,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ol>
 <p>Todos los apartados siguientes valen igual.</p>
+<p><strong>Todos los elementos que se definan en la actividad</strong> (conexión con la base de datos, modelo, informes, cuadros de mando, etc.) <strong>han de tener como nombre o prefijo tu nombre de usuario de correo electrónico</strong>.</p>
 <ol style="list-style-type: decimal">
 <li><strong>Implementación de los informes</strong>:
 <ul>
 <li>Vamos a trabajar exclusivamente sobre la base de datos <strong>OLAP</strong> en PostgreSQL.</li>
 <li>Implementa los 4 informes incluidos en el apartado <em>Punto de Partida</em> mediante Metabase usando la interfaz gráfica de definición.</li>
 </ul></li>
-<li><strong>Cuadro de mandos</strong>:
+<li><strong>Cuadro de mando</strong>:
 <ul>
-<li>Implementa un cuadro de mandos que incluya:
+<li>Implementa un cuadro de mando que incluya:
 <ul>
 <li>Los 4 informes, cada uno de ellos en formato de tabla dinámica.</li>
 <li>Un campo de filtro que tenga sentido, de acuerdo a la definición de los informes.</li>
 </ul></li>
 </ul></li>
-<li><strong>Cuadro de mandos libre</strong>:
+<li><strong>Cuadro de mando libre</strong>:
 <ul>
-<li>Implementa un cuadro de mandos libre con <strong>2 informes</strong> y un campo de filtro:
+<li>Implementa un cuadro de mando libre con <strong>2 informes</strong> y un campo de filtro:
 <ul>
 <li>Los informes basados exclusivamente en la base de datos OLAP.</li>
-<li>Para cada informe indica su título y sus niveles de detalle.</li>
-<li>Que incluya alguna representación gráfica para los informes.</li>
+<li>Que incluya representaciones gráficas para los informes.</li>
 </ul></li>
 </ul></li>
 </ol>
@@ -279,17 +283,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Drill-Down</li>
 <li>Slice&amp;Dice</li>
 </ol></li>
-<li><p>Cuadro de mandos</p></li>
-<li><p>Cuadro de mandos libre</p></li>
+<li><p>Cuadro de mando</p></li>
+<li><p>Cuadro de mando libre</p></li>
 </ol></li>
-<li><p>Para la implementación de cada informe (también para los del cuadro de mandos libre) incluye:</p>
+<li><p>Para la implementación de cada informe (también para los del cuadro de mando libre) incluye:</p>
 <ul>
 <li>El título y los niveles de detalle de cada informe.</li>
-<li><strong>Una captura de pantalla completa de la aplicación</strong> (similar a la de la figura).</li>
+<li><strong>Captura de pantalla completa de la aplicación</strong> con la definición del informe.</li>
+<li>Si para la definición de los informes usas un modelo, no es necesario incluir la definición del modelo.</li>
 </ul></li>
-<li><p>Para los cuadros de mandos incluye:</p>
+<li><p>Para los cuadros de mando incluye:</p>
 <ul>
 <li>Explicación del campo de filtro incluido y cómo afecta a los informes.</li>
+<li><strong>Captura de pantalla completa de la aplicación</strong> mostrando la definición del filtro.</li>
 <li><strong>Dos capturas de pantalla completa de la aplicación</strong> mostrando cómo funciona el campo de filtro (antes y después de aplicarlo).</li>
 </ul></li>
 </ul>

@@ -18,6 +18,5 @@ drill-down-1
 slicedice-1
 diferencias-oltp-y-olap
 metabase
-powerbi
-definir-una-conexión
 acceder-a-metabase
+powerbi
