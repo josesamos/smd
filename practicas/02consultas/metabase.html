@@ -180,7 +180,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="postgres.html"><a href="postgres.html#ejercicio-informes-sql"><i class="fa fa-check"></i>Ejercicio: Informes SQL</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="metabase.html"><a href="metabase.html"><i class="fa fa-check"></i><b>4</b> Metabase</a></li>
+<li class="chapter" data-level="4" data-path="metabase.html"><a href="metabase.html"><i class="fa fa-check"></i><b>4</b> Metabase</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="metabase.html"><a href="metabase.html#acceder-a-metabase"><i class="fa fa-check"></i><b>4.1</b> Acceder a Metabase:</a></li>
+<li class="chapter" data-level="" data-path="metabase.html"><a href="metabase.html#ejercicios-2"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path="metabase.html"><a href="metabase.html#ejercicio-informes-sql-1"><i class="fa fa-check"></i>Ejercicio: Informes SQL</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="powerbi.html"><a href="powerbi.html"><i class="fa fa-check"></i><b>5</b> Power BI</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -204,7 +211,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="metabase" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Metabase<a href="metabase.html#metabase" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Metabase ofrece muchas posibilidades, nos vamos a centrar en lo imprescindible para entenderlo y desarrollar los ejercicios.</p>
+<div id="acceder-a-metabase" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Acceder a Metabase:<a href="metabase.html#acceder-a-metabase" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Em primer lugar, inciamos el servidor.</p>
+<ul>
+<li><p>Si hemos instalado la imagen Docker:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="metabase.html#cb1-1" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 3000:3000 <span class="at">--name</span> metabase metabase/metabase</span></code></pre></div></li>
+<li><p>Si hemos descargado el archivo JAR:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="metabase.html#cb2-1" tabindex="-1"></a><span class="ex">java</span> <span class="at">-jar</span> metabase.jar</span></code></pre></div></li>
+</ul>
+<p>En ambos casos, accedemos a <a href="http://localhost:3000/" class="uri">http://localhost:3000/</a></p>
+</div>
+<div id="ejercicios-2" class="section level2 unnumbered hasAnchor">
+<h2>Ejercicios<a href="metabase.html#ejercicios-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ejercicio-informes-sql-1" class="section level3 unnumbered hasAnchor">
+<h3>Ejercicio: Informes SQL<a href="metabase.html#ejercicio-informes-sql-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Este apartado no puntúa en la actividad.</p>
+<ol start="0" style="list-style-type: decimal">
+<li><strong>Punto de Partida</strong>: <em>Informe Inicial y Operaciones</em> del ejercicio <em>Informes SQL</em>.
+<ul>
+<li>Si ese apartado es correcto, parte los informes definidos en él e <strong>inclúyelos aquí</strong>.</li>
+<li>Si en la corrección de la actividad en PRADO tienes comentarios de ese apartado, tenlos en cuenta, <strong>redefine aquí los informes e indica las modificaciones</strong> que has hecho.</li>
+<li>Si no has desarrollado ese apartado, <strong>desarróllalo aquí e indica que no se ha revisado</strong> previamente.</li>
+</ul></li>
+</ol>
+<p>Todos los apartados siguientes valen igual.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Implementación de los informes</strong>:
+<ul>
+<li>Vamos a trabajar exclusivamente sobre la base de datos <strong>OLAP</strong> en PostgreSQL.</li>
+<li>Implementa los 4 informes incluidos en el apartado <em>Punto de Partida</em> mediante Metabase usando la interfaz gráfica de definición.</li>
+</ul></li>
+<li><strong>Cuadro de mandos</strong>:
+<ul>
+<li>Implementa un cuadro de mandos que incluya:
+<ul>
+<li>Los 4 informes, cada uno de ellos en formato de tabla dinámica.</li>
+<li>Un campo de filtro que tenga sentido, de acuerdo a la definición de los informes.</li>
+</ul></li>
+</ul></li>
+<li><strong>Cuadro de mandos libre</strong>:
+<ul>
+<li>Implementa un cuadro de mandos libre con <strong>2 informes</strong> y un campo de filtro:
+<ul>
+<li>Los informes basados exclusivamente en la base de datos OLAP.</li>
+<li>Para cada informe indica su título y sus niveles de detalle.</li>
+<li>Que incluya alguna representación gráfica para los informes.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p><strong>Documentación a entregar:</strong></p>
+<ul>
+<li><p>Genera un documento en formato PDF con la estructura siguiente y el contenido que se indica:</p>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Punto de Partida</p>
+<ol style="list-style-type: decimal">
+<li>Informe Inicial</li>
+<li>Roll-Up</li>
+<li>Drill-Down</li>
+<li>Slice&amp;Dice</li>
+</ol></li>
+<li><p>Implementación de los informes</p>
+<ol style="list-style-type: decimal">
+<li>Informe Inicial</li>
+<li>Roll-Up</li>
+<li>Drill-Down</li>
+<li>Slice&amp;Dice</li>
+</ol></li>
+<li><p>Cuadro de mandos</p></li>
+<li><p>Cuadro de mandos libre</p></li>
+</ol></li>
+<li><p>Para la implementación de cada informe (también para los del cuadro de mandos libre) incluye:</p>
+<ul>
+<li>El título y los niveles de detalle de cada informe.</li>
+<li><strong>Una captura de pantalla completa de la aplicación</strong> (similar a la de la figura).</li>
+</ul></li>
+<li><p>Para los cuadros de mandos incluye:</p>
+<ul>
+<li>Explicación del campo de filtro incluido y cómo afecta a los informes.</li>
+<li><strong>Dos capturas de pantalla completa de la aplicación</strong> mostrando cómo funciona el campo de filtro (antes y después de aplicarlo).</li>
+</ul></li>
+</ul>
 
+</div>
+</div>
 </div>
             </section>
 
