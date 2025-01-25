@@ -20,3 +20,4 @@ diferencias-oltp-y-olap
 metabase
 acceder-a-metabase
 powerbi
+cómo-trabajar-con-power-bi-según-la-instalación-de-postgresql
