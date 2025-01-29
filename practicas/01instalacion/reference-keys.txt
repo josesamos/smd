@@ -22,3 +22,5 @@ power-bi
 virtualbox
 pentaho-data-integration-pdi-2
 r-y-rstudio-2
+herramientas-de-pentaho
+herramientas-de-pentaho-1
