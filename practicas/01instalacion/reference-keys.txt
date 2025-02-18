@@ -19,7 +19,7 @@ power-bi-y-power-query-1
 herramientas-de-pentaho-1
 r-y-rstudio-1
 ubu
-postgresql-postgis-y-pgadmin
+postgresql-y-pgadmin
 metabase-2
 power-bi
 virtualbox
