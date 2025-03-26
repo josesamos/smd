@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Power BI: Esquema Multidimensional | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</title>
+  <meta name="description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Power BI: Esquema Multidimensional | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Power BI: Esquema Multidimensional | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales" />
+  
+  <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://josesamos.github.io/smd/">SMD</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objetivo</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contenido"><i class="fa fa-check"></i><b>1.2</b> Contenido</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html"><i class="fa fa-check"></i><b>2</b> Power BI: Esquema Multidimensional</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#obtener-powerbi2"><i class="fa fa-check"></i><b>2.1</b> Obtención de los datos</a></li>
+<li class="chapter" data-level="2.2" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-llaves"><i class="fa fa-check"></i><b>2.2</b> Ocultar llaves generadas</a></li>
+<li class="chapter" data-level="2.3" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-medidas"><i class="fa fa-check"></i><b>2.3</b> Medidas calculadas</a></li>
+<li class="chapter" data-level="2.4" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-jerarquias"><i class="fa fa-check"></i><b>2.4</b> Jerarquías</a></li>
+<li class="chapter" data-level="2.5" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#páginas-interrelacionadas"><i class="fa fa-check"></i><b>2.5</b> Páginas interrelacionadas</a></li>
+<li class="chapter" data-level="" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#ejercicios"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#ejercicio-elementos-del-esquema-multidimensional-en-power-bi"><i class="fa fa-check"></i>Ejercicio: Elementos del esquema multidimensional en Power BI</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="powerbi-esquema" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Power BI: Esquema Multidimensional<a href="powerbi-esquema.html#powerbi-esquema" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li><em>Vídeo: <a href="https://youtu.be/SPXge7dq4Zc" class="uri">https://youtu.be/SPXge7dq4Zc</a></em></li>
+</ul>
+<p>En esta actividad, definiremos elementos del esquema multidimensional en Power BI, centrándonos en la creación de jerarquías en las dimensiones y medidas calculadas, también veremos cómo estructurar informes en páginas interrelacionadas.</p>
+<p>El objetivo no es replicar el informe generado en actividades anteriores, sino trabajar de forma independiente. Por ello, comenzaremos desde cero descargando nuevamente el archivo con la base de datos.</p>
+<div id="obtener-powerbi2" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Obtención de los datos<a href="powerbi-esquema.html#obtener-powerbi2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La base de datos necesaria está disponible en:</p>
+<ul>
+<li><a href="https://doi.org/10.6084/m9.figshare.26543542.v2"><strong>Bases de datos OLTP y OLAP sobre ventas en una cadena de tiendas</strong></a>.</li>
+</ul>
+<p>Descargaremos el archivo:</p>
+<ul>
+<li><p><strong>Power BI OLAP</strong>: <code>ventas_olap.pbix</code> (base de datos OLAP en formato de Power BI).</p></li>
+<li><p><strong>Renombra el archivo con tu nombre de usuario de correo electrónico</strong>.</p></li>
+<li><p><strong>Trabajaremos sobre esta base de datos</strong>.</p></li>
+</ul>
+</div>
+<div id="powerbi-llaves" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Ocultar llaves generadas<a href="powerbi-esquema.html#powerbi-llaves" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para definir el esquema multidimensional en Power BI, es fundamental ocultar las claves primarias y foráneas que se generan automáticamente. Esta no es una operación opcional, sino un paso necesario para mantener la claridad del modelo y facilitar su interpretación, evitando que los usuarios finales vean información técnica irrelevante para el análisis.</p>
+</div>
+<div id="powerbi-medidas" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Medidas calculadas<a href="powerbi-esquema.html#powerbi-medidas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Definimos las siguientes medidas calculadas:</p>
+<ul>
+<li><p><span class="math inline">\(Importe = Cantidad * PVP\)</span></p></li>
+<li><p><span class="math inline">\(PVP_{medio} = \frac{\sum Importe}{\sum Cantidad}\)</span></p></li>
+</ul>
+</div>
+<div id="powerbi-jerarquias" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Jerarquías<a href="powerbi-esquema.html#powerbi-jerarquias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las siguientes figuras ilustran las jerarquías que vamos a definir para cada dimensión del modelo:</p>
+<p>En la figura <a href="powerbi-esquema.html#fig:dim-cuando">2.1</a> se muestran las jerarquías correspondientes a la dimensión <em>Cuándo</em>, que nos permitirá organizar la información temporal de manera estructurada.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dim-cuando"></span>
+<img src="figuras_original/cuando.png" alt="Dimensión *Cuándo*." width="30%" />
+<p class="caption">
+Figura 2.1: Dimensión <em>Cuándo</em>.
+</p>
+</div>
+<p>En la figura <a href="powerbi-esquema.html#fig:dim-donde">2.2</a> se muestra la jerarquía de la dimensión <em>Dónde</em>, que facilitará la consulta de datos organizados espacialmente.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dim-donde"></span>
+<img src="figuras_original/donde.png" alt="Dimensión *Dónde*." width="20%" />
+<p class="caption">
+Figura 2.2: Dimensión <em>Dónde</em>.
+</p>
+</div>
+<p>En la figura <a href="powerbi-esquema.html#fig:dim-que">2.3</a> se presentan las jerarquías de la dimensión <em>Qué</em>, que permitirá clasificar los datos por categorías o tipos específicos.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dim-que"></span>
+<img src="figuras_original/que.png" alt="Dimensión *Qué*." width="53%" />
+<p class="caption">
+Figura 2.3: Dimensión <em>Qué</em>.
+</p>
+</div>
+<p>Por último, en la figura <a href="powerbi-esquema.html#fig:dim-hora">2.4</a> se muestra la jerarquía de la dimensión <em>Hora</em>, que será clave para el análisis a nivel de horas del día.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dim-hora"></span>
+<img src="figuras_original/hora.png" alt="Dimensión *Hora*." width="17%" />
+<p class="caption">
+Figura 2.4: Dimensión <em>Hora</em>.
+</p>
+</div>
+</div>
+<div id="páginas-interrelacionadas" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Páginas interrelacionadas<a href="powerbi-esquema.html#páginas-interrelacionadas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Power BI permite la creación de informes compuestos por múltiples páginas, las cuales pueden interrelacionarse entre sí. Esta funcionalidad facilita la navegación entre los datos, permitiendo a los usuarios explorar la información desde diferentes niveles de detalle.</p>
+<p>Las páginas que definamos pueden basarse en las jerarquías de las dimensiones.</p>
+</div>
+<div id="ejercicios" class="section level2 unnumbered hasAnchor">
+<h2>Ejercicios<a href="powerbi-esquema.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ejercicio-elementos-del-esquema-multidimensional-en-power-bi" class="section level3 unnumbered hasAnchor">
+<h3>Ejercicio: Elementos del esquema multidimensional en Power BI<a href="powerbi-esquema.html#ejercicio-elementos-del-esquema-multidimensional-en-power-bi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Todos los apartados siguientes valen igual.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Elementos del esquema</strong>:</p>
+<ul>
+<li>Oculta las llaves generadas del esquema.</li>
+<li>Define las medidas calculadas del apartado <a href="powerbi-esquema.html#powerbi-medidas">2.3</a> en los hechos de los dos diseños.</li>
+<li>Define las jerarquías del apartado <a href="powerbi-esquema.html#powerbi-jerarquias">2.4</a> en las dimensiones.</li>
+</ul></li>
+<li><p><strong>Uso de los elementos del esquema</strong>:</p>
+<ul>
+<li><p>En una página, define un informe que incluya una de las jerarquías definidas.</p>
+<ul>
+<li>Indica el título y niveles de detalle del informe.</li>
+</ul></li>
+<li><p>Relaciona ese informe con otro informe definido en otra página en el que se muestre otro nivel de detalle.</p></li>
+<li><p>Se valorará la originalidad de los informes.</p></li>
+</ul></li>
+</ol>
+<p><strong>Documentación a entregar:</strong></p>
+<ul>
+<li><p>Genera un documento en formato PDF con la estructura siguiente y el contenido que se indica a continuación:</p>
+<ol style="list-style-type: decimal">
+<li>Elementos del esquema
+<ul>
+<li><strong>Captura de pantalla completa de la aplicación</strong> mostrando la columna <em>Datos</em> con todos los elementos desplegados (tantas capturas como sean necesarias para mostrar todos los elementos).</li>
+</ul></li>
+<li>Uso de los elementos del esquema
+<ul>
+<li><strong>Captura de pantalla completa de la aplicación</strong> mostrando el informe original.</li>
+<li><strong>2 x Captura de pantalla completa de la aplicación</strong> mostrando el informe destino (para 2 valores distintos del informe original.</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Antes de realizar las capturas de pantalla:</strong></p>
+<ul>
+<li><strong>Guarda o renombra el archivo Power BI con tu nombre de usuario de correo electrónico</strong>.</li>
+<li><strong>Renombra las páginas que contengan los cuadros de mando con tu nombre de usuario como prefijo</strong>.</li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": {}
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

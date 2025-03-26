@@ -1,0 +1,13 @@
+fig:dim-cuando
+fig:dim-donde
+fig:dim-que
+fig:dim-hora
+objetivo
+introducción
+contenido
+powerbi-esquema
+obtener-powerbi2
+powerbi-llaves
+powerbi-medidas
+powerbi-jerarquias
+páginas-interrelacionadas
