@@ -1,0 +1,11 @@
+fig:ventas-oltp-pq
+fig:ventas-olap-pq
+fig:ventas-olap-pq2
+objetivo
+introducción
+contenido
+etl-powerquery
+obtener-powerquery
+datos-powerquery
+objetivo-powerquery
+pasos-powerquery
