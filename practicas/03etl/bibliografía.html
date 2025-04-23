@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Power Query | Diseño e Implementación del Componente ETL</title>
+  <title>Bibliografía | Diseño e Implementación del Componente ETL</title>
   <meta name="description" content="<p>Sistemas Multidimensionales.
 Dpto. de Lenguajes y Sistemas Informáticos
 Universidad de Granada</p>" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Power Query | Diseño e Implementación del Componente ETL" />
+  <meta property="og:title" content="Bibliografía | Diseño e Implementación del Componente ETL" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>Sistemas Multidimensionales.
@@ -19,7 +19,7 @@ Universidad de Granada</p>" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Power Query | Diseño e Implementación del Componente ETL" />
+  <meta name="twitter:title" content="Bibliografía | Diseño e Implementación del Componente ETL" />
   
   <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
 Dpto. de Lenguajes y Sistemas Informáticos
@@ -34,8 +34,8 @@ Universidad de Granada</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="etl-pdi.html"/>
+<link rel="prev" href="etl-pdi.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -228,143 +228,44 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="etl-powerquery" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Power Query<a href="etl-powerquery.html#etl-powerquery" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<ul>
-<li><em>Vídeo (Parte I): <a href="https://youtu.be/uQd8NrILzdw" class="uri">https://youtu.be/uQd8NrILzdw</a></em></li>
-<li><em>Vídeo (Parte II): <a href="https://youtu.be/4l88tdZnA84" class="uri">https://youtu.be/4l88tdZnA84</a></em></li>
-</ul>
-<p>Power Query es una herramienta de Microsoft utilizada para importar, transformar y combinar datos de diversas fuentes en Excel y Power BI. Lo vamos a usar desde Power BI.</p>
-<p>Permite automatizar procesos de limpieza y preparación de datos sin necesidad de programación, mediante una interfaz visual intuitiva. Facilita la conexión con bases de datos, archivos y servicios en la nube, aplicando filtros, combinaciones y cálculos antes de cargar los datos en el modelo final.</p>
-<div id="obtener-powerquery" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Obtención de los datos<a href="etl-powerquery.html#obtener-powerquery" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Los datos necesarios están disponibles en:</p>
-<ul>
-<li><a href="https://doi.org/10.6084/m9.figshare.26543542.v2"><strong>Bases de datos OLTP y OLAP sobre ventas en una cadena de tiendas</strong></a>.</li>
-</ul>
-<p>Descargaremos el archivo:</p>
-<ul>
-<li><p><code>ventas_oltp_csv.zip</code> (base de datos OLTP en formato CSV).</p></li>
-<li><p><strong>Descomprime el archivo en una carpeta de trabajo</strong>.</p></li>
-</ul>
-</div>
-<div id="datos-powerquery" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Datos disponibles<a href="etl-powerquery.html#datos-powerquery" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>En la figura <a href="etl-powerquery.html#fig:ventas-oltp-pq">2.1</a> se muestra el esquema de la base de datos OLTP.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ventas-oltp-pq"></span>
-<img src="figuras_original/oltp.png" alt="Base de datos OLTP." width="90%" />
-<p class="caption">
-Figura 2.1: Base de datos OLTP.
-</p>
-</div>
-<p>Los datos que hemos obtenido se corresponden con los de la base de datos OLTP pero están almacenados en formato CSV.</p>
-</div>
-<div id="objetivo-powerquery" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Objetivo<a href="etl-powerquery.html#objetivo-powerquery" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El objetivo de esta actividad es <strong>desarrollar las transformaciones sobre los datos originales para obtener como resultado la base de datos OLAP</strong> que hemos utilizado en otras actividades. Es posible que no obtengamos todos los campos de las tablas, pero al menos hemos de obtener la base de datos con esa estructura.</p>
-<p>En la figura <a href="etl-powerquery.html#fig:ventas-olap-pq">2.2</a> se muestra el esquema de la base de datos OLAP.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ventas-olap-pq"></span>
-<img src="figuras_original/olap.png" alt="Base de datos OLAP." width="90%" />
-<p class="caption">
-Figura 2.2: Base de datos OLAP.
-</p>
-</div>
-<p>En la figura <a href="etl-powerquery.html#fig:ventas-olap-pq2">2.3</a> se muestra otra representación del esquema de la base de datos OLAP, una representación detallada en la que se pueden ver todos los campos de las tablas.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ventas-olap-pq2"></span>
-<img src="figuras_original/ventas_olap.png" alt="Representación de la base de datos OLAP con todos los campos." width="30%" />
-<p class="caption">
-Figura 2.3: Representación de la base de datos OLAP con todos los campos.
-</p>
-</div>
-</div>
-<div id="pasos-powerquery" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Pasos<a href="etl-powerquery.html#pasos-powerquery" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li><p>Importar las tablas</p>
-<ul>
-<li>Eliminamos el paso <code>Tipo cambiado</code>.</li>
-</ul></li>
-<li><p>Seleccionar una muestra de datos</p>
-<ul>
-<li>De la tabla <code>linea_ticket</code>.</li>
-<li>Quitar filas alternas (dejamos el 1‰: dejar 1 y quitar 999).</li>
-</ul></li>
-<li><p>Obtener los datos base</p>
-<ul>
-<li>Partiendo de la tabla <code>linea_ticket</code>.</li>
-<li>Operaciones principales:
-<ul>
-<li>Referencia.</li>
-<li>Duplicación.</li>
-<li>Unión.</li>
-<li>Agrupar por.</li>
-</ul></li>
-</ul></li>
-<li><p>Definir los hechos</p>
-<ul>
-<li>Partiendo de los datos base.</li>
-<li>Operaciones principales:
-<ul>
-<li>Referencia.</li>
-</ul></li>
-</ul></li>
-<li><p>Definir y enriquecer las dimensiones</p>
-<ul>
-<li>Partiendo de los datos base.</li>
-<li>Operaciones principales:
-<ul>
-<li>Referencia</li>
-<li>Quitar duplicados.</li>
-<li>Renombrar campos.</li>
-<li>Unión.</li>
-<li>Agregar columna.</li>
-</ul></li>
-</ul></li>
-<li><p>Relacionar hechos y dimensiones.</p>
-<ul>
-<li>Operaciones principales:
-<ul>
-<li>Unión.</li>
-</ul></li>
-</ul></li>
-<li><p>Seleccionar las tablas que componen el modelo.</p></li>
-<li><p>Cargar todos los datos en el modelo.</p></li>
-</ol>
-</div>
-<div id="ejercicios" class="section level2 unnumbered hasAnchor">
-<h2>Ejercicios<a href="etl-powerquery.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Todos los apartados siguientes valen igual (definición de cada tabla y carga del modelo).</p>
-<p>En un archivo de Power BI cuyo nombre comience por tu nombre de usuario de correo electrónico, a partir de la base de datos OLTP en formato CSV, obtén las tablas siguientes:</p>
-<ol style="list-style-type: decimal">
-<li><code>ventas_linea</code></li>
-<li><code>ventas_dia</code></li>
-<li><code>fact_ventas_linea</code></li>
-<li><code>fact_ventas_dia</code></li>
-<li><code>dim_que</code></li>
-<li><code>dim_donde</code></li>
-<li><code>dim_cuando</code></li>
-<li><code>dim_hora</code></li>
-<li><code>dim_ticket</code></li>
-</ol>
-<ul>
-<li>Define las tablas de hechos y de dimensiones, de manera que sean las únicas que se carguen en el modelo.</li>
-</ul>
-<p><strong>Documentación a entregar:</strong></p>
-<ul>
-<li><p>Genera un documento en formato PDF.</p></li>
-<li><p>Para cada una de las tablas que se indican (1 a 9), dedica <strong>un apartado</strong> en el documento y captura una <em>pantalla completa de Power Query</em> donde se vean los pasos de definición de la tabla y su contenido.</p></li>
-<li><p>En un apartado adicional para la carga del modelo (10), captura una <em>pantalla completa de Power BI</em> donde se vean las tablas del esquema.</p></li>
-</ul>
+<div id="bibliografía" class="section level1 unnumbered hasAnchor">
+<h1>Bibliografía<a href="bibliografía.html#bibliografía" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div class="csl-entry">
+Abad, Francisco, and Maravillas Vargas. 1991. <em>Estadística</em>. Granada: Gráf. JUFER.
+</div>
+<div class="csl-entry">
+Obe, Regina, and Leo Hsu. 2017. <em>PostegreSQL: Up and Running, 3rd Edition: A Practical Guide to the Advanced Open Source Database</em>. O’Reilly UK Ltd.
+</div>
+<div class="csl-entry">
+Roldán, María Carina. 2017. <em>Learning Pentaho Data Integration 8 <span>CE</span> (Third Edition)</em>. Packt Publishing.
+</div>
+<div class="csl-entry">
+———. 2018. <em>Pentaho Data Integration Quick Start Guide</em>. Packt Publishing.
 </div>
 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="etl-pdi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="etl-pdi.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

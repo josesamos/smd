@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 PDI (Pentaho Data Integration) | Diseño e Implementación del Componente ETL</title>
+  <meta name="description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 PDI (Pentaho Data Integration) | Diseño e Implementación del Componente ETL" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 PDI (Pentaho Data Integration) | Diseño e Implementación del Componente ETL" />
+  
+  <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="etl-powerquery.html"/>
+<link rel="next" href="bibliografía.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://josesamos.github.io/smd/">SMD</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objetivo</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contenido"><i class="fa fa-check"></i><b>1.2</b> Contenido</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="etl-powerquery.html"><a href="etl-powerquery.html"><i class="fa fa-check"></i><b>2</b> Power Query</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="etl-powerquery.html"><a href="etl-powerquery.html#obtener-powerquery"><i class="fa fa-check"></i><b>2.1</b> Obtención de los datos</a></li>
+<li class="chapter" data-level="2.2" data-path="etl-powerquery.html"><a href="etl-powerquery.html#datos-powerquery"><i class="fa fa-check"></i><b>2.2</b> Datos disponibles</a></li>
+<li class="chapter" data-level="2.3" data-path="etl-powerquery.html"><a href="etl-powerquery.html#objetivo-powerquery"><i class="fa fa-check"></i><b>2.3</b> Objetivo</a></li>
+<li class="chapter" data-level="2.4" data-path="etl-powerquery.html"><a href="etl-powerquery.html#pasos-powerquery"><i class="fa fa-check"></i><b>2.4</b> Pasos</a></li>
+<li class="chapter" data-level="" data-path="etl-powerquery.html"><a href="etl-powerquery.html#ejercicios"><i class="fa fa-check"></i>Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="etl-pdi.html"><a href="etl-pdi.html"><i class="fa fa-check"></i><b>3</b> <em>PDI</em> (<em>Pentaho Data Integration</em>)</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="etl-pdi.html"><a href="etl-pdi.html#caso-practico"><i class="fa fa-check"></i><b>3.1</b> Datos y diseño del caso práctico</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="etl-pdi.html"><a href="etl-pdi.html#obtencion-datos"><i class="fa fa-check"></i><b>3.1.1</b> Obtención de los datos</a></li>
+<li class="chapter" data-level="3.1.2" data-path="etl-pdi.html"><a href="etl-pdi.html#dis-multidim"><i class="fa fa-check"></i><b>3.1.2</b> Diseño multidimensional</a></li>
+<li class="chapter" data-level="3.1.3" data-path="etl-pdi.html"><a href="etl-pdi.html#objetivo-1"><i class="fa fa-check"></i><b>3.1.3</b> Objetivo</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="etl-pdi.html"><a href="etl-pdi.html#herramientas-de-soporte"><i class="fa fa-check"></i><b>3.2</b> Herramientas de soporte</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="etl-pdi.html"><a href="etl-pdi.html#pdi-crear-bd-postgres"><i class="fa fa-check"></i><b>3.2.1</b> Crear una base de datos <em>PostgreSQL</em></a></li>
+<li class="chapter" data-level="3.2.2" data-path="etl-pdi.html"><a href="etl-pdi.html#crear-transformations-y-jobs-en-spoon"><i class="fa fa-check"></i><b>3.2.2</b> Crear <em>Transformations</em> y <em>Jobs</em> en <em>Spoon</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="etl-pdi.html"><a href="etl-pdi.html#pdi-desarrollo-job"><i class="fa fa-check"></i><b>3.3</b> Desarrollo de un trabajo (<em>Job</em>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="etl-pdi.html"><a href="etl-pdi.html#elementos-en-un-trabajo"><i class="fa fa-check"></i><b>3.3.1</b> Elementos en un trabajo</a></li>
+<li class="chapter" data-level="3.3.2" data-path="etl-pdi.html"><a href="etl-pdi.html#pdi-ejecucion-trabajo"><i class="fa fa-check"></i><b>3.3.2</b> Ejecución de un trabajo</a></li>
+<li class="chapter" data-level="3.3.3" data-path="etl-pdi.html"><a href="etl-pdi.html#conexión-compartida-a-la-bd"><i class="fa fa-check"></i><b>3.3.3</b> Conexión compartida a la BD</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="etl-pdi.html"><a href="etl-pdi.html#desarrollo-de-transformaciones"><i class="fa fa-check"></i><b>3.4</b> Desarrollo de transformaciones</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="etl-pdi.html"><a href="etl-pdi.html#obtener-la-tabla-plana"><i class="fa fa-check"></i><b>3.4.1</b> Obtener la tabla plana</a></li>
+<li class="chapter" data-level="3.4.2" data-path="etl-pdi.html"><a href="etl-pdi.html#completar-el-trabajo"><i class="fa fa-check"></i><b>3.4.2</b> Completar el trabajo</a></li>
+<li class="chapter" data-level="3.4.3" data-path="etl-pdi.html"><a href="etl-pdi.html#obtener-las-dimensiones"><i class="fa fa-check"></i><b>3.4.3</b> Obtener las dimensiones</a></li>
+<li class="chapter" data-level="3.4.4" data-path="etl-pdi.html"><a href="etl-pdi.html#tabla-de-hechos"><i class="fa fa-check"></i><b>3.4.4</b> Tabla de hechos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="etl-pdi.html"><a href="etl-pdi.html#modificaciones"><i class="fa fa-check"></i><b>3.5</b> Modificaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliografía.html"><a href="bibliografía.html"><i class="fa fa-check"></i>Bibliografía</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Diseño e Implementación del Componente ETL</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="etl-pdi" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> <em>PDI</em> (<em>Pentaho Data Integration</em>)<a href="etl-pdi.html#etl-pdi" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En este capítulo trabajaremos sobre <em>PDI</em> también conocido como <em>Kettle</em>, la herramienta ETL de <em>Pentaho BI Suite</em>, conjunto de herramientas libres de Inteligencia de Negocio.</p>
+<p>En <em>PDI</em> hay dos elementos: <em>Transformations</em> y <em>Jobs</em>.</p>
+<ul>
+<li><p>Se definen <em>Transformations</em> para transformar los datos.</p></li>
+<li><p>Se definen <em>Jobs</em> para organizar tareas estableciendo su orden y condiciones de ejecución. <em>Transformations</em> es un tipo de tarea.</p></li>
+</ul>
+<p>Tanto <em>Transformations</em> como <em>Jobs</em>, cuando se definen, se almacenan como archivos.</p>
+<p>Asociadas a <em>PDI</em> se utilizan generalmente las siguientes herramientas:</p>
+<ul>
+<li><p><em>Spoon</em> es la interfaz gráfica de <em>PDI</em>, permite diseñar y ejecutar <em>Transformations</em> y <em>Jobs</em>.</p></li>
+<li><p><em>Pan</em> es la herramienta que permite ejecutar <em>Transformations</em> desde la línea de comandos.</p></li>
+<li><p><em>Kitchen</em> es la herramienta que permite ejecutar <em>Jobs</em> desde la línea de comandos.</p></li>
+</ul>
+<p>Usaremos <em>PDI</em> mediante <em>Spoon</em>. También usaremos el sistema de gestión de bases de datos relacional de código abierto <em>PostgreSQL</em><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>Mediante <em>PDI</em>, a partir de los datos en formato CSV, generaremos las tablas de dimensiones y hechos en una BD <em>PostgreSQL</em>.</p>
+<div id="objetivos-del-capítulo" class="section level4 unnumbered hasAnchor">
+<h4>Objetivos del capítulo<a href="etl-pdi.html#objetivos-del-capítulo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Usar una herramienta ETL profesional.</p></li>
+<li><p>Conocer los elementos y el funcionamiento de <em>PDI</em>, y usarlo para:</p>
+<ul>
+<li><p>Transformar los datos.</p></li>
+<li><p>Generar nuevas tablas.</p></li>
+<li><p>Obtener un diseño en estrella.</p></li>
+</ul></li>
+<li><p>Entender la estructura y la implementación de los cubos OLAP.</p></li>
+</ul>
+</div>
+<div id="caso-practico" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Datos y diseño del caso práctico<a href="etl-pdi.html#caso-practico" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El caso práctico que se desarrolla se basa en los datos del Padrón Municipal. En el documento se usan los datos de la provincia de Granada pero cada estudiante tiene una provincia asignada para realizar las actividades propuestas usando sus propios datos (además de los datos comunes). <strong>La provincia asignada está disponible en el documento de PRADO <a href="https://pradogrado2425.ugr.es/mod/page/view.php?id=368893">Asignación de Provincia</a></strong>.</p>
+<p>En este apartado se explica cómo obtener los datos necesarios. Se presenta el diseño multidimensional a nivel conceptual y lógico realizado a partir de estos datos.</p>
+<div id="obtencion-datos" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Obtención de los datos<a href="etl-pdi.html#obtencion-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vamos a trabajar con datos del Padrón Municipal <strong>para los municipios de la provincia asignada</strong><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Para cada municipio, obtendremos los datos del número de mujeres y hombres contabilizados cada 1 de Enero, desde el año 1996 hasta el último año publicado.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ine-provincia"></span>
+<img src="img/ine/ine01.png" alt="Descarga de datos del [Padrón municipal (INE)](https://www.ine.es/dynt3/inebase/index.htm?padre=525)." width="100%" />
+<p class="caption">
+Figura 3.1: Descarga de datos del <a href="https://www.ine.es/dynt3/inebase/index.htm?padre=525">Padrón municipal (INE)</a>.
+</p>
+</div>
+<p>Los datos de las distintas provincias se puede obtener del <a href="https://www.ine.es/dynt3/inebase/index.htm?padre=525">INE (Instituto Nacional de Estadística)</a>, cuya página se muestra en la figura <a href="etl-pdi.html#fig:ine-provincia">3.1</a>. Pulsando sobre el icono <em>Descarga ficheros</em> situado a la izquierda del nombre de la provincia que tenemos asignada, se abre la ventana de la figura <a href="etl-pdi.html#fig:ine-formatos">3.2</a>, que nos permite seleccionar el formato de descarga de los datos.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ine-formatos"></span>
+<img src="img/ine/ine02.png" alt="Selección del formato de la descarga." width="45%" />
+<p class="caption">
+Figura 3.2: Selección del formato de la descarga.
+</p>
+</div>
+<p>Descargaremos los datos de la <strong>provincia asignada</strong> en formato:</p>
+<ul>
+<li><strong>CSV: separado por ;</strong></li>
+</ul>
+<p>En mi caso, he descargado los datos de la provincia de Granada. Si abrimos el archivo que hemos descargado, tenemos una tabla con los municipios de la provincia (una combinación del código y el nombre del municipio) y, en el resto de columnas, tenemos la combinación de los valores del sexo (“Total”, “Mujeres” y “Hombres”) y el año. Además de los datos de los municipios, se presentan los datos agrupados para toda la provincia.</p>
+<p>Vamos a completar esos datos con otros comunes preparados a partir de datos obtenidos del INE y del <a href="http://centrodedescargas.cnig.es/CentroDescargas/catalogo.do?Serie=CAANE">CNIG (Centro Nacional de Información Geográfica)</a>. Se pueden descargar de <a href="https://doi.org/10.6084/m9.figshare.13505136">https://doi.org/10.6084/m9.figshare.13505136</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ine-cod-habitantes"></span>
+<img src="img/ine/ine05.png" alt="Contenido del archivo cod-habitantes.csv." width="45%" />
+<p class="caption">
+Figura 3.3: Contenido del archivo <code>cod-habitantes.csv</code>.
+</p>
+</div>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ine-municipios"></span>
+<img src="img/ine/ine06.png" alt="Contenido del archivo municipios.csv." width="100%" />
+<p class="caption">
+Figura 3.4: Contenido del archivo <code>municipios.csv</code>.
+</p>
+</div>
+<p>Estos archivos contienen códigos para definir intervalos en función del número de habitantes de los municipios (<code>cod-habitantes.csv</code>), que se muestra en la figura <a href="etl-pdi.html#fig:ine-cod-habitantes">3.3</a>, y datos adicionales de los municipios (<code>municipios.csv</code>), en particular, para cada municipio, su capital, comarca agraria, provincia, comunidad autónoma, altitud y superficie (figura <a href="etl-pdi.html#fig:ine-municipios">3.4</a>).</p>
+</div>
+<div id="dis-multidim" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Diseño multidimensional<a href="etl-pdi.html#dis-multidim" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En este apartado vamos a realizar un diseño multidimensional a partir de los datos disponibles.</p>
+<p>En primer lugar vamos a estudiar la granularidad (el nivel de detalle) de los datos disponibles. A continuación, definiremos la granularidad del sistema a desarrollar, y realizaremos los diseños conceptual y lógico del sistema multidimensional.</p>
+<div id="granularidad-datos" class="section level4 hasAnchor" number="3.1.2.1">
+<h4><span class="header-section-number">3.1.2.1</span> Granularidad de los datos<a href="etl-pdi.html#granularidad-datos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para realizar el diseño multidimensional, es fundamental entender la granularidad de las fuentes de datos. La granularidad de nuestro diseño podrá ser, como máximo, tan fina como la de los datos disponibles.</p>
+<p>Con esta finalidad,creo que resulta muy útil tener presente las definiciones de los conceptos de <em>población</em>, <em>individuo</em> y <em>carácter</em> que se formulan en Estadística Descriptiva. En concreto, incluyo aquí las realizadas por Abad y Vargas <span class="citation">(<a href="#ref-abad1991">1991</a>)</span>:</p>
+<ul>
+<li><p>Se entiende por <em>población</em> al conjunto objeto de estudio.</p></li>
+<li><p>Cada uno de los elementos del conjunto es un <em>individuo</em>.</p></li>
+<li><p>Los <em>caracteres</em> o <em>características</em> son las propiedades que deseamos observar sobre los elementos de la población y que han de tener todos y cada uno de ellos. En realidad, observar un carácter será efectuar una medición, en sentido amplio. Atendiendo a su naturaleza estos caracteres representarán o no una cantidad numérica.</p></li>
+</ul>
+<p>Para el caso que estamos considerando:</p>
+<ul>
+<li><p>Un individuo sería un municipio de la provincia que tenemos asignada en un periodo concreto.</p></li>
+<li><p>La población sería el conjunto de municipios de la provincia asignada para cada uno de los periodos de los que hay datos disponibles.</p></li>
+<li><p>Los caracteres observados en el archivo obtenido del INE son: el código y nombre de municipio, el periodo, cantidad de hombres y cantidad de mujeres, también tenemos el total de habitantes, derivado a partir de la cantidad de hombres y mujeres; tenemos datos cuya granularidad es provincia y periodo: son el resultado de la agregación de los datos de todos los municipios. En el archivo <code>municipios.csv</code> tenemos más caracteres de los individuos, pero definidos solo a nivel de municipio, en principio se pueden considerar independientes del periodo, válidos para todos los periodos en los que tenemos observaciones. En el archivo <code>cod-habitantes.csv</code> se define la forma de codificar el carácter relativo a la cantidad total de habitantes.</p></li>
+</ul>
+<p>Así, el municipio y el periodo identifican a cada individuo (un municipio en un periodo). La cantidad de hombres y mujeres son medidas sobre cada uno de los individuos; también disponemos de caracteres adicionales de los municipios, independientes del periodo.</p>
+<p>Si nos fijamos en los archivos que hemos obtenido del INE, aunque su granularidad se corresponde con el concepto de individuo considerado (también incluyen el agregado a nivel de provincia), en ninguno de ellos las filas están definidas a nivel de individuo<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+</div>
+<div id="diseño-conceptual" class="section level4 hasAnchor" number="3.1.2.2">
+<h4><span class="header-section-number">3.1.2.2</span> Diseño conceptual<a href="etl-pdi.html#diseño-conceptual" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para realizar el diseño multidimensional en este caso vamos a considerar la granularidad más fina disponible: municipio y periodo (definen a cada individuo).</p>
+<p>El foco de atención es el <em>Padrón</em>, son los hechos (responden a la pregunta <em>Cuánto</em> pero los nombramos por el nombre del foco te atención); el municipio responde a la pregunta <em>Dónde</em> y el periodo a la pregunta <em>Cuándo</em>, serán las dimensiones; <em>Municipio</em> y <em>Periodo</em> son los niveles más bajos de cada una de las dimensiones (figura <a href="etl-pdi.html#fig:ine-dconceptual">3.5</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ine-dconceptual"></span>
+<img src="img/ine/dconceptual.png" alt="Diseño conceptual." width="70%" />
+<p class="caption">
+Figura 3.5: Diseño conceptual.
+</p>
+</div>
+<p>Para la dimensión <em>Cuándo</em>, vamos a agrupar los periodos en decenios, que podemos definir de forma inmediata a partir del año (<em>Periodo</em>), la jerarquía que incluye el nivel <em>Decenio</em> nos permitirá agrupar o seleccionar fácilmente los periodos.</p>
+<p>En cuanto a la dimensión <em>Dónde</em>, podemos definir jerarquías utilizando los datos adicionales obtenidos de <code>municipios.csv</code>. Definimos una jerarquía geográfica que incluye los niveles <em>Municipio</em>, <em>Comarca</em> y <em>Provincia</em>; como solo hay datos de una provincia, los datos de la comunidad autónoma podemos definirlos como descriptores del nivel <em>Provincia</em>; asimismo, el código de municipio y su capital se pueden definir como descriptores del nivel <em>Municipio</em>. Se han considerado otras jerarquías compuestas por el nivel <em>Municipio</em> y las diversas clasificaciones que se realizan en función de su altitud (<em>Nivel altitud</em>), número de habitantes (<em>Nivel habitantes</em>), y otra que podemos definir en función de su superficie (<em>Nivel superficie</em>). Para las dimensiones, con el objetivo de simplificar la representación, se ha considerado el criterio de no representar explícitamente el nivel <em>Todo</em> para cada una de ellas.</p>
+<p>Para los hechos, además de las medidas base disponibles en los archivos obtenidos del INE relativas a cantidad de mujeres (<em>Mujeres</em>) y cantidad de hombres (<em>Hombres</em>), consideramos la medida de la superficie del municipio en Ha (<em>Superficie Ha</em>) disponible en los datos obtenidos de <code>municipios.csv</code>, que suponemos no ha variado en los periodos considerados. Definimos medidas calculadas (o derivadas) a partir de estas como son:</p>
+<ul>
+<li>Cantidad total de habitantes (<em>Habitantes</em>):
+<ul>
+<li><span class="math inline">\(Habitantes = Mujeres + Hombres\)</span></li>
+</ul></li>
+<li>Densidad de población por Ha (<em>Densidad Ha</em>):
+<ul>
+<li><span class="math inline">\(Densidad\ Ha = \frac{Habitantes}{Superficie\ Ha}\)</span></li>
+</ul></li>
+<li>Densidad de población por Km<sup>2</sup> (<em>Densidad Km2</em>):
+<ul>
+<li><span class="math inline">\(Densidad\ Km2 = 100 \times Densidad\ Ha\)</span></li>
+</ul></li>
+</ul>
+<p>En lo que se refiere a la aditividad de las medidas, son aditivas por la dimensión <em>Dónde</em> y no-aditivas por la dimensión <em>Cuándo</em><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>, por tanto, son semi-aditivas. Cuando realicemos consultas multidimensionales, deberemos prestar especial atención a la dimensión <em>Cuándo</em> para no cometer errores por este motivo.</p>
+</div>
+<div id="diseño-lógico" class="section level4 hasAnchor" number="3.1.2.3">
+<h4><span class="header-section-number">3.1.2.3</span> Diseño lógico<a href="etl-pdi.html#diseño-lógico" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A partir del diseño conceptual de la figura <a href="etl-pdi.html#fig:ine-dconceptual">3.5</a>, el diseño lógico obtenido se muestra en la figura <a href="etl-pdi.html#fig:ine-dlogico">3.6</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:ine-dlogico"></span>
+<img src="img/ine/dlogico.png" alt="Diseño lógico, ROLAP en estrella." width="80%" />
+<p class="caption">
+Figura 3.6: Diseño lógico, ROLAP en estrella.
+</p>
+</div>
+<p>Realizamos un diseño ROLAP en estrella: a cada dimensión le corresponde una tabla y otra tabla para los hechos. La llave primaria de cada dimensión es una llave generada, que se usa como llave externa en los hechos. El conjunto de llaves externas en los hechos forma su llave primaria. En los hechos, solo almacenamos las medidas base.</p>
+<p>Estos diseños son los que implementaremos a partir de los datos que hemos obtenido. A la hora de realizarlos, en todo momento hemos tenido presente los datos disponibles y los que se pueden derivar directamente a partir de ellos que puedan resultar de interés para el supuesto decisor.</p>
+</div>
+</div>
+<div id="objetivo-1" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Objetivo<a href="etl-pdi.html#objetivo-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Nuestro objetivo es implementar el diseño de la figura <a href="etl-pdi.html#fig:ine-dlogico">3.6</a> en <em>PostgreSQL</em> usando <em>PDI</em> para realizar las transformaciones.</strong></p>
+</div>
+</div>
+<div id="herramientas-de-soporte" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Herramientas de soporte<a href="etl-pdi.html#herramientas-de-soporte" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para trabajar con <em>PDI</em> y <em>PostgreSQL</em> en este contexto usaremos principalmente dos herramientas de soporte:</p>
+<ul>
+<li><p><em>Spoon</em>: la interfaz gráfica de <em>PDI</em>.</p></li>
+<li><p><em>pgAdmin</em>: aplicación libre para administrar BD en <em>PostgreSQL</em>.</p></li>
+</ul>
+<p>Vamos a comenzar, por un lado, con <em>pgAdmin</em> creando la BD <em>PostgreSQL</em> de trabajo donde generaremos las tablas de hechos y dimensiones; por otro, presentando el funcionamiento de <em>Spoon</em>.</p>
+<p>Para ampliar información sobre <em>PDI</em> una fuente adecuada son los libros de Roldán: <span class="citation">(<a href="#ref-roldan2017">Roldán 2017</a>)</span> y <span class="citation">(<a href="#ref-roldan2018">Roldán 2018</a>)</span>; para <em>PostgreSQL</em>, es recomendable el libro de Obe <span class="citation">(<a href="#ref-obe2017">2017</a>)</span>.</p>
+<div id="pdi-crear-bd-postgres" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Crear una base de datos <em>PostgreSQL</em><a href="etl-pdi.html#pdi-crear-bd-postgres" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En primer lugar, vamos a crear una BD <em>PostgreSQL</em> mediante <em>pgAdmin 4</em>. Generalmente, al iniciarse <em>pgAdmin 4</em> nos solicita el usuario y la contraseña.</p>
+<p>Así, al iniciar <em>pgAdmin 4</em> se abre la aplicación en el navegador predeterminado. En la zona <em>Browser</em>, en la parte izquierda, se pueden desplegar los servidores y elementos dentro de cada uno (figura <a href="etl-pdi.html#fig:pdi-abrir-pgadmin">3.7</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-abrir-pgadmin"></span>
+<img src="img/pdi/pg01.png" alt="Pantalla de inicio de pgAdmin 4." width="96%" />
+<p class="caption">
+Figura 3.7: Pantalla de inicio de <em>pgAdmin 4</em>.
+</p>
+</div>
+<p>Para crear una nueva BD, en el menú contextual del grupo de objetos <em>Databases</em><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>, seleccionamos la opción <em>Create &gt; Database</em> (figura <a href="etl-pdi.html#fig:pdi-nueva-bd-pgadmin">3.8</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-nueva-bd-pgadmin"></span>
+<img src="img/pdi/pg02.png" alt="Nueva base de datos." width="60%" />
+<p class="caption">
+Figura 3.8: Nueva base de datos.
+</p>
+</div>
+<p>La ventana de definición de la BD se muestra en la figura <a href="etl-pdi.html#fig:pdi-nueva-bd-pgadmin-nombre">3.9</a>. En ella, el único parámetro que tenemos que definir es el nombre de la BD (<em>Database</em>). En el campo <em>Owner</em> se muestra el usuario con el que estamos trabajando.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-nueva-bd-pgadmin-nombre"></span>
+<img src="img/pdi/pg03.png" alt="Nombre de la nueva base de datos." width="55%" />
+<p class="caption">
+Figura 3.9: Nombre de la nueva base de datos.
+</p>
+</div>
+<p>En este caso el criterio que voy a seguir es:</p>
+<ul>
+<li>Asignar a la BD el nombre de la provincia de trabajo seguida del usuario de correo (p.e., en mi caso <code>granada-jsamos</code>).</li>
+</ul>
+<p>Para crearla, pulsamos sobre <em>Save</em>. Una vez creada, podemos verla como un objeto más en <em>pgAdmin</em>.</p>
+<p>En <em>PostgreSQL</em>, dentro de una BD podemos tener varios esquemas (<em>Schemas</em>), que son los que contienen los objetos tabla (<em>Tables</em>). Si un usuario tiene acceso a una BD, puede acceder a todos sus esquemas. Por defecto, se trabaja en el esquema llamado <code>public</code>, es decir, si no se indica el esquema en una operación SQL sobre una tabla en una BD <em>PostgreSQL</em>, se considera que la tabla se encuentra en el esquema <code>public</code>.</p>
+<p>En algún caso, es posible que necesitemos trabajar con un esquema determinado (por ejemplo, si importamos datos a una BD mediante <em>LibreOffice</em>). Podemos crear un esquema de forma similar a como se crea una BD: desde el menú contextual del grupo de objetos <em>Schemas</em>, seleccionamos la opción <em>Create &gt; Schema</em> (figura <a href="etl-pdi.html#fig:pdi-nuevo-schema-pgadmin">3.10</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-nuevo-schema-pgadmin"></span>
+<img src="img/pdi/pg05.png" alt="Nuevo esquema." width="65%" />
+<p class="caption">
+Figura 3.10: Nuevo esquema.
+</p>
+</div>
+<p>En esta actividad trabajaremos con el esquema por defecto y organizaremos los datos en varias BD. No es necesario crear ningún esquema en este momento.</p>
+</div>
+<div id="crear-transformations-y-jobs-en-spoon" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Crear <em>Transformations</em> y <em>Jobs</em> en <em>Spoon</em><a href="etl-pdi.html#crear-transformations-y-jobs-en-spoon" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Trabajaremos con <em>PDI</em> mediante la interfaz gráfica de <em>Spoon</em>. En la figura <a href="etl-pdi.html#fig:pdi-abrir-spoon">3.11</a> se muestra su pantalla de inicio. Esta pantalla aparece después de una pantalla de presentación de la herramienta que se muestra mientras arranca (según la versión, puede tardar bastante tiempo en arrancar, dependiendo de la velocidad de nuestro ordenador puede tardar varios minutos). La <em>community-edition</em> que recomiendo instalar tiene todas las funciones que necesitamos para el desarrollo de las actividades propuestas y es mucho más rápida que la versión comercial.</p>
+<p>Para consultar libros o webs de ayuda es recomendable trabajar con la versión en Inglés. Si queremos trabajar en Español, la versión de España con la que he trabajado tenía problemas con las tildes, sin embargo, la versión de Argentina no presentaba esos problemas (el idioma se cambia en <em>Tools &gt; Opciones</em>). Aquí lo comento para la versión en Inglés.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-abrir-spoon"></span>
+<img src="img/pdi/pdi01.png" alt="Pantalla de inicio de Spoon." width="96%" />
+<p class="caption">
+Figura 3.11: Pantalla de inicio de <em>Spoon</em>.
+</p>
+</div>
+<p>En la zona de la izquierda, en la hoja <em>View</em>, tenemos un apartado <em>Transformations</em> y otro <em>Jobs</em>. El contenido de la hoja <em>Design</em> se configura en función del tipo de elemento que estemos definiendo (al comenzar se encuentra vacío).</p>
+<p>Podemos crear un objeto de uno de los tipos desde el menú contextual correspondiente, pulsando sobre la opción <em>New</em>. En la figura <a href="etl-pdi.html#fig:pdi-new-transformation">3.12</a>, se muestra para el tipo <em>Transformation</em>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-new-transformation"></span>
+<img src="img/pdi/pdi02.png" alt="Crear Transformations en Spoon." width="30%" />
+<p class="caption">
+Figura 3.12: Crear <em>Transformations</em> en <em>Spoon</em>.
+</p>
+</div>
+<p>Una vez creado el objeto, automáticamente se abre el área de diseño y se selecciona la hoja <em>Design</em> de la ventana de la izquierda, con el contenido que se puede utilizar para definir el tipo de objeto, en este caso <em>Transformation</em>.</p>
+<p>Si pulsamos sobre la hoja <em>View</em> (figura <a href="etl-pdi.html#fig:pdi-new-transformation-design-view">3.13</a>), se muestran los elementos del tipo de objeto que estamos definiendo, en este caso <em>Transformation</em>. Sin embargo, no aparece el apartado <em>Jobs</em> como estaba inicialmente.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-new-transformation-design-view"></span>
+<img src="img/pdi/pdi04.png" alt="Elementos del tipo de objeto Transformation." width="96%" />
+<p class="caption">
+Figura 3.13: Elementos del tipo de objeto <em>Transformation</em>.
+</p>
+</div>
+<p>Si queremos crear un objeto de tipo <em>Job</em>, tenemos que hacerlo desde el menú de la herramienta, seleccionado la opción <em>File &gt; New &gt; Job</em>, o <em>File &gt; New &gt; Transformation</em> si inicialmente hubiéramos creado un objeto de tipo <em>Job</em> (figura <a href="etl-pdi.html#fig:pdi-new-job">3.14</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-new-job"></span>
+<img src="img/pdi/pdi05.png" alt="Crear Jobs desde el menú." width="65%" />
+<p class="caption">
+Figura 3.14: Crear <em>Jobs</em> desde el menú.
+</p>
+</div>
+<p>Dentro de ese mismo menú (figura <a href="etl-pdi.html#fig:pdi-new-job">3.14</a>) también se encuentra el apartado <em>Database Connection</em>, para definir los elementos necesarios para acceder a las BD. Sin embargo, los objetos de este tipo no se crean de forma independiente (como ocurre con <em>Transformations</em> y <em>Jobs</em>), sino que están contenidos en el objeto que se esté diseñando en ese momento.</p>
+<p>En la figura <a href="etl-pdi.html#fig:pdi-new-job-design">3.15</a>, se muestra el área de diseño para el tipo de objeto <em>Job</em>. En particular, se puede apreciar que uno de los elementos que se pueden utilizar en la hoja <em>Design</em> es el tipo <em>Transformation</em>, otro es de tipo <em>Job</em> (un objeto <em>Job</em> puede contener otros objetos del mismo tipo).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-new-job-design"></span>
+<img src="img/pdi/pdi06.png" alt="Área de diseño para el tipo de objeto Job." width="96%" />
+<p class="caption">
+Figura 3.15: Área de diseño para el tipo de objeto <em>Job</em>.
+</p>
+</div>
+<p>Si pulsamos sobre la hoja <em>View</em> (figura <a href="etl-pdi.html#fig:pdi-new-job-design-view">3.16</a>), se muestran los elementos del tipo de objeto que estamos definiendo, en este caso <em>Job</em> (tampoco aparece el apartado <em>Transformations</em>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-new-job-design-view"></span>
+<img src="img/pdi/pdi07.png" alt="Elementos del tipo de objeto Job." width="96%" />
+<p class="caption">
+Figura 3.16: Elementos del tipo de objeto <em>Job</em>.
+</p>
+</div>
+<p>Tanto <em>Transformations</em> como <em>Jobs</em> se almacenan como archivos. Pulsando sobre el icono <em>Save current file</em> de la barra de herramientas, podemos guardar el archivo correspondiente en nuestra carpeta de trabajo. Se almacenan con extensión <code>ktr</code> (<em>Kettle transformations</em>) y <code>kjb</code> (<em>Kettle jobs</em>) los objetos de tipo <em>Transformation</em> y <em>Job</em>, respectivamente. Internamente son archivos XML que son interpretados por el motor de <em>PDI</em>.</p>
+<p>En este caso el criterio que voy a seguir es:</p>
+<ul>
+<li><p>Guardar el objeto de tipo <em>Job</em> con el prefijo “generar_ft_” y el nombre y el nombre de la provincia de trabajo (p.e., en mi caso <code>generar_ft_granada.kjb</code>).</p></li>
+<li><p>Asignar al primer objeto de tipo <em>Transformation</em> el nombre <code>tabla_plana.ktr</code>.</p></li>
+</ul>
+</div>
+</div>
+<div id="pdi-desarrollo-job" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Desarrollo de un trabajo (<em>Job</em>)<a href="etl-pdi.html#pdi-desarrollo-job" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos a comenzar a desarrollar un trabajo (<em>job</em>) que tiene como objetivo generar una tabla plana a partir de todos los datos disponibles en formato CSV (p.e., en mi caso el trabajo <code>generar_ft_granada.kjb</code>). Este trabajo contendrá la transformación (<em>transformation</em>) <code>tabla_plana.ktr</code>.</p>
+<div id="elementos-en-un-trabajo" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Elementos en un trabajo<a href="etl-pdi.html#elementos-en-un-trabajo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cada elemento de un trabajo se llama <em>entrada</em> (<em>job entry</em>), se conectan entre sí mediante flechas de distinto tipo de flechas llamadas <em>saltos</em> (<em>hops</em>) que expresan precedencia: definen el orden de ejecución de las entradas. Desde cada entrada pueden salir varios saltos, asimismo a una entrada pueden llegar varios saltos.</p>
+<p>Para añadir una entrada a un trabajo, buscamos el tipo de entrada en la columna <em>Design</em> y lo pulsamos-arrastramos-soltamos hasta el área de diseño de trabajo.</p>
+<p>Cada trabajo ha de tener una entrada de tipo <em>Star</em> que es la primera que se ejecuta. En nuestro caso, también necesitaremos una entrada de tipo <em>Transformation</em> que contendrá la transformación que vamos a definir. Para definir el salto entre las dos entradas, pulsamos sobre la entrada de tipo <em>Star</em>, se abre una mini-barra de iconos con operaciones (figura <a href="etl-pdi.html#fig:pdi-job-entry-hop">3.17</a>), pulsando-arrastrando-soltando el icono del <em>conector de salida</em> (<em>output connector</em>) sobre la entrada siguiente (en este caso <em>Transformation</em>) se define un salto entre las dos entradas, representado mediante una flecha.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-entry-hop"></span>
+<img src="img/pdi/pdi08.png" alt="Añadir entradas y definir un salto en un trabajo." width="86%" />
+<p class="caption">
+Figura 3.17: Añadir entradas y definir un salto en un trabajo.
+</p>
+</div>
+<p>Pulsando sobre la flecha que representa el salto, la condición de la dependencia va cambiando: desactiva, activa en caso de éxito, en caso de error, o en cualquier caso (depende de las entradas conectadas). Por ejemplo, en el caso de una salto partiendo de <em>Star</em> solo se puede activar en cualquier caso o desactivar.</p>
+<p>Si pulsamos doble-clic sobre la entrada <em>Transformation</em> podemos definir sus propiedades (figura <a href="etl-pdi.html#fig:pdi-job-transformation-def">3.18</a>)</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-transformation-def"></span>
+<img src="img/pdi/pdi09.png" alt="Definición de propiedades de una entrada Transformation." width="86%" />
+<p class="caption">
+Figura 3.18: Definición de propiedades de una entrada <em>Transformation</em>.
+</p>
+</div>
+<p>En concreto, debemos seleccionar el archivo que contiene la transformación (<code>tabla_plana.ktr</code>), pulsando sobre el botón <em>Browse</em>, y definir el nombre en el campo <em>Entry Name</em>. En el resto de campos, dejamos las opciones por defecto.</p>
+<ul>
+<li>El criterio que voy a seguir para las entradas <em>Transformation</em> es definir el mismo nombre que el archivo de la transformación asociada (sin la extensión).</li>
+</ul>
+</div>
+<div id="pdi-ejecucion-trabajo" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Ejecución de un trabajo<a href="etl-pdi.html#pdi-ejecucion-trabajo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una vez definidos todas las propiedades necesarias de las entradas y los saltos entre las entradas, podemos ejecutar el trabajo. Todavía no hará nada, porque no hemos definido el contenido de la transformación, pero nos permitirá conocer el entorno de diseño en el que trabajamos.</p>
+<p>Para ejecutar el trabajo, pulsamos sobre <em>Run</em>, en la barra de herramientas del área de diseño (figura <a href="etl-pdi.html#fig:pdi-job-transformation-run">3.19</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-transformation-run"></span>
+<img src="img/pdi/pdi10.png" alt="Ejecución de un trabajo." width="30%" />
+<p class="caption">
+Figura 3.19: Ejecución de un trabajo.
+</p>
+</div>
+<p>Se abre la ventana de opciones, donde se pueden configurar las propiedades del entorno de ejecución (figura <a href="etl-pdi.html#fig:pdi-job-transformation-run-propiedades">3.20</a>). En este caso, las opciones por defecto son adecuadas, pulsamos sobre el botón <em>Run</em>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-transformation-run-propiedades"></span>
+<img src="img/pdi/pdi11.png" alt="Ejecución de un trabajo." width="70%" />
+<p class="caption">
+Figura 3.20: Ejecución de un trabajo.
+</p>
+</div>
+<p>En caso de tratar de ejecutar un trabajo en el que no hemos salvado últimos cambios realizados, nos avisará mediante una ventana y dará opción a guardarlos.</p>
+<p>El resultado de la ejecución se muestra en la figura <a href="etl-pdi.html#fig:pdi-job-transformation-run-resultado">3.21</a>. Se representa gráficamente en cada entrada y se muestra el detalle de la ejecución en la ventana inferior del área de diseño.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-transformation-run-resultado"></span>
+<img src="img/pdi/pdi12.png" alt="Resultado de la ejecución de un trabajo." width="86%" />
+<p class="caption">
+Figura 3.21: Resultado de la ejecución de un trabajo.
+</p>
+</div>
+<p>En la ventana <em>Execution Results</em>, además de la hoja que se muestra en la figura <a href="etl-pdi.html#fig:pdi-job-transformation-run-resultado">3.21</a>, hay otras hojas con más detalles del resultado de la ejecución. En este caso, por ejemplo, el contenido de la hoja <em>Job metrics</em> se muestra en la figura <a href="etl-pdi.html#fig:pdi-job-transformation-run-metrics">3.22</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-transformation-run-metrics"></span>
+<img src="img/pdi/pdi13.png" alt="Job metrics de la ejecución de un trabajo." width="96%" />
+<p class="caption">
+Figura 3.22: <em>Job metrics</em> de la ejecución de un trabajo.
+</p>
+</div>
+<p>En concreto, en este caso, muestra el detalle de la ejecución, como el tipo de salto que se ha seguido entre las entradas o el archivo asociado a cada entrada que se ha ejecutado.</p>
+</div>
+<div id="conexión-compartida-a-la-bd" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Conexión compartida a la BD<a href="etl-pdi.html#conexión-compartida-a-la-bd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para acceder a una BD desde un trabajo o una transformación, tenemos de definir una conexión. Se podría esperar a definirla hasta que en alguna operación necesitemos acceder a la BD pero, como es evidente que la vamos a necesitar, la definiremos ya. Las conexiones a las BD se pueden definir localmente a cada trabajo o transformación pero, una vez definidas, se pueden compartir con el resto de trabajos o transformaciones.</p>
+<p>Nuestro objetivo es crear en la BD de trabajo diversas tablas con el resultado de las operaciones que realizamos mediante los trabajos y transformaciones, a partir de los datos iniciales. Vamos a definir una conexión con esta BD y la vamos a compartir de manera que el resto de trabajos o transformaciones que definamos la puedan usar, sin necesidad de tener que definirla de nuevo cada vez.</p>
+<p>En la hoja <em>View</em> del trabajo, podemos ver sus componentes. Uno de ellos es <em>Database connections</em>. En su menú contextual (figura <a href="etl-pdi.html#fig:pdi-job-connections">3.23</a>), seleccionamos la opción <em>New</em>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-connections"></span>
+<img src="img/pdi/pdi14.png" alt="Nueva conexión a la BD." width="50%" />
+<p class="caption">
+Figura 3.23: Nueva conexión a la BD.
+</p>
+</div>
+<p>En la ventana de definición de propiedades (figura <a href="etl-pdi.html#fig:pdi-job-connections-def">3.24</a>), en el apartado <em>Connection type</em>, seleccionamos la opción <em>PostgreSQL</em> y automáticamente se configura la zona <em>Settings</em> con los campos a completar (en <em>Port Number</em>, el valor que indica es el correcto).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-connections-def"></span>
+<img src="img/pdi/pdi15.png" alt="Definición de una conexión a la BD." width="76%" />
+<p class="caption">
+Figura 3.24: Definición de una conexión a la BD.
+</p>
+</div>
+<p>Los rellenamos con los valores siguientes:</p>
+<ul>
+<li><p><em>Host Name</em>: <code>localhost</code> (en el entorno de prácticas, está en la misma máquina en la que trabajamos).</p></li>
+<li><p><em>Database Name</em>: el nombre de nuestra BD de trabajo (p.e., en mi caso <code>granada-jsamos</code>).</p></li>
+<li><p><em>Username</em>: el usuario con el que accedemos a la BD.</p></li>
+<li><p><em>Password</em>: la contraseña del usuario que usemos.</p></li>
+</ul>
+<p>También tenemos que asignarle un nombre a la conexión, en el campo <em>Connection name</em>:</p>
+<ul>
+<li>El criterio que voy a seguir es asignarle el mismo nombre de la BD (p.e., en mi caso <code>granada-jsamos</code>).</li>
+</ul>
+<p>A continuación, pulsamos sobre <em>Test</em> para comprobar que se establece la conexión correctamente. Si todo va bien, pulsamos sobre <em>OK</em>.</p>
+<p>Con esta operación la conexión está creada pero es particular del trabajo donde se ha realizado la definición. Para compartirla con el resto de trabajos y transformaciones que definamos, desde el menú contextual de la conexión creada, seleccionamos la opción <em>Share</em> (figura <a href="etl-pdi.html#fig:pdi-job-connections-share">3.25</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-connections-share"></span>
+<img src="img/pdi/pdi16.png" alt="Compartir una conexión a la BD." width="50%" />
+<p class="caption">
+Figura 3.25: Compartir una conexión a la BD.
+</p>
+</div>
+<p>Para mostrar que es compartida, cambia el formato del nombre de la conexión y pasa a ser letra <em>bold</em>.</p>
+</div>
+</div>
+<div id="desarrollo-de-transformaciones" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Desarrollo de transformaciones<a href="etl-pdi.html#desarrollo-de-transformaciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En esta sección vamos a desarrollar las transformaciones (<em>Transformations</em>) sobre los datos. Con lo presentado en la sección <a href="etl-pdi.html#pdi-desarrollo-job">3.3</a>, sabemos cómo relacionar las transformaciones que definamos dentro de los trabajos. Así, en esta sección, además de definir las transformaciones, definiremos o modificaremos trabajos que las relacionen.</p>
+<div id="obtener-la-tabla-plana" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Obtener la tabla plana<a href="etl-pdi.html#obtener-la-tabla-plana" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A continuación, vamos a desarrollar la transformación <code>tabla_plana.ktr</code> para obtener una tabla plana en la BD con todos los datos disponibles. El objetivo de esta transformación es, a partir de los datos de la provincia y los datos adicionales, disponibles en forma de archivos CSV, obtener una tabla en la BD con todos los datos, de manera que cada fila se corresponda a un individuo observado: en este caso, un municipio en un año.</p>
+<p>Pulsando sobre la hoja con su nombre, abrimos el área de diseño de la transformación <code>tabla_plana.ktr</code>. En la hoja <em>Design</em> de la ventana de la izquierda, tenemos las categorías disponibles de pasos (<em>Steps</em>) que podemos aplicar en la transformación.</p>
+<div id="acceder-a-los-datos-en-formato-csv" class="section level4 unnumbered hasAnchor">
+<h4>Acceder a los datos en formato CSV<a href="etl-pdi.html#acceder-a-los-datos-en-formato-csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para acceder a los datos de las fuentes, en la hoja <em>Design</em>, desplegamos la sección <em>Input</em> y aparecen los tipos de pasos para la entrada de datos que soporta <em>PDI</em>. Pulsamos-arrastramos-soltamos el tipo <em>CSV-file-input</em> sobre el área de diseño de la herramienta (figura <a href="etl-pdi.html#fig:pdi-transformation-csv-file-input">3.26</a>), para incluirla como parte de la transformación que estamos definiendo.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-csv-file-input"></span>
+<img src="img/pdi/pdi17.png" alt="Incluir CSV-file-input en la transformación." width="76%" />
+<p class="caption">
+Figura 3.26: Incluir <em>CSV-file-input</em> en la transformación.
+</p>
+</div>
+<p>Para definir la operación, pulsamos doble-clic sobre ella y aparece la ventana de configuración (figura <a href="etl-pdi.html#fig:pdi-transformation-csv-file-input-config">3.27</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-csv-file-input-config"></span>
+<img src="img/pdi/pdi18.png" alt="Configuración de CSV-file-input." width="86%" />
+<p class="caption">
+Figura 3.27: Configuración de <em>CSV-file-input</em>.
+</p>
+</div>
+<p>En primer lugar, definimos el nombre del paso en el campo <em>Step name</em>:</p>
+<ul>
+<li>El criterio que he seguido es darle el nombre de la provincia a la que corresponden los datos de entrada (p.e., en mi caso <code>Granada</code>).</li>
+</ul>
+<p>En el campo <em>Filename</em>, pulsando sobre el botón <em>Browse</em>, seleccionamos el archivo correspondiente a los datos de nuestra provincia.</p>
+<p>El resto de campos los tenemos que definir de manera que comprobemos que los datos se leen correctamente. En general, la manera de comprobarlo es pulsando sobre el botón <em>Get Fields</em> que hace que la tabla de la ventana de configuración se rellene con el nombre y tipo de los campos que interpreta. Una vez tenemos los campos definidos, podemos pulsar sobre el botón <em>Preview</em> y abre una tabla con un ejemplo de los datos que obtiene con esa estructura de campos.</p>
+<p>En el caso de los archivos con los que trabajamos, el separador es “;” en lugar de “,” como suele ser habitual en archivos CSV. Por otro lado, los archivos descargados del INE tienen codificación UTF-8 (a los archivos que he generado en <em>Windows</em>, les he dejado la codificación por defecto del sistema).</p>
+<p>Por tanto, en el campo <em>Delimiter</em> indicamos el valor <code>;</code> y en el campo <em>File encondig</em> seleccionamos el valor <em>UTF-8</em>. A continuación, pulsamos sobre <em>Get Fields</em>. Obtiene los campos y trata de asignarle a cada uno el tipo de datos y formato más adecuado en función de las instancias disponibles. Si pulsamos sobre <em>Preview</em>, podemos ver los datos que obtiene según esa definición de los campos. Se puede comprobar que los datos del Campo <code>Total</code>, por tener separador de miles, no los interpreta bien. Por otro lado, el campo <code>Periodo</code>, aunque es numérico, nos interesa tratarlo como String porque no es una medición sino que formará parte de una dimensión.</p>
+<p>Cambiamos los tipos de los campos, en particular para el campo <code>Periodo</code>, para definirlo como <em>String</em> (el formato no es necesario cambiarlo). En el caso del campo <code>Total</code> se puede tratar de cambiar el formato para que interprete “.” como separador de miles y “,” como separador de decimales e ir comprobando el resultado pulsando sobre <em>Preview</em>. Después de varias pruebas sin éxito, he optado por definirlo también como <em>String</em> y hacer las modificaciones después, explícitamente<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. La configuración de tipos que he usado se muestra también en la figura <a href="etl-pdi.html#fig:pdi-transformation-csv-file-input-config">3.27</a>.</p>
+<p>Al pulsar sobre <em>Preview</em>, el resultado que obtenemos se muestra en la figura <a href="etl-pdi.html#fig:pdi-transformation-csv-file-input-config-preview">3.28</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-csv-file-input-config-preview"></span>
+<img src="img/pdi/pdi19.png" alt="Vista del resultado de CSV-file-input." width="50%" />
+<p class="caption">
+Figura 3.28: Vista del resultado de <em>CSV-file-input</em>.
+</p>
+</div>
+<p>En caso de error, si hacemos cambios en la definición, al pulsar sobre <em>Get Fields</em> puede aparecer la ventana de la figura <a href="etl-pdi.html#fig:pdi-transformation-csv-file-input-config-get">3.29</a>, si seleccionamos la opción <em>Clear and add all fields</em>, borra las definiciones anteriores y genera los campos de nuevo.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-csv-file-input-config-get"></span>
+<img src="img/pdi/pdi20.png" alt="Reinterpretación de los datos en CSV-file-input." width="50%" />
+<p class="caption">
+Figura 3.29: Reinterpretación de los datos en <em>CSV-file-input</em>.
+</p>
+</div>
+<p>Una vez comprobado que la interpretación de los datos se hace correctamente, podemos cerrar la ventana de definición, pulsando sobre <em>OK</em>. El resultado es que tenemos el nuevo paso en el área de diseño de la transformación. Si pulsamos sobre él, observamos que tiene una barra de operaciones similar a la de las entradas en el diseño de trabajos (figura <a href="etl-pdi.html#fig:pdi-transformation-step">3.30</a>), en particular incluye la operación para realizar la conexión con otros elementos, en este caso, con otros pasos, mediante un salto.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-step"></span>
+<img src="img/pdi/pdi21.png" alt="Barra de operaciones del paso." width="70%" />
+<p class="caption">
+Figura 3.30: Barra de operaciones del paso.
+</p>
+</div>
+</div>
+<div id="seleccionar-datos-no-agregados" class="section level4 unnumbered hasAnchor">
+<h4>Seleccionar datos no-agregados<a href="etl-pdi.html#seleccionar-datos-no-agregados" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Los datos con los que trabajamos incluyen datos de los individuos (a nivel municipio y año) y también datos agregados: datos para la provincia (en el campo <code>Municipios</code>, en lugar de un código de cinco dígitos y el nombre del municipio, aparece un código de dos dígitos y el nombre de la provincia, p.e., en mi caso “18 Granada”); en el campo <code>Sexo</code>, en lugar de “Mujeres” y “Hombres”, también aparece la suma de ambos bajo el concepto “Total”.</p>
+<p>Vamos a comenzar la transformación de los datos, seleccionando exclusivamente los datos que no sean agregados. Para ello necesitamos añadir un paso <em>Filter rows</em>, que se encuentra en el apartado <em>Flow</em> (figura <a href="etl-pdi.html#fig:pdi-transformation-filter-rows">3.31</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-rows"></span>
+<img src="img/pdi/pdi22.png" alt="Ubicación del tipo de paso Filter rows." width="50%" />
+<p class="caption">
+Figura 3.31: Ubicación del tipo de paso <em>Filter rows</em>.
+</p>
+</div>
+<p>Como ayuda para localizar los posibles pasos que necesitemos, podemos usar el campo <em>Search</em> de la hoja <em>Design</em>. Si introducimos en él alguna palabra clave de la operación que necesitamos hacer, nos muestra los tipos de paso en los que aparece en su nombre el contenido introducido (figura <a href="etl-pdi.html#fig:pdi-transformation-filter-rows-search">3.32</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-rows-search"></span>
+<img src="img/pdi/pdi23.png" alt="Búsqueda de tipos de paso." width="50%" />
+<p class="caption">
+Figura 3.32: Búsqueda de tipos de paso.
+</p>
+</div>
+<p>Añadimos un paso de tipo <em>Filter rows</em> al área de diseño y lo conectamos con la salida del paso donde leíamos los datos mediante un salto. En el momento de establecer la conexión, podemos seleccionar si al nuevo paso le llega el resultado o los datos en caso de error (figura <a href="etl-pdi.html#fig:pdi-transformation-filter-connect">3.33</a>). En este caso, queremos tratar los datos leídos.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-connect"></span>
+<img src="img/pdi/pdi24.png" alt="Conexión de los pasos." width="45%" />
+<p class="caption">
+Figura 3.33: Conexión de los pasos.
+</p>
+</div>
+<p>Pulsando doble-clic sobre el nuevo paso, definimos sus propiedades. En el campo <em>Step name</em> le he asignado el valor <code>Seleccionar no-agregados</code>. El resto de propiedades se definirán cuando conectemos este paso con otro. Lo único que tenemos que definir es la condición de filtro de datos.</p>
+<p>Pulsando sobre el primer campo podemos activar o no la negación de la condición, el valor “NOT”. Pulsando sobre el campo inferior, podemos seleccionar la columna sobre la que vamos a definir la condición, en este caso, seleccionamos el valor “Municipios (String)” (figura <a href="etl-pdi.html#fig:pdi-transformation-filter-def1">3.34</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-def1"></span>
+<img src="img/pdi/pdi25.png" alt="Definición de un paso Filter rows: selección de campos." width="85%" />
+<p class="caption">
+Figura 3.34: Definición de un paso <em>Filter rows</em>: selección de campos.
+</p>
+</div>
+<p>De igual forma podemos elegir la condición, como no hay una condición para indicar que los valores sean distintos, dejamos el valor “=” y activamos la negación de la condición. A continuación, debemos elegir un campo o un valor con el que comparar, en este caso es un valor. Pulsando sobre el apartado correspondiente, se abre la ventana en la que podemos introducir el valor que identifica al agregado, en este caso “18 Granada” (figura <a href="etl-pdi.html#fig:pdi-transformation-filter-def2">3.35</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-def2"></span>
+<img src="img/pdi/pdi26.png" alt="Definición de un paso Filter rows: valor a filtrar." width="85%" />
+<p class="caption">
+Figura 3.35: Definición de un paso <em>Filter rows</em>: valor a filtrar.
+</p>
+</div>
+<p>Para añadir una nueva condición, pulsamos sobre el icono <em>Add condition</em> (figura <a href="etl-pdi.html#fig:pdi-transformation-filter-def3">3.36</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-def3"></span>
+<img src="img/pdi/pdi27.png" alt="Definición de un paso Filter rows: añadir condición." width="86%" />
+<p class="caption">
+Figura 3.36: Definición de un paso <em>Filter rows</em>: añadir condición.
+</p>
+</div>
+<p>El resultado es que se añade una condición vacía (figura <a href="etl-pdi.html#fig:pdi-transformation-filter-def4">3.37</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-def4"></span>
+<img src="img/pdi/pdi28.png" alt="Definición de un paso Filter rows: condición vacía." width="85%" />
+<p class="caption">
+Figura 3.37: Definición de un paso <em>Filter rows</em>: condición vacía.
+</p>
+</div>
+<p>Al pulsar sobre la nueva condición, se reproduce la estructura vacía de una condición similar a la que acabamos de definir. Rellenándola seleccionando la columna “Sexo (String)” y el valor “Total”, y pulsando sobre el botón <em>OK</em> obtenemos el resultado de la figura <a href="etl-pdi.html#fig:pdi-transformation-filter-def5">3.38</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-def5"></span>
+<img src="img/pdi/pdi29.png" alt="Definición de un paso Filter rows: segunda condición." width="85%" />
+<p class="caption">
+Figura 3.38: Definición de un paso <em>Filter rows</em>: segunda condición.
+</p>
+</div>
+<p>Pulsando de nuevo sobre el botón <em>OK</em> acabamos la definición y podemos probar la transformación. La ejecutamos pulsando sobre el botón <em>Run</em> en la barra de herramientas (figura <a href="etl-pdi.html#fig:pdi-transformation-filter-run">3.39</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-filter-run"></span>
+<img src="img/pdi/pdi30.png" alt="Ejecutar la transformación." width="45%" />
+<p class="caption">
+Figura 3.39: Ejecutar la transformación.
+</p>
+</div>
+<p>Funciona exactamente igual que para los trabajos, como se ha descrito en la sección <a href="etl-pdi.html#pdi-ejecucion-trabajo">3.3.2</a>. Aceptando la configuración por defecto para la ejecución y guardando la transformación (si no la habíamos guardado previamente) obtenemos el resultado de la ejecución. Además de los apartados comentados en la sección <a href="etl-pdi.html#pdi-ejecucion-trabajo">3.3.2</a>, en este caso es interesante el resultado que se muestra en la hoja de la hoja <em>Step Metrics</em> (figura <a href="etl-pdi.html#fig:pdi-transformation-step-metrics">3.40</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-step-metrics"></span>
+<img src="img/pdi/pdi32.png" alt="Resultado de la ejecución de una transformación." width="96%" />
+<p class="caption">
+Figura 3.40: Resultado de la ejecución de una transformación.
+</p>
+</div>
+<p>En particular, para cada paso se muestra el número de filas leídas y escritas. De esta forma podemos saber las filas que ha filtrado el paso que acabamos de definir.</p>
+<p>Podemos ver los datos del resultado en la hoja de la hoja <em>Preview data</em> (figura <a href="etl-pdi.html#fig:pdi-transformation-preview-data">3.41</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-preview-data"></span>
+<img src="img/pdi/pdi33.png" alt="Resultado de la ejecución de una transformación: Preview data." width="96%" />
+<p class="caption">
+Figura 3.41: Resultado de la ejecución de una transformación: <em>Preview data</em>.
+</p>
+</div>
+<p>En caso de que nos interese ver solo los datos del resultado del paso que estamos diseñando, podemos explorar el resultado de un paso concreto, seleccionándolo y pulsando sobre la operación <em>Preview this transformation</em> en la barra de herramientas (figura <a href="etl-pdi.html#fig:pdi-transformation-preview-trans">3.42</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-preview-trans"></span>
+<img src="img/pdi/pdi34.png" alt="Ver el resultado de un paso." width="45%" />
+<p class="caption">
+Figura 3.42: Ver el resultado de un paso.
+</p>
+</div>
+<p>En la ventana de configuración que se abre (figura <a href="etl-pdi.html#fig:pdi-transformation-preview-trans-conf">3.43</a>), podemos definir condiciones para parar la ejecución. En este caso, no es necesario definir ninguna condición y podemos pulsar directamente sobre el botón <em>Quick Launch</em>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-preview-trans-conf"></span>
+<img src="img/pdi/pdi35.png" alt="Configuración para ver el resultado de un paso." width="85%" />
+<p class="caption">
+Figura 3.43: Configuración para ver el resultado de un paso.
+</p>
+</div>
+<p>En una nueva ventana se muestra el resultado obtenido (figura <a href="etl-pdi.html#fig:pdi-transformation-preview-trans-conf-res">3.44</a>). La transformación mientras tanto está en ejecución. Si pulsamos sobre el botón <em>Close</em> solo se cierra la ventana de resultados; si pulsamos sobre <em>Stop</em>, además de cerrarse la ventana se para la ejecución.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-preview-trans-conf-res"></span>
+<img src="img/pdi/pdi36.png" alt="Resultado de un paso." width="45%" />
+<p class="caption">
+Figura 3.44: Resultado de un paso.
+</p>
+</div>
+<p>Si cerramos la ventana de resultados sin parar la ejecución, podemos pararla pulsando el botón <em>Stop the running transformation</em> en la barra de herramientas.</p>
+</div>
+<div id="transformar-y-filtrar-total" class="section level4 unnumbered hasAnchor">
+<h4>Transformar y filtrar <code>Total</code><a href="etl-pdi.html#transformar-y-filtrar-total" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>El campo <code>Total</code> representa la cantidad de habitantes observados bajo las condiciones definidas por la combinación de los otros campos. Como observamos en el paso de lectura de datos, es de tipo <em>String</em> e incluye el carácter “.” como separador de miles; por otro lado hay valores <em>NULL</em> (por no existir datos para ese año y municipio: ocurre para 1997 en todos los municipios y también para municipios nuevos u otros que han desaparecido, que no tienen datos para todos los años disponibles).</p>
+<p>Vamos a eliminar el separador de miles y también vamos a filtrar los datos para trabajar exclusivamente con los datos de los que tenemos observaciones (valores distintos de <em>NULL</em>).</p>
+<p>Para eliminar el separador de miles, vamos a buscar tipos de transformación que tengan que ver con strings (introducimos string en el campo de búsqueda en la hoja <em>Design</em>). Mirando la funcionalidad de los resultados que aparecen, el tipo de paso <em>String operations</em> puede servir. Lo añadimos y lo conectamos con la salida correcta del último paso. En la ventana de configuración, le he dado un nombre significativo, <code>Eliminar separador miles</code>, y, para la columna <code>Total</code> definimos que solo contenga dígitos. Para ello seleccionamos el valor “Total” en el apartado <em>In stream field</em> y el valor “only” en el apartado <em>Digits</em> (figura <a href="etl-pdi.html#fig:pdi-transformation-string">3.45</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-string"></span>
+<img src="img/pdi/pdi37.png" alt="Transformación de un string." width="96%" />
+<p class="caption">
+Figura 3.45: Transformación de un string.
+</p>
+</div>
+<p>Para seleccionar los datos con valores distintos de <em>NULL</em> en la columna <code>Total</code>, añadiremos un nuevo paso de tipo <em>Filter rows</em>, le he llamado <code>Seleccionar no-NULL</code>. Para definirlo, seleccionamos la columna y no definimos ningún valor en la condición, solo hemos de seleccionar el tipo de dato, por defecto, considera <em>NULL</em> (figura <a href="etl-pdi.html#fig:pdi-transformation-null">3.46</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-null"></span>
+<img src="img/pdi/pdi38.png" alt="Selección de valores distintos de NULL." width="85%" />
+<p class="caption">
+Figura 3.46: Selección de valores distintos de <em>NULL</em>.
+</p>
+</div>
+<p>Cuando definamos un paso, es conveniente comprobar el resultado de una u otra forma para asegurarnos, en la medida de lo posible, que las transformaciones son correctas.</p>
+</div>
+<div id="agrupar-los-datos-a-nivel-individuo" class="section level4 unnumbered hasAnchor">
+<h4>Agrupar los datos a nivel individuo<a href="etl-pdi.html#agrupar-los-datos-a-nivel-individuo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Consideramos que un individuo es un municipio en un año concreto. Observamos características de cada uno de los individuos, en este caso la cantidad de mujeres y de hombres. Actualmente tenemos cada carácter observado en una fila. Vamos a estructurar los datos de manera que cada fila se corresponda con un individuo (municipio y año).</p>
+<p>El tipo de paso que nos permite hacer esa transformación es <em>Row denormaliser</em>, en el apartado <em>Transform</em>. Si miramos la explicación de la operación, al posicionar el ratón sobre el tipo de transformación, podemos comprobar que, para que funcione, los datos han de estar ordenados por los campos por los que se agrupen los datos: los que definen al individuo (figura <a href="etl-pdi.html#fig:pdi-transformation-pivot">3.47</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-pivot"></span>
+<img src="img/pdi/pdi39.png" alt="Requisitos de la transformación Row denormaliser." width="86%" />
+<p class="caption">
+Figura 3.47: Requisitos de la transformación <em>Row denormaliser</em>.
+</p>
+</div>
+<p>Por tanto, antes vamos a ordenar los datos por los campos <code>Municipios</code> y <code>Periodo</code>. Si introducimos “sort” en el campo de búsqueda, localizamos el tipo de paso <em>Sort rows</em> en el apartado <em>Transform</em>. Lo añadimos, lo conectamos a la salida del paso anterior y abrimos su ventana de configuración (figura <a href="etl-pdi.html#fig:pdi-transformation-sort">3.48</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-sort"></span>
+<img src="img/pdi/pdi40.png" alt="Ordenar filas." width="86%" />
+<p class="caption">
+Figura 3.48: Ordenar filas.
+</p>
+</div>
+<p>No he cambiado el nombre del paso<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. Lo único que necesitamos configurar son los campos a considerar en la ordenación: los seleccionamos en el apartado <em>Fieldname</em> (<code>Periodo</code> y <code>Municipios</code>).</p>
+<p>Una vez tenemos los datos ordenados, podemos aplicar el paso de tipo <em>Row denormaliser</em>. También lo añadimos, lo conectamos a la salida del paso de ordenación y abrimos su ventana de configuración (figura <a href="etl-pdi.html#fig:pdi-transformation-denormaliser">3.49</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-denormaliser"></span>
+<img src="img/pdi/pdi41.png" alt="Configuración de Row denormaliser." width="76%" />
+<p class="caption">
+Figura 3.49: Configuración de <em>Row denormaliser</em>.
+</p>
+</div>
+<ul>
+<li><p>La columna a introducir en <em>The key field</em> es <code>Sexo</code>, es el campo a partir de cuyos valores se generarán columnas.</p></li>
+<li><p><em>The fields that make up the grouping</em> son los campos que definen al individuo, en el mismo orden en que se ha indicado que se realice la ordenación en el paso anterior: <code>Periodo</code> y <code>Municipios</code>.</p></li>
+<li><p>En el apartado <em>Target fields</em> hay que indicar los nombres de los campos que se generarán (<em>Target fieldname</em>), pueden ser los valores que queramos, en función de los valores del campo clave (<em>Key value</em>) y el campo de dónde se tomarán los valores (<em>Value fieldname</em>). Se puede indicar el tipo de esos campos por lo que podemos aprovechar para hacer el cambio de tipo si indicamos que son de tipo <em>Integer</em>.</p></li>
+</ul>
+<p>Pulsando sobre <em>OK</em>, nos avisa mediante una ventana de que los datos han de estar ordenados por los campos que hemos definido como <em>grouping fields</em>, en caso contrario no funcionará bien.</p>
+<p>El resultado de la operación se muestra en la figura <a href="etl-pdi.html#fig:pdi-transformation-denormaliser-resultado">3.50</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-denormaliser-resultado"></span>
+<img src="img/pdi/pdi42.png" alt="Resultado de Row denormaliser." width="75%" />
+<p class="caption">
+Figura 3.50: Resultado de <em>Row denormaliser</em>.
+</p>
+</div>
+<p>Si miramos la hoja <em>Step metrics</em> de <em>Execution Results</em>, se puede observar que tenemos la mitad de registros en la salida que en la entrada, como era de esperar.</p>
+</div>
+<div id="obtener-llaves-externas" class="section level4 unnumbered hasAnchor">
+<h4>Obtener llaves externas<a href="etl-pdi.html#obtener-llaves-externas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Vamos a enriquecer los datos de nuestra provincia con los datos adicionales disponibles en los archivos <code>cod-habitantes.csv</code> y <code>municipios.csv</code>. Para definir las relaciones entre ellos, necesitamos obtener campos que se correspondan con las llaves primarias de esos archivos.</p>
+<ul>
+<li><p>Para definir la relación con <code>cod-habitantes.csv</code> necesitamos un código definido en función del número de habitantes del municipio.</p></li>
+<li><p>Para la relación con <code>municipios.csv</code> necesitamos el código numérico de cinco dígitos que precede al nombre del municipio. En el archivo, este código tiene varios ceros a la derecha que podemos eliminar.</p></li>
+</ul>
+<p>En primer lugar, añadimos un paso de tipo <em>Calculator</em>, del apartado <em>Transform</em>, para calcular una columna <code>habitantes</code> como la suma de la cantidad de mujeres y de hombres (a partir de ella posteriormente definiremos el código). En la figura <a href="etl-pdi.html#fig:pdi-transformation-calculator">3.51</a>, en la ventana de configuración, definimos el nombre del paso, el nombre del nuevo campo, <code>habitantes</code>, de entre las posibles expresiones que aparecen en el apartado <em>Calculation</em>, seleccionamos la suma, elegimos los campos a partir de los que se obtiene y definimos el tipo del resultado, en este caso <em>Integer</em>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-calculator"></span>
+<img src="img/pdi/pdi43.png" alt="Calcular el número de habitantes." width="85%" />
+<p class="caption">
+Figura 3.51: Calcular el número de habitantes.
+</p>
+</div>
+<p>A continuación, vamos a definir una columna <code>cod_habitantes</code> en función del valor del campo <code>habitantes</code>, según los intervalos definidos en el archivo <code>cod-habitantes.csv</code>. La mejor forma que he encontrado de definirla es usando un paso de tipo <em>User defined Java expression</em>, del apartado <em>Scripting</em>, de forma anidada para contemplar todos los extremos de los intervalos. La expresión de definición del campo es la siguiente:</p>
+<ul>
+<li><code>habitantes &gt; 500000 ? "9" : habitantes &gt; 100000 ? "8" : habitantes &gt; 50000 ? "7" : habitantes &gt; 10000 ? "6" : habitantes &gt; 5000 ? "5" : habitantes &gt; 1000 ? "4" : habitantes &gt; 500 ? "3" : habitantes &gt; 100 ? "2" : "1"</code></li>
+</ul>
+<p>La definición se muestra en la figura <a href="etl-pdi.html#fig:pdi-transformation-java">3.52</a>, donde, además del nombre del paso, incluimos el nombre del campo, <code>cod_habitantes</code>, la expresión en <em>Java</em> para obtenerlo a partir del campo <code>habitantes</code>, su tipo (<em>String</em>) y longitud (un código de una posición).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-java"></span>
+<img src="img/pdi/pdi44.png" alt="Campo calculado mediante una expresión en Java." width="86%" />
+<p class="caption">
+Figura 3.52: Campo calculado mediante una expresión en <em>Java</em>.
+</p>
+</div>
+<p>Por último, vamos a separar el código del nombre del municipio. Para ello vamos a utilizar el tipo de paso <em>Strings cut</em>, del apartado <em>Transform</em>. En la figura <a href="etl-pdi.html#fig:pdi-transformation-string-cut">3.53</a>, se muestra la ventana de configuración donde, para cada campo a obtener, definimos la posición de inicio y su longitud.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-string-cut"></span>
+<img src="img/pdi/pdi45.png" alt="Dividir un campo mediante Strings cut." width="50%" />
+<p class="caption">
+Figura 3.53: Dividir un campo mediante <em>Strings cut</em>.
+</p>
+</div>
+<p>La primera posición de un string es el 0. Para el último fragmento, podemos indicar más longitud que la que realmente tiene, llega hasta el final y de vuelve el string de la longitud real.</p>
+<p>Para cada paso, comprobamos que la salida es la esperada, como se muestra en la figura <a href="etl-pdi.html#fig:pdi-transformation-codigos">3.54</a> para el último paso realizado.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-codigos"></span>
+<img src="img/pdi/pdi46.png" alt="Resultado de la obtención de códigos." width="76%" />
+<p class="caption">
+Figura 3.54: Resultado de la obtención de códigos.
+</p>
+</div>
+</div>
+<div id="unir-con-cod-habitantes.csv" class="section level4 unnumbered hasAnchor">
+<h4>Unir con <code>cod-habitantes.csv</code><a href="etl-pdi.html#unir-con-cod-habitantes.csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Accedemos a los datos del archivo <code>cod-habitantes.csv</code>, mediante un paso de tipo <em>CSV file input</em> en el que cambiamos el delimitardor, definimos los campos de tipo <em>String</em> y le he asignado el mismo nombre del archivo (sin la extensión), como se muestra en la figura <a href="etl-pdi.html#fig:pdi-transformation-csv-cod-habitantes">3.55</a>. En este caso, no tenemos que cambiar la codificación porque se usa la del sistema.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-csv-cod-habitantes"></span>
+<img src="img/pdi/pdi47.png" alt="Leer el archivo cod-habitantes.csv." width="85%" />
+<p class="caption">
+Figura 3.55: Leer el archivo <code>cod-habitantes.csv</code>.
+</p>
+</div>
+<p>Si buscamos “join” encontramos que la operación que tenemos que hacer para unir las dos tablas es <em>Merge join</em>, del apartado <em>Joins</em>. Para esta operación se indica que las entradas han de estar ordenadas por la llave por la que se vaya a efectuar la operación. Para <code>cod-habitantes.csv</code> está ordenado por el campo <code>Cod</code>; debemos ordenar la tabla con los datos de la provincia por el campo <code>cod_habitantes</code>. En la figura <a href="etl-pdi.html#fig:pdi-transformation-sort-cod-habitantes">3.56</a>, se muestra la ventana de configuración de la operación de ordenación.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-sort-cod-habitantes"></span>
+<img src="img/pdi/pdi48.png" alt="Ordenar por cod_habitantes." width="55%" />
+<p class="caption">
+Figura 3.56: Ordenar por <code>cod_habitantes</code>.
+</p>
+</div>
+<p>Una vez tenemos las dos entradas ordenadas, podemos realizar el paso de tipo <em>Merge join</em> (figura <a href="etl-pdi.html#fig:pdi-transformation-join-cod-habitantes">3.57</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-join-cod-habitantes"></span>
+<img src="img/pdi/pdi49.png" alt="LEFT OUTER join por cod_habitantes." width="50%" />
+<p class="caption">
+Figura 3.57: <em>LEFT OUTER join</em> por <code>cod_habitantes</code>.
+</p>
+</div>
+<p>En particular, definimos un <em>LEFT OUTER join</em> a partir de la tabla con los datos de la provincia para completarlos con los datos asociados al código. El resultado se muestra en la figura <a href="etl-pdi.html#fig:pdi-transformation-join">3.58</a> para el último paso realizado.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-join"></span>
+<img src="img/pdi/pdi50.png" alt="Resultado de la operación de Join." width="86%" />
+<p class="caption">
+Figura 3.58: Resultado de la operación de <em>Join</em>.
+</p>
+</div>
+</div>
+<div id="unir-con-municipios.csv" class="section level4 unnumbered hasAnchor">
+<h4>Unir con <code>municipios.csv</code><a href="etl-pdi.html#unir-con-municipios.csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Accedemos a los datos del archivo <code>municipios.csv</code> tal y como acabamos de hacer para acceder a <code>cod-habitantes.csv</code>, mediante un paso de tipo <em>CSV file input</em>. Redefinimos los tipos de datos de los campos de manera que solo sean numéricos los datos relativos a mediciones (figura <a href="etl-pdi.html#fig:pdi-transformation-csv-municipios">3.59</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-csv-municipios"></span>
+<img src="img/pdi/pdi51.png" alt="Adaptar el tipo de datos del archivo municipios.csv." width="85%" />
+<p class="caption">
+Figura 3.59: Adaptar el tipo de datos del archivo <code>municipios.csv</code>.
+</p>
+</div>
+<p>Para definir la unión, en primer lugar, debemos obtener el código de municipio para este archivo con el mismo tamaño que lo tenemos en nuestra tabla de municipios: con cinco posiciones (sin considerar el resto de ceros por la derecha). Para ello, mediante una operación <em>Strings cut</em>, definimos el campo <code>cod_municipio</code> (figura <a href="etl-pdi.html#fig:pdi-fuente-datos-municipio">3.60</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-fuente-datos-municipio"></span>
+<img src="img/pdi/pdi52.png" alt="Obtención del código de municipio." width="50%" />
+<p class="caption">
+Figura 3.60: Obtención del código de municipio.
+</p>
+</div>
+<p>A partir de esta tabla y de la tabla con los datos de nuestra provincia, ordenando cada una de ellas previamente por el código de municipio, definimos un paso de tipo <em>Merge Join</em> usando los campos <code>cod_municipio</code> de ambas tablas. El resultado se muestra en la figura <a href="etl-pdi.html#fig:pdi-transformation-join2">3.61</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformation-join2"></span>
+<img src="img/pdi/pdi55.png" alt="Resultado de la nueva operación de Join." width="96%" />
+<p class="caption">
+Figura 3.61: Resultado de la nueva operación de <em>Join</em>.
+</p>
+</div>
+<p>De esta manera ya tenemos todos los datos en una sola tabla. Nos falta por generar un campo <code>nivel_habitantes</code>, renombrar y almacenar los datos necesarios en una tabla de la BD.</p>
+</div>
+<div id="completar-y-almacenar-el-resultado" class="section level4 unnumbered hasAnchor">
+<h4>Completar y almacenar el resultado<a href="etl-pdi.html#completar-y-almacenar-el-resultado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para completar el resultado, vamos a definir el campo <code>nivel_habitantes</code>, donde coincida el orden alfabético y de tamaño de los municipios, como la unión del código y el texto explicativo mediante un separador. Se trata de un paso de tipo <em>Concat fields</em>, del apartado <em>Transform</em>, cuya ventana de configuración se muestra en la figura <a href="etl-pdi.html#fig:pdi-concat-fields">3.62</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-concat-fields"></span>
+<img src="img/pdi/pdi56.png" alt="Concatener campos." width="60%" />
+<p class="caption">
+Figura 3.62: Concatener campos.
+</p>
+</div>
+<p>Una vez hemos definido este campo, los campos que necesitamos tener en el resultado son:</p>
+<ul>
+<li><p><code>cod_municipio</code></p></li>
+<li><p><code>municipio</code></p></li>
+<li><p><code>periodo</code></p></li>
+<li><p><code>mujeres</code></p></li>
+<li><p><code>hombres</code></p></li>
+<li><p><code>nivel_habitantes</code></p></li>
+<li><p><code>capital</code></p></li>
+<li><p><code>cod_comarca</code></p></li>
+<li><p><code>comarca</code></p></li>
+<li><p><code>cod_provincia</code></p></li>
+<li><p><code>provincia</code></p></li>
+<li><p><code>cod_comunidad_autonoma</code></p></li>
+<li><p><code>comunidad_autonoma</code></p></li>
+<li><p><code>altitud_m</code></p></li>
+<li><p><code>nivel_altitud</code></p></li>
+<li><p><code>superficie_ha</code></p></li>
+</ul>
+<p>Para seleccionar, renombrar y cambiar el tipo a los campos que lo necesiten, podemos usar un paso del tipo <em>Select values</em>, del apartado <em>Transform</em>.</p>
+<p>En primer lugar, podemos seleccionar los campos a eliminar en la hoja <em>Remove</em> de la ventana de configuración del paso (figura <a href="etl-pdi.html#fig:pdi-select-remove">3.63</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-select-remove"></span>
+<img src="img/pdi/pdi58.png" alt="Seleccionar los campos a eliminar en Select values." width="86%" />
+<p class="caption">
+Figura 3.63: Seleccionar los campos a eliminar en <em>Select values</em>.
+</p>
+</div>
+<p>A continuación, en las hoja <em>Meta-data</em>, definimos el nuevo nombre y tipo de los campos que queremos obtener como resultado del paso (figura <a href="etl-pdi.html#fig:pdi-select-metadata">3.64</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-select-metadata"></span>
+<img src="img/pdi/pdi57.png" alt="Definir los campos que se conservan en Select values." width="86%" />
+<p class="caption">
+Figura 3.64: Definir los campos que se conservan en <em>Select values</em>.
+</p>
+</div>
+<p>En particular, aplicamos el criterio <em>snake_case</em> para el nombre, las mediciones las definimos de tipo numérico (<em>Integer</em> o <em>Number</em> según proceda) y el resto de campos (también códigos) de tipo <em>String</em>.</p>
+<p>Por último, para almacenar el resultado, utilizamos un paso de tipo <em>Table output</em>, del apartado <em>Output</em>. Seleccionamos la conexión a la BD y definimos el nombre de la tabla (figura <a href="etl-pdi.html#fig:pdi-table-output">3.65</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-table-output"></span>
+<img src="img/pdi/pdi59.png" alt="Almacenar los datos en una tabla de la BD." width="75%" />
+<p class="caption">
+Figura 3.65: Almacenar los datos en una tabla de la BD.
+</p>
+</div>
+<p>En la ventana de definición de la operación, podemos seleccionar la tabla de la BD en la que almacenar el resultado. Como no hemos definido ninguna tabla con ese fin, podemos introducir directamente su nombre.</p>
+<ul>
+<li>Llamo a la tabla mediante el prefijo “ft_”<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> y el nombre de la provincia (p.e., en mi caso se llama <code>ft_granada</code>).</li>
+</ul>
+<p>Antes de poder ejecutar esta operación, necesitamos crear la tabla en la BD. Pulsando sobre el botón <em>SQL</em>. Se abre la ventana <em>Simple SQL editor</em> con una sentencia SQL generada a partir de los campos del flujo de datos de entrada al paso (figura <a href="etl-pdi.html#fig:pdi-creacion-tabla">3.66</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-creacion-tabla"></span>
+<img src="img/pdi/pdi60.png" alt="Creación de la tabla de resultado." width="45%" />
+<p class="caption">
+Figura 3.66: Creación de la tabla de resultado.
+</p>
+</div>
+<p>Podemos observar en la figura <a href="etl-pdi.html#fig:pdi-creacion-tabla">3.66</a> que algunos datos se definen con tipos distintos a los que hemos indicado en el último paso, en particular para los datos numéricos. Por ahora lo vamos a dejar así. Vamos a hacer dos operaciones:</p>
+<ol style="list-style-type: decimal">
+<li><p>Copiar y pegar la sentencia SQL en un editor de texto para poder trabajar con ella después.</p></li>
+<li><p>Pulsar sobre el botón <em>Execute</em>, para ejecutar esta sentencia SQL y crear la tabla con la estructura adecuada a los datos.</p></li>
+</ol>
+<p>Si ejecutamos el proceso completo, aparentemente todo funciona de forma correcta (figura <a href="etl-pdi.html#fig:pdi-ejecucion-todo">3.67</a>).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-ejecucion-todo"></span>
+<img src="img/pdi/pdi63.png" alt="Ejecución del proceso completo." width="96%" />
+<p class="caption">
+Figura 3.67: Ejecución del proceso completo.
+</p>
+</div>
+<p>El único problema es que, si lo ejecutamos varias veces, las filas se van añadiendo progresivamente a la tabla de la BD.</p>
+<div class="exercise">
+<p><span id="exr:pdi-flujo-datos-tabla-plana" class="exercise"><strong>Ejercicio 3.1  </strong></span>Define el flujo de datos para obtener una tabla plana con todos los datos de la provincia enriquecidos con los datos adicionales disponibles, usando los criterios de nomenclatura indicados en los apartados anteriores (captura una pantalla donde se muestre el resultado de ejecución de los pasos y la hoja <em>Preview data</em> del último paso).</p>
+</div>
+</div>
+</div>
+<div id="completar-el-trabajo" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Completar el trabajo<a href="etl-pdi.html#completar-el-trabajo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para poder repetir las operaciones de transformación tantas veces como sea necesario, en el trabajo donde está incluida la transformación, debemos añadir operaciones previas para borrar y crear la tabla de resultados. Estas operaciones deben realizarse en otra transformación.</p>
+<ol style="list-style-type: decimal">
+<li><p>Creamos una nueva transformación a la que llamamos “create ft_” y el nombre de la provincia (p.e, en mi caso <code>create_ft_granada</code>).</p></li>
+<li><p>En la transformación añadimos un paso de tipo <em>Execute SQL script</em>, donde podemos borrar y crear la tabla, partiendo de la sentencia SQL de creación de tabla que copiamos en el último paso del apartado anterior.</p></li>
+</ol>
+<p>En la figura <a href="etl-pdi.html#fig:pdi-table-output-create">3.68</a>, se muestra la configuración del paso de tipo <em>Execute SQL script</em>, del apartado <em>Scripting</em>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-table-output-create"></span>
+<img src="img/pdi/pdi61.png" alt="Borrar y crear una tabla de la BD." width="70%" />
+<p class="caption">
+Figura 3.68: Borrar y crear una tabla de la BD.
+</p>
+</div>
+<p>Se pueden añadir varias sentencias SQL separadas por “;”. En primer lugar eliminamos la tabla, si existe, mediante la sentencia SQL siguiente.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="etl-pdi.html#cb1-1" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> <span class="op">..</span>.;</span></code></pre></div>
+<p>Después pegamos la sentencia SQL de creación de tabla y cambiamos los tipos de datos adecuadamente según los datos que vamos a almacenar (figura <a href="etl-pdi.html#fig:pdi-table-output-create">3.68</a>).</p>
+<p>El resultado de la ejecución, se muestra en la figura <a href="etl-pdi.html#fig:pdi-table-output-create-resultado">3.69</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-table-output-create-resultado"></span>
+<img src="img/pdi/pdi62.png" alt="Resultado de borrar y crear una tabla de la BD." width="75%" />
+<p class="caption">
+Figura 3.69: Resultado de borrar y crear una tabla de la BD.
+</p>
+</div>
+<p>Por último, nos falta modificar el trabajo inicial (p.e., en mi caso <code>generar_ft_granada</code>) para incluir la transformación de creación de la tabla que acabamos de definir, de manera que se ejecute antes que la transformación de obtención de los datos de la tabla.</p>
+<p>En la figura <a href="etl-pdi.html#fig:pdi-job-create-resultado">3.70</a>, se muestra el resultado de la ejecución del trabajo una vez modificado.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-job-create-resultado"></span>
+<img src="img/pdi/pdi64.png" alt="(ref:pdi-pdi-job-create-resultado)" width="85%" />
+<p class="caption">
+Figura 3.70: (ref:pdi-pdi-job-create-resultado)
+</p>
+</div>
+<p>Si ejecutamos el trabajo varias veces, podemos comprobar que los datos no se añaden repetidamente. Podemos verlo en <em>PgAdmin</em>, accediendo a la tabla en la BD (es posible que tengamos que refrescar para verla) y, en su menú contextual, seleccionamos la opción <em>View/Edit Data &gt; All Rows</em>.</p>
+<div class="exercise">
+<p><span id="exr:pdi-flujo-control-tabla-plana" class="exercise"><strong>Ejercicio 3.2  </strong></span>Completa el trabajo para obtener una tabla plana de manera que la tabla resultado sea borrada y creada en cada ejecución, usando los criterios de nomenclatura indicados en este apartado (captura una pantalla donde se muestre el resultado de ejecución del trabajo, otra para cada una de las tareas y otra que muestre el contenido de la tabla en la BD).</p>
+</div>
+</div>
+<div id="obtener-las-dimensiones" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Obtener las dimensiones<a href="etl-pdi.html#obtener-las-dimensiones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Generaremos las dimensiones a partir de la tabla plana, mediante una nueva transformación para cada una de ellas (que llamaremos <code>dimension_cuando</code> y <code>dimension_donde</code>, respectivamente):</p>
+<ul>
+<li><p>Seleccionando los campos incluidos en cada dimensión.</p></li>
+<li><p>Eliminando las filas duplicadas.</p></li>
+<li><p>Añadiendo una llave generada autonumérica.</p></li>
+<li><p>Almacenando los datos en una tabla (que llamaremos <code>dim_donde</code> y <code>dim_cuando</code>, respectivamente).</p></li>
+</ul>
+<p>En la figura <a href="etl-pdi.html#fig:pdi-transformacion-donde">3.71</a>, se muestra la definición de la transformación para la dimensión <em>Dónde</em>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformacion-donde"></span>
+<img src="img/pdi/pdi65.png" alt="Transformación para obtener los datos de la dimensión Dónde." width="65%" />
+<p class="caption">
+Figura 3.71: Transformación para obtener los datos de la dimensión <em>Dónde</em>.
+</p>
+</div>
+<p>En primer lugar, obtenemos los datos de la tabla plana almacenada en la BD, mediante un paso del tipo <em>Table input</em>, del apartado <em>Input</em>. En la configuración de este paso, también en la figura <a href="etl-pdi.html#fig:pdi-transformacion-donde">3.71</a>, pulsando sobre <em>Get SQL Statement</em>, se genera la consulta SQL para obtener los datos. Podemos modificar la consulta generada para seleccionar exclusivamente los datos de la dimensión, agruparlos y, opcionalmente, ordenarlos (aunque no sea necesario que estén ordenados).</p>
+<p>En concreto, las columnas seleccionadas para esta dimensión son:</p>
+<ul>
+<li><p><code>cod_municipio</code></p></li>
+<li><p><code>municipio</code></p></li>
+<li><p><code>capital</code></p></li>
+<li><p><code>comarca</code></p></li>
+<li><p><code>provincia</code></p></li>
+<li><p><code>comunidad_autonoma</code></p></li>
+<li><p><code>nivel_altitud</code></p></li>
+<li><p><code>nivel_habitantes</code></p></li>
+</ul>
+<p>De esta manera solo nos falta añadir la llave generada y guardar los datos en una nueva tabla de la BD. Podemos usar la funcionalidad de la propia BD para generar una llave autonumérica: cuando generemos la sentencia SQL en el paso de almacenamiento de los datos en la BD, la modificaremos para que cree una llave generada.</p>
+<p>La modificación a hacer consiste en añadir una línea donde se genere la llave primaria con el nombre adecuado. En el caso de la dimensión <em>Dónde</em>, la línea a añadir sería:</p>
+<ul>
+<li><code>donde_key SERIAL PRIMARY KEY</code></li>
+</ul>
+<p>De manera que las sentencias SQL para eliminar y crear la tabla serían de la forma:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="etl-pdi.html#cb2-1" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> dim_donde;</span>
+<span id="cb2-2"><a href="etl-pdi.html#cb2-2" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> dim_donde</span>
+<span id="cb2-3"><a href="etl-pdi.html#cb2-3" tabindex="-1"></a>(</span>
+<span id="cb2-4"><a href="etl-pdi.html#cb2-4" tabindex="-1"></a>  donde_key SERIAL <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb2-5"><a href="etl-pdi.html#cb2-5" tabindex="-1"></a>  <span class="op">..</span>.</span>
+<span id="cb2-6"><a href="etl-pdi.html#cb2-6" tabindex="-1"></a> );</span></code></pre></div>
+<p>En la figura <a href="etl-pdi.html#fig:pdi-create-donde">3.72</a>, se muestra la definición de la transformación para crear la tabla de la dimensión <em>Dónde</em> (que llamaremos <code>create_dim_donde</code>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-create-donde"></span>
+<img src="img/pdi/pdi67.png" alt="Borrar y crear la tabla para la dimensión Dónde." width="70%" />
+<p class="caption">
+Figura 3.72: Borrar y crear la tabla para la dimensión <em>Dónde</em>.
+</p>
+</div>
+<p>Por último, debemos modificar el trabajo para añadir estas dos transformaciones (borrar y crear la tabla para la dimensión, y obtener los datos de la dimensión), a continuación de las transformaciones para obtener la tabla plana.</p>
+<p>Para la dimensión <em>Cuándo</em>, realizaremos un desarrollo totalmente equivalente al explicado para la dimensión <em>Dónde</em> (adaptando columnas y nombres para este caso).</p>
+<div class="exercise">
+<p><span id="exr:pdi-definir-transforma-donde-cuando" class="exercise"><strong>Ejercicio 3.3  </strong></span>Para las dimensiones <em>Dónde</em> y <em>Cuándo</em>:</p>
+<ul>
+<li><p>Define las transformaciones, para crear las tablas y obtener los datos de las dimensiones con sus atributos correspondientes y una llave generada autonumérica, usando criterios de nomenclatura como los mostrados en este apartado para la dimensión <em>Dónde</em> (para cada una muestra el resultado de su ejecución).</p></li>
+<li><p>Modifica el trabajo de manera que se puedan ejecutar repetidas veces las transformaciones sin que se tengan en cuenta los resultados de las ejecuciones anteriores.</p></li>
+</ul>
+</div>
+</div>
+<div id="tabla-de-hechos" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Tabla de hechos<a href="etl-pdi.html#tabla-de-hechos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una vez generadas las tablas de las dimensiones, a partir de ellas y de la tabla plana, podemos generar la tabla de hechos para nuestro diseño multidimensional mediante una transformación (que llamaremos <code>fact_padron</code>). Para ello, tenemos que sustituir en la tabla plana todos los campos de las dimensiones por su llave generada correspondiente de manera que en la tabla de hechos solo queden las llaves generadas y las mediciones.</p>
+<p>En la figura <a href="etl-pdi.html#fig:pdi-transformacion-padron">3.73</a>, se muestra la definición de la transformación para la definición de la tabla de hechos (que llamamos <code>Hechos Padrón</code>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-transformacion-padron"></span>
+<img src="img/pdi/pdi68.png" alt="Definición de la transformación para la tabla de hechos." width="60%" />
+<p class="caption">
+Figura 3.73: Definición de la transformación para la tabla de hechos.
+</p>
+</div>
+<p>Partimos de la tabla plana almacenada en la BD. A continuación, buscamos los campos oportunos en cada una de las tablas de las dimensiones (paso de tipo <em>Database lookup</em>) para obtener la llave generada asociada. Por último, almacenamos los datos en la BD.</p>
+<p>La definición del paso de tipo <em>Database lookup</em> para la dimensión <em>Dónde</em> se muestra en la figura <a href="etl-pdi.html#fig:pdi-data-flow-donde-lookup">3.74</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-data-flow-donde-lookup"></span>
+<img src="img/pdi/pdi69.png" alt="Definición de la operación Lookup para la dimensión Dónde." width="85%" />
+<p class="caption">
+Figura 3.74: Definición de la operación <em>Lookup</em> para la dimensión <em>Dónde</em>.
+</p>
+</div>
+<p><strong>Podríamos usar todos los campos para realizar la búsqueda en la tabla de la dimensión <em>Dónde</em>, pero no es necesario. También podríamos haber pensado en usar solo el código del municipio, pero no sería suficiente porque un municipio ha podido tener asignados distintos niveles de número de habitantes a lo largo de la historia.</strong></p>
+<p>En el momento de crear la tabla de hechos, en la transformación que llamaremos <code>create_fact_padron</code>, en lugar de limitarnos a definir los campos que la componen, podemos indicar cuáles de ellos forman su llave primaria, modificando la sentencia SQL generada añadiendo la línea siguiente:</p>
+<ul>
+<li><code>PRIMARY KEY(cuando_key, donde_key)</code></li>
+</ul>
+<p>De manera que las sentencias SQL de eliminación y creación de la tabla serían de la forma:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="etl-pdi.html#cb3-1" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> fact_padron;</span>
+<span id="cb3-2"><a href="etl-pdi.html#cb3-2" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> fact_padron</span>
+<span id="cb3-3"><a href="etl-pdi.html#cb3-3" tabindex="-1"></a>(</span>
+<span id="cb3-4"><a href="etl-pdi.html#cb3-4" tabindex="-1"></a>  <span class="op">..</span>.</span>
+<span id="cb3-5"><a href="etl-pdi.html#cb3-5" tabindex="-1"></a>  <span class="kw">PRIMARY</span> <span class="kw">KEY</span>(cuando_key, donde_key)</span>
+<span id="cb3-6"><a href="etl-pdi.html#cb3-6" tabindex="-1"></a>);</span></code></pre></div>
+<div class="exercise">
+<p><span id="exr:pdi-definir-data-flow-padron" class="exercise"><strong>Ejercicio 3.4  </strong></span>Para los hechos:</p>
+<ul>
+<li><p>Define la transformación para crear la tabla de hechos con sus las llaves externas y las mediciones, usando criterios de nomenclatura como los mostrados en este apartado (muestra el resultado de su ejecución).</p></li>
+<li><p>Modifica el trabajo de manera que se puedan ejecutar repetidas veces las transformaciones sin que se tengan en cuenta los resultados de las ejecuciones anteriores.</p></li>
+</ul>
+</div>
+<div class="exercise">
+<p><span id="exr:pdi-exporta-hechos-dimensiones" class="exercise"><strong>Ejercicio 3.5  </strong></span>Obtener una BD OLAP:</p>
+<ul>
+<li><p>Crea una nueva BD <em>PostgreSQL</em> cuyo nombre sea el nombre de la provincia asignada y el sufijo “_olap” (p.e., en mi caso se llamará <code>granada_olap</code>).</p></li>
+<li><p>Define las transformaciones necesarias para incluir en la nueva BD solo las tablas de hechos y de dimensiones, renombrándolas para que su nombre sea “padron_”, “cuando_” y “donde_”, y el sufijo del nombre de la provincia (p.e., en mi caso, la BD solo contendrá las tablas <code>padron_granada</code>, <code>cuando_granada</code> y <code>donde_granada</code>), de manera que estas transformaciones se ejecuten siempre junto a las transformaciones definidas anteriormente (captura una pantalla donde se muestre la definición de las transformaciones y otra con la BD resultado).</p></li>
+<li><p>Al crear las tablas en la nueva BD, define las relaciones entre las tablas mediante las consultas siguientes (o por el medio que estimes oportuno pero que se ejecuten cada vez que se ejecute el trabajo).</p></li>
+</ul>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="etl-pdi.html#cb4-1" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> padron_granada</span>
+<span id="cb4-2"><a href="etl-pdi.html#cb4-2" tabindex="-1"></a> <span class="kw">ADD</span> <span class="kw">CONSTRAINT</span> FK_cuando</span>
+<span id="cb4-3"><a href="etl-pdi.html#cb4-3" tabindex="-1"></a>  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (cuando_key)</span>
+<span id="cb4-4"><a href="etl-pdi.html#cb4-4" tabindex="-1"></a>  <span class="kw">REFERENCES</span> cuando_granada(cuando_key);</span>
+<span id="cb4-5"><a href="etl-pdi.html#cb4-5" tabindex="-1"></a>  </span>
+<span id="cb4-6"><a href="etl-pdi.html#cb4-6" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> padron_granada</span>
+<span id="cb4-7"><a href="etl-pdi.html#cb4-7" tabindex="-1"></a> <span class="kw">ADD</span> <span class="kw">CONSTRAINT</span> FK_donde</span>
+<span id="cb4-8"><a href="etl-pdi.html#cb4-8" tabindex="-1"></a>  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (donde_key)</span>
+<span id="cb4-9"><a href="etl-pdi.html#cb4-9" tabindex="-1"></a>  <span class="kw">REFERENCES</span> donde_granada(donde_key);</span></code></pre></div>
+</div>
+</div>
+<div id="modificaciones" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Modificaciones<a href="etl-pdi.html#modificaciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="exercise">
+<p><span id="exr:pdi-definir-niveles-de-superficie-decenio" class="exercise"><strong>Ejercicio 3.6  </strong></span>Una vez definido el proceso de transformación, realiza las siguientes modificaciones, para cada una, indica qué elementos se han visto afectados y qué modificaciones ha habido que hacer en ellos:</p>
+<ul>
+<li><p>Define en la dimensión <em>Dónde</em> un campo llamado <code>nivel_superficie</code> en función del campo <code>superficie_ha</code> (que debería ser de tipo real), con 3 niveles, con los límites que consideres oportunos según tu criterio (captura una pantalla de la definición y otra del resultado en la dimensión en la BD OLAP).</p></li>
+<li><p>Define en la dimensión <em>Cuándo</em> un campo llamado <code>decenio</code> de manera que a cada año le correspondan las tres primeras cifras seguidas de un cero<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> (captura una pantalla de la definición y otra del resultado en la dimensión en la BD OLAP).</p></li>
+</ul>
+</div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:pdi-re-estructuracion"></span>
+<img src="img/pdi/pdi70.png" alt="Reestructuración de los trabajos." width="60%" />
+<p class="caption">
+Figura 3.75: Reestructuración de los trabajos.
+</p>
+</div>
+<div class="exercise">
+<p><span id="exr:pdi-reestructurar-packages" class="exercise"><strong>Ejercicio 3.7  </strong></span>Re-estructura el contenido de los trabajos de manera que tengamos:</p>
+<ul>
+<li><p>Un trabajo principal llamado “transformar_” y el nombre de la provincia (p.e., en mi caso <code>transformar_granada</code>). Ese trabajo organice la ejecución del resto de trabajos (figura <a href="etl-pdi.html#fig:pdi-re-estructuracion">3.75</a>).</p></li>
+<li><p>El trabajo llamado “generar_ft_” y el nombre de la provincia (p.e., en mi caso <code>generar_ft_granada</code>) que genere la tabla plana a partir de todos los datos de inicio.</p></li>
+<li><p>El trabajo llamado “generar_dm_” y el nombre de la provincia (p.e., en mi caso <code>generar_dm_granada</code>) que genere el esquema multidimensional a partir de la tabla plana.</p></li>
+<li><p>El trabajo llamado “exportar_olap_” y el nombre de la provincia (p.e., en mi caso <code>exportar_olap_granada</code>) que exporte el esquema multidimensional desde la BD de trabajo a la BD destinada a OLAP.</p></li>
+</ul>
+<p>Muestra el resultado de la ejecución de cada uno de los trabajos.</p>
+</div>
+<hr />
+
+</div>
+</div>
+<h3>Bibliografía<a href="bibliografía.html#bibliografía" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-abad1991" class="csl-entry">
+Abad, Francisco, and Maravillas Vargas. 1991. <em>Estadística</em>. Granada: Gráf. JUFER.
+</div>
+<div id="ref-obe2017" class="csl-entry">
+Obe, Regina, and Leo Hsu. 2017. <em>PostegreSQL: Up and Running, 3rd Edition: A Practical Guide to the Advanced Open Source Database</em>. O’Reilly UK Ltd.
+</div>
+<div id="ref-roldan2017" class="csl-entry">
+Roldán, María Carina. 2017. <em>Learning Pentaho Data Integration 8 <span>CE</span> (Third Edition)</em>. Packt Publishing.
+</div>
+<div id="ref-roldan2018" class="csl-entry">
+———. 2018. <em>Pentaho Data Integration Quick Start Guide</em>. Packt Publishing.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>También se conoce por <em>Postgres</em>.<a href="etl-pdi.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Cada estudiante tiene una provincia asignada que puede consultar en la plataforma de docencia (PRADO). <strong>Cada persona deberá trabajar con los datos de la provincia asignada</strong>.<a href="etl-pdi.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Frecuentemente la tendencia es importar y analizar en las herramientas de usuario final los datos al nivel de detalle definido por las filas de las fuentes de datos, incluso realizar el diseño multidimensional a ese nivel de detalle.<a href="etl-pdi.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Al sumarlas por esta dimensión, cambia el significado de la medida: p.e., la superficie de un municipio en un grupo de años no es la suma de la superficie considerada en cada uno de los años.<a href="etl-pdi.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>A coninuación de cada elemento, se indica entre paréntesis el número de objetos de ese tipo que hay disponibles.<a href="etl-pdi.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Si optas por definirlo como número entero y compruebas que se lee correctamente, después te ahorrarás los pasos para eliminar los separadores de miles y la conversión de tipo<a href="etl-pdi.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>He seguido ese criterio para todos los pasos de ordenación requeridos por otras operaciones, también para pasos que se realicen una sola vez cuyo nombre sea autoexplicativo.<a href="etl-pdi.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>“ft_” de <em>Flat Table</em>.<a href="etl-pdi.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Las tres primeras cifras se obtienen recortando el string. A continuación, mediante dos pasos de tipo <em>Calculator</em>, en uno definimos una columna con el valor “0”, en otro sumamos los dos campos, el string recortado y el que contiene “0”, para obtener el campo string con el valor del decenio.<a href="etl-pdi.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="etl-powerquery.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliografía.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": {}
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
