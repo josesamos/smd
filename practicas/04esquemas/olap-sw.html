@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Schema Workbench | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</title>
+  <meta name="description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Schema Workbench | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Schema Workbench | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales" />
+  
+  <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="powerbi-esquema.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://josesamos.github.io/smd/">SMD</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objetivo</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="02-schema-workbench.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contenido"><i class="fa fa-check"></i><b>1.2</b> Contenido</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html"><i class="fa fa-check"></i><b>2</b> Power BI: Esquema Multidimensional</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#obtener-powerbi2"><i class="fa fa-check"></i><b>2.1</b> Obtención de los datos</a></li>
+<li class="chapter" data-level="2.2" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-llaves"><i class="fa fa-check"></i><b>2.2</b> Ocultar llaves generadas</a></li>
+<li class="chapter" data-level="2.3" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-medidas"><i class="fa fa-check"></i><b>2.3</b> Medidas calculadas</a></li>
+<li class="chapter" data-level="2.4" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-jerarquias"><i class="fa fa-check"></i><b>2.4</b> Jerarquías</a></li>
+<li class="chapter" data-level="2.5" data-path="02-schema-workbench.html"><a href="#p%C3%A1ginas-interrelacionadas"><i class="fa fa-check"></i><b>2.5</b> Páginas interrelacionadas</a></li>
+<li class="chapter" data-level="" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#ejercicios"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#ejercicio-elementos-del-esquema-multidimensional-en-power-bi"><i class="fa fa-check"></i>Ejercicio: Elementos del esquema multidimensional en Power BI</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="olap-sw.html"><a href="olap-sw.html"><i class="fa fa-check"></i><b>3</b> <em>Schema Workbench</em></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="olap-sw.html"><a href="olap-sw.html#olap-mondrian-punto-partida"><i class="fa fa-check"></i><b>3.1</b> Punto de partida</a></li>
+<li class="chapter" data-level="3.2" data-path="olap-sw.html"><a href="olap-sw.html#mondrian-esquema-multidimensional"><i class="fa fa-check"></i><b>3.2</b> Definición del esquema multidimensional</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="02-schema-workbench.html"><a href="#conexi%C3%B3n-con-la-bd"><i class="fa fa-check"></i><b>3.2.1</b> Conexión con la BD</a></li>
+<li class="chapter" data-level="3.2.2" data-path="02-schema-workbench.html"><a href="#definici%C3%B3n-del-esquema-y-el-cubo"><i class="fa fa-check"></i><b>3.2.2</b> Definición del esquema y el cubo</a></li>
+<li class="chapter" data-level="3.2.3" data-path="02-schema-workbench.html"><a href="#definici%C3%B3n-de-dimensiones"><i class="fa fa-check"></i><b>3.2.3</b> Definición de dimensiones</a></li>
+<li class="chapter" data-level="3.2.4" data-path="02-schema-workbench.html"><a href="#definici%C3%B3n-de-medidas"><i class="fa fa-check"></i><b>3.2.4</b> Definición de medidas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="olap-sw.html"><a href="olap-sw.html#ejercicios-1"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#ejercicio-definici%C3%B3n-de-esquemas-para-mondrian"><i class="fa fa-check"></i>Ejercicio: Definición de esquemas para Mondrian</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="olap-sw" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> <em>Schema Workbench</em><a href="olap-sw.html#olap-sw" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><em>Mondrian</em> es un motor OLAP escrito en <em>Java</em>: ejecuta consultas MDX sobre datos en una BD relacional y devuelve los resultados en formato multidimensional (<span class="citation">Hyde (<a href="#ref-hyde2009">2009</a>)</span>, <span class="citation">Back, Goodman, and Hyde (<a href="#ref-back2014">2014</a>)</span>). Ofrece una visión multidimensional sobre los datos en la BD relacional mediante un esquema multidimensional definido en XML. Es el motor OLAP de <em>Pentaho BI Suite</em>, conjunto de herramientas libres de Inteligencia de Negocio.</p>
+<p>Como BD relacional usaremos <em>PostgreSQL</em>. Para definir el esquema multidimensional podemos utilizar directamente un editor de XML o utilizar <em>Schema Workbench</em> que permite definir los elementos del esquema basándonos en la BD relacional que contiene los datos.</p>
+<div id="objetivos-del-capítulo" class="section level4 unnumbered hasAnchor">
+<h4>Objetivos del capítulo<a href="#objetivos-del-cap%C3%ADtulo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Entender el desarrollo de esquemas multidimensionales.</p></li>
+<li><p>Definir los elementos de un esquema multidimensional para un caso sencillo.</p></li>
+<li><p>Entender la estructura y la implementación de los cubos OLAP.</p></li>
+</ul>
+</div>
+<div id="olap-mondrian-punto-partida" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Punto de partida<a href="olap-sw.html#olap-mondrian-punto-partida" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El punto de partida es la BD OLAP en <em>PostgreSQL</em> resultado de la actividad con <em>Pentaho Data Integration</em>, la que habíamos nombrado con el nombre de la provincia asignada y el sufijo “_olap” (p.e., en mi caso, <code>granada_olap</code>). Esta BD contiene tres tablas, dos dimensiones (<em>Cuándo</em>, <em>Dónde</em>) y los hechos (<em>Padrón</em>), con el sufijo del nombre de la provincia asignada (p.e., en mi caso <code>cuando_granada</code>, <code>donde_granada</code> y <code>padron_granada</code>).</p>
+</div>
+<div id="mondrian-esquema-multidimensional" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Definición del esquema multidimensional<a href="olap-sw.html#mondrian-esquema-multidimensional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un esquema multidimensional para <em>Mondrian</em> es un archivo XML. Para definirlo vamos a usar <em>Schema Workbench</em>. Con esta herramienta podemos definir todos los elementos del esquema que necesitamos. Se puede dar la situación en la que tengamos jerarquías muy parecidas dentro de una dimensión o incluso dimensiones similares. El archivo XML del esquema es bastante sencillo e intuitivo. Para agilizar su definición, podemos editar el archivo con uno de los editores XML disponibles. Para ello, deberemos salvar y cerrar el esquema en <em>Schema Workbench</em>, editarlo con el editor que elijamos, guardarlo y cerrarlo, y volverlo a abrir con <em>Schema Workbench</em> para comprobar que las modificaciones que hayamos hecho son correctas.</p>
+<p>Para crear un nuevo esquema en <em>Schema Workbench</em>, pulsamos sobre <em>New &gt; Schema</em> (figura <a href="olap-sw.html#fig:mondrian-sw-new-schema">3.1</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-new-schema"></span>
+<img src="img/mondrian/sw01.png" alt="Crear un nuevo esquema en Schema Workbench." width="100%" />
+<p class="caption">
+Figura 3.1: Crear un nuevo esquema en <em>Schema Workbench</em>.
+</p>
+</div>
+<p>Un esquema está asociado a una BD relacional. Para definir un esquema, lo ideal es estar conectados a la BD que contiene las tablas de hechos y dimensiones, y basarnos en ellas para realizar la definición. <em>Schema Workbench</em> valida las definiciones realizadas respecto al contenido de la BD. Por este motivo, al crear el esquema, nos avisa de que no se puede conectar a la BD (figura <a href="olap-sw.html#fig:mondrian-sw-db-error">3.2</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-db-error"></span>
+<img src="img/mondrian/sw02.png" alt="Aviso de que falta la conexión con la BD." width="60%" />
+<p class="caption">
+Figura 3.2: Aviso de que falta la conexión con la BD.
+</p>
+</div>
+<div id="conexión-con-la-bd" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Conexión con la BD<a href="#conexi%C3%B3n-con-la-bd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para conectar <em>Schema Workbench</em> con <em>PostgreSQL</em> necesitamos incluir un driver en la subcarpeta <code>drivers</code>, de la carpeta donde esté instalada <em>Schema Workbench</em>. Lo podemos tomar de la subcarpeta <code>lib</code>, de la carpeta donde esté instalada <em>PDI (Pentaho Data Integration)</em>. En particular el archivo <code>postgresql-XX.X.X.jar</code>.</p>
+<p>Por tanto, <strong>debemos realizar las operaciones siguientes</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Copiar</strong> el archivo <code>postgresql-XX.X.X.jar</code> desde la subcarpeta <code>data-integration/lib</code> hasta la subcarpeta <code>schema-workbench/drivers</code>.</p></li>
+<li><p><strong>Reiniciar</strong> <em>Schema Workbench</em> para que lo considere.</p></li>
+</ol>
+<p>Para definir la conexión con la BD, pulsamos sobre <em>Options &gt; Connection</em> (figura <a href="olap-sw.html#fig:mondrian-sw-db-connection">3.3</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-db-connection"></span>
+<img src="img/mondrian/sw03.png" alt="Definir la conexión con la BD." width="100%" />
+<p class="caption">
+Figura 3.3: Definir la conexión con la BD.
+</p>
+</div>
+<p>En la ventana de definición de propiedades (figura <a href="olap-sw.html#fig:mondrian-sw-db-connection-def">3.4</a>), en el apartado <em>Connection type</em>, seleccionamos la opción <em>PostgreSQL</em> y automáticamente se configura la zona <em>Settings</em> con los campos a completar (en <em>Port Number</em>, el valor que indica es el correcto).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-db-connection-def"></span>
+<img src="img/mondrian/sw04.png" alt="Definición de la conexión con la BD." width="90%" />
+<p class="caption">
+Figura 3.4: Definición de la conexión con la BD.
+</p>
+</div>
+<p>Los rellenamos con los valores siguientes:</p>
+<ul>
+<li><p><em>Host Name</em>: <code>localhost</code> (en el entorno de prácticas, está en la misma máquina en la que trabajamos).</p></li>
+<li><p><em>Database Name</em>: el nombre de nuestra BD OLAP (p.e., en mi caso <code>granada_olap</code>).</p></li>
+<li><p><em>Username</em>: <code>postgres</code> (el usuario con el que accedemos a la BD, el valor que se indica es el que usamos en el entorno de prácticas).</p></li>
+<li><p><em>Password</em>: <code>postgres</code> (la contraseña del usuario que usemos, en este caso el del entorno de prácticas).</p></li>
+</ul>
+<p>También tenemos que asignarle un nombre a la conexión, en el campo <em>Connection name</em>:</p>
+<ul>
+<li>El criterio que vamos a seguir es asignarle el mismo nombre de la BD (p.e., en mi caso <code>granada_olap</code>).</li>
+</ul>
+<p>A continuación, pulsamos sobre <em>Test</em> para comprobar que se establece la conexión correctamente. Si todo va bien, pulsamos sobre <em>OK</em>.</p>
+</div>
+<div id="definición-del-esquema-y-el-cubo" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Definición del esquema y el cubo<a href="#definici%C3%B3n-del-esquema-y-el-cubo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para cada elemento que definamos, la pantalla de definición está estructurada en dos columnas: en una se indica el nombre de el atributo a definir, en la otra el valor (figura <a href="olap-sw.html#fig:mondrian-sw-esquema-nombre">3.5</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-esquema-nombre"></span>
+<img src="img/mondrian/sw05.png" alt="Nombre del esquema." width="100%" />
+<p class="caption">
+Figura 3.5: Nombre del esquema.
+</p>
+</div>
+<p>Para el esquema, vamos a definir el atributo <em>name</em> con el valor correspondiente al nombre de nuestra provincia asignada (p.e., en mi caso <code>Granada</code>).</p>
+<p>Vamos al guardar el archivo XML del esquema (pulsando sobre el botón <em>Save</em> en la barra de herramientas):</p>
+<ul>
+<li>Le asignaremos el nombre de la provincia y, a continuación, el nombre de nuestro usuario (p.e., en mi caso se llamará <code>granada_jsamos.xml</code>) y lo guardaremos en nuestra carpeta de trabajo<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</li>
+</ul>
+<p>En la línea de estado de la ventana (figura <a href="olap-sw.html#fig:mondrian-sw-esquema-nombre">3.5</a>), se puede apreciar información sobre la conexión establecida con la BD.</p>
+<p>Una vez hemos creado un esquema, podemos ir añadiéndole elementos. En primer lugar, un elemento <em>cube</em>. Se puede añadir tanto desde la barra de herramientas (pulsando sobre el icono <em>Add cube</em>) o desde el menú contextual del esquema<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> (figura <a href="olap-sw.html#fig:mondrian-sw-add-cube">3.6</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-cube"></span>
+<img src="img/mondrian/sw06.png" alt="Añadir elemento cube a un esquema." width="30%" />
+<p class="caption">
+Figura 3.6: Añadir elemento <em>cube</em> a un esquema.
+</p>
+</div>
+<p>La figura <a href="olap-sw.html#fig:mondrian-sw-def-cube">3.7</a> muestra la definición del elemento <em>cube</em> del esquema. Al atributo <em>name</em> le damos el valor <code>Padrón</code>, en <em>description</em> añadimos el nombre de nuestra provincia (p.e., en mi caso <code>Granada</code>). El resto de atributos los dejamos vacíos o con el valor por defecto que incluyen.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-def-cube"></span>
+<img src="img/mondrian/sw07.png" alt="Definición de cube en un esquema." width="100%" />
+<p class="caption">
+Figura 3.7: Definición de <em>cube</em> en un esquema.
+</p>
+</div>
+<p>Conforme vamos realizando la definición de los elementos, los valida con la BD. Si detecta algún problema, nos avisa (se puede ver el mensaje al pie de la zona <em>Cube</em>, donde definimos el valor de los atributos). Los mensajes de aviso se refieren al elemento en el que estamos situados, no necesariamente a la definición que estamos realizando en ese momento. Por ejemplo, el mensaje de la figura <a href="olap-sw.html#fig:mondrian-sw-def-cube">3.7</a> se refiere a un elemento <em>Fact name</em>, que no aparece en la ventana de definición actual.</p>
+<p>El mensaje anterior lo que nos indica es que el cubo todavía no está asociado a la tabla de hechos en la BD. Para definir la tabla de hechos, en el menú contextual, pulsamos sobre la opción <em>Add Table</em> (figura <a href="olap-sw.html#fig:mondrian-sw-add-fact-table">3.8</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-fact-table"></span>
+<img src="img/mondrian/sw08.png" alt="Añadir tabla al elemento cube a un esquema." width="30%" />
+<p class="caption">
+Figura 3.8: Añadir tabla al elemento <em>cube</em> a un esquema.
+</p>
+</div>
+<p>Para definir la tabla, tenemos que definir los atributos <em>schema</em>, donde seleccionamos el valor <code>public</code><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, y <em>name</em>, donde seleccionamos el nombre de la tabla de hechos(p.e., en mi caso <code>padron_granada</code>), como se muestra en la figura <a href="olap-sw.html#fig:mondrian-sw-add-fact-table-def">3.9</a></p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-fact-table-def"></span>
+<img src="img/mondrian/sw09.png" alt="Definición de la tabla de cube en un esquema." width="100%" />
+<p class="caption">
+Figura 3.9: Definición de la tabla de <em>cube</em> en un esquema.
+</p>
+</div>
+<p>Una vez asociada la tabla de hechos con el cubo, nos avisa de que un cubo debe contener dimensiones (figura <a href="olap-sw.html#fig:mondrian-sw-add-fact-table-def-res">3.10</a>) que es lo que vamos a definir a continuación.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-fact-table-def-res"></span>
+<img src="img/mondrian/sw10.png" alt="Elemento cube en un esquema con su tabla asociada." width="100%" />
+<p class="caption">
+Figura 3.10: Elemento <em>cube</em> en un esquema con su tabla asociada.
+</p>
+</div>
+</div>
+<div id="definición-de-dimensiones" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Definición de dimensiones<a href="#definici%C3%B3n-de-dimensiones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para definir una dimensión asociada a un cubo, pulsamos sobre <em>Add Dimension</em> en el menú contextual del cubo (figura <a href="olap-sw.html#fig:mondrian-sw-add-dimension">3.11</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-dimension"></span>
+<img src="img/mondrian/sw11.png" alt="Añadir dimensión al esquema." width="30%" />
+<p class="caption">
+Figura 3.11: Añadir dimensión al esquema.
+</p>
+</div>
+<p>Los atributos de la dimensión que debemos definir son (figura <a href="olap-sw.html#fig:mondrian-sw-add-dimension-def">3.12</a>):</p>
+<ul>
+<li><p><em>name</em>,</p></li>
+<li><p><em>foreignKey</em>: la llave externa de la dimensión en la tabla de hechos,</p></li>
+<li><p><em>type</em>: se distinguen dos tipos de dimensiones <em>StandadDimension</em> y <em>TimeDimension</em>.</p></li>
+</ul>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-dimension-def"></span>
+<img src="img/mondrian/sw12.png" alt="Definición de dimension en un esquema." width="100%" />
+<p class="caption">
+Figura 3.12: Definición de <em>dimension</em> en un esquema.
+</p>
+</div>
+<p>Aunque se trate de la dimensión tiempo, vamos a definir todas las dimensiones como <em>StandadDimension</em>. Al definir una dimensión como <em>TimeDimension</em> lo que facilitamos es el uso de funciones específicas de MDX que se basan en la estructura típica de esta dimensión (día - semana - mes - cuatrimestre - año).</p>
+<p>Cada dimensión puede incluir varias jerarquías con niveles que pueden tener definidas propiedades. Se definen mediante la
+operación <em>Add Hierarchy</em> desde el menú contextual de la dimensión correspondiente (figura <a href="olap-sw.html#fig:mondrian-sw-add-jerarquia">3.13</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-jerarquia"></span>
+<img src="img/mondrian/sw14.png" alt="Añadir Jerarquía a una dimensión." width="30%" />
+<p class="caption">
+Figura 3.13: Añadir Jerarquía a una dimensión.
+</p>
+</div>
+<p>En lugar de definir una tabla asociada a la dimensión, cada jerarquía tiene asociada una tabla de la BD. También se define desde el menú contextual de la jerarquía, seleccionando la operación <em>Add Table</em>. Así, para poder definir más fácilmente los atributos de una jerarquía (con la ayuda de validación respecto a la BD de la herramienta), es conveniente que lo primero que hagamos sea asociarle la tabla en la que se basa. A partir de ahí basta con definir su nombre (<em>name</em>) y la llave primaria de la tabla (<em>primaryKey</em>). También se puede definir si a la jerarquía se le añade un nivel <em>Todo</em> (<em>hasAll</em>), pudiendo indicar el nombre del nivel (<em>allLevelName</em>) y el valor de su única instancia (<em>allMemberName</em>), como se ha hecho en la figura <a href="olap-sw.html#fig:mondrian-sw-add-hierarchy-def">3.14</a>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-hierarchy-def"></span>
+<img src="img/mondrian/sw17.png" alt="Definición de hierarchy en una dimensión." width="100%" />
+<p class="caption">
+Figura 3.14: Definición de <em>hierarchy</em> en una dimensión.
+</p>
+</div>
+<p>Podemos definir y añadir niveles a una jerarquía desde su menú contextual correspondiente, seleccionando la operación <em>Add Level</em>.</p>
+<p>Para definir un nivel (figura <a href="olap-sw.html#fig:mondrian-sw-add-level-def">3.15</a>), definimos los atributos <em>name</em>, <em>column</em> (la columna de la tabla de la jerarquía en la que se basa el nivel) y <em>type</em>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-level-def"></span>
+<img src="img/mondrian/sw19.png" alt="Definición de level en una jerarquía." width="100%" />
+<p class="caption">
+Figura 3.15: Definición de <em>level</em> en una jerarquía.
+</p>
+</div>
+<p>Hay un atributo booleano al que prestar atención, <em>uniqueMembers</em>. Se usa para optimizar la generación de código SQL: indica si un valor de un nivel inferior determina al valor correspondiente del nivel superior (dicho de otra forma, cada valor distinto de un nivel inferior solo está relacionado con un valor de un nivel superior). En nuestro caso, deberemos prestar atención a este atributo en la jerarquía en la que incluyamos a <code>Nivel habitantes</code> y <code>Municipio</code>.</p>
+<p>Podemos definir propiedades asociadas a un determinado nivel, desde el menú contextual del nivel, pulsando sobre la operación <em>Add Property</em>. En nuestro caso, como no tratamos la comunidad autónoma como nivel (por tener datos de una sola provincia), podemos definirla como una propiedad de la Provincia. También podemos definir el código de municipio como una propiedad de municipio en cada jerarquía en la que aparece (figura <a href="olap-sw.html#fig:mondrian-sw-add-property-def">3.16</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-property-def"></span>
+<img src="img/mondrian/sw24.png" alt="Definición de propery en un nivel." width="100%" />
+<p class="caption">
+Figura 3.16: Definición de <em>propery</em> en un nivel.
+</p>
+</div>
+</div>
+<div id="definición-de-medidas" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Definición de medidas<a href="#definici%C3%B3n-de-medidas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para definir una medida asociada a un cubo, pulsamos sobre <em>Add Measure</em> en el menú contextual del cubo (figura <a href="olap-sw.html#fig:mondrian-sw-add-measure">3.17</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-measure"></span>
+<img src="img/mondrian/sw25.png" alt="Añadir medida al esquema." width="35%" />
+<p class="caption">
+Figura 3.17: Añadir medida al esquema.
+</p>
+</div>
+<p>Los atributos de la medida que debemos definir son (figura <a href="olap-sw.html#fig:mondrian-sw-add-measure-def">3.18</a>):</p>
+<ul>
+<li><p><em>name</em>,</p></li>
+<li><p><em>aggregator</em>: la función de agregación (aunque sean medidas semi-aditivas, usaremos la suma en todos los casos del ejemplo),</p></li>
+<li><p><em>column</em>: columna de la tabla de hechos en la que se basa,</p></li>
+<li><p><em>datatype</em>: tipo (deberá ser numérico).</p></li>
+</ul>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-measure-def"></span>
+<img src="img/mondrian/sw26.png" alt="Definición de measure en un esquema." width="100%" />
+<p class="caption">
+Figura 3.18: Definición de <em>measure</em> en un esquema.
+</p>
+</div>
+<p>Las medidas calculadas se definen también desde el menú contextual del cubo, seleccionando la opción <em>Add Calculated Member</em> (figura <a href="olap-sw.html#fig:mondrian-sw-add-measure">3.17</a>).</p>
+<p>Se pueden añadir elementos calculados tanto a las dimensiones como a los hechos. De hecho, los miembros calculados se añaden a las dimensiones y el conjunto de mediciones se considera como una dimensión más. Nos vamos a limitar a definir medidas calculadas.</p>
+<p>Para definir una medida calculada, definimos su nombre (<em>name</em>) y, en el campo <em>dimension</em> hemos de dejar indicado el valor <code>Measures</code> que es el que aparece por defecto (figura <a href="olap-sw.html#fig:mondrian-sw-add-calculated-member-def">3.19</a>).</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:mondrian-sw-add-calculated-member-def"></span>
+<img src="img/mondrian/sw27.png" alt="Definición de calculated member en un esquema." width="100%" />
+<p class="caption">
+Figura 3.19: Definición de <em>calculated member</em> en un esquema.
+</p>
+</div>
+<p>Por último, en el atributo <em>formula | formulaElement</em>, hemos de indicar su expresión en función de medidas almacenadas u otras medidas calculas, indicando la dimensión en la que se encuentran (<code>[Measures]</code>)<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Por ejemplo, para la medida <code>Habitantes</code>, la expresión que la define es:</p>
+<ul>
+<li><code>[Measures].[Mujeres] + [Measures].[Hombres]</code></li>
+</ul>
+<p>Así, para utilizar la nueva medida definida en otras expresiones, deberemos usar la forma:</p>
+<ul>
+<li><code>[Measures].[Habitantes]</code>.</li>
+</ul>
+</div>
+</div>
+<div id="ejercicios-1" class="section level2 unnumbered hasAnchor">
+<h2>Ejercicios<a href="olap-sw.html#ejercicios-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ejercicio-definición-de-esquemas-para-mondrian" class="section level3 unnumbered hasAnchor">
+<h3>Ejercicio: Definición de esquemas para Mondrian<a href="#ejercicio-definici%C3%B3n-de-esquemas-para-mondrian" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Todos los apartados siguientes valen igual.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Esquema para el censo</strong>:</p>
+<ul>
+<li>Define el esquema para el diseño del censo.</li>
+</ul></li>
+<li><p><strong>Esquema para ventas</strong>:</p>
+<ul>
+<li>Define el esquema para <strong>uno</strong> de los diseños de ventas en una cadena de tiendas (de la práctica <em>Consultas Multidimensionales</em>).</li>
+</ul></li>
+</ol>
+<p><strong>Documentación a entregar:</strong></p>
+<ul>
+<li><p>Genera un documento en formato PDF con la estructura siguiente y el contenido que se indica a continuación:</p>
+<ul>
+<li>Un apartado para cada ejercicio
+<ul>
+<li><em>Schema Workbench</em>: <strong>Captura de pantalla completa de <em>Schema Workbench</em></strong> mostrando el esquema (aunque se haya definido directamente el archivo XML).</li>
+<li><em>XML</em>: definición del esquema en formato XML.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div class="csl-entry">
+Back, William D., Nicholas Goodman, and Julian Hyde. 2014. <em>Mondrian in Action. Open Source Business Analytics</em>. Manning.
+</div>
+<div class="csl-entry">
+Hyde, Julian. 2009. <em>Mondrian 3.0.4 Technical Guide. Developing <span>OLAP</span> Solutions with Mondrian/Jasper<span>A</span>nalysis</em>. Mondrian.
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-back2014" class="csl-entry">
+Back, William D., Nicholas Goodman, and Julian Hyde. 2014. <em>Mondrian in Action. Open Source Business Analytics</em>. Manning.
+</div>
+<div id="ref-hyde2009" class="csl-entry">
+Hyde, Julian. 2009. <em>Mondrian 3.0.4 Technical Guide. Developing <span>OLAP</span> Solutions with Mondrian/Jasper<span>A</span>nalysis</em>. Mondrian.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Desde la carpeta de trabajo lo copiaremos a las carpetas donde lo vayamos a utilizar.<a href="olap-sw.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>En adelante, solo se va a indicar la operación usando el menú contextual.<a href="olap-sw.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Estamos trabajando con el esquema <em>public</em> de la BD, el que usa por defecto si no se indica uno específico.<a href="olap-sw.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>La expresión de definición está definida en MDX.<a href="olap-sw.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="powerbi-esquema.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": {}
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
