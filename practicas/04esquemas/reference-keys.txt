@@ -37,3 +37,9 @@ conexión-con-la-bd
 definición-del-esquema-y-el-cubo
 definición-de-dimensiones
 definición-de-medidas
+olap-ad-mdx-sql3
+olap-mondrian-punto-partida2
+olap-video-soporte
+consultas-mdx
+consultas-sql3
+definición-de-agregados

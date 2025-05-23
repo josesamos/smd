@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Aggregation Designer, MDX y SQL3 | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</title>
+  <meta name="description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Aggregation Designer, MDX y SQL3 | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Aggregation Designer, MDX y SQL3 | Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales" />
+  
+  <meta name="twitter:description" content="<p>Sistemas Multidimensionales.
+Dpto. de Lenguajes y Sistemas Informáticos
+Universidad de Granada</p>" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="olap-sw.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="https://josesamos.github.io/smd/">SMD</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Objetivo</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="03-aggregation-designer-mdx-sql3.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contenido"><i class="fa fa-check"></i><b>1.2</b> Contenido</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html"><i class="fa fa-check"></i><b>2</b> Power BI: Esquema Multidimensional</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#obtener-powerbi2"><i class="fa fa-check"></i><b>2.1</b> Obtención de los datos</a></li>
+<li class="chapter" data-level="2.2" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-llaves"><i class="fa fa-check"></i><b>2.2</b> Ocultar llaves generadas</a></li>
+<li class="chapter" data-level="2.3" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-medidas"><i class="fa fa-check"></i><b>2.3</b> Medidas calculadas</a></li>
+<li class="chapter" data-level="2.4" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#powerbi-jerarquias"><i class="fa fa-check"></i><b>2.4</b> Jerarquías</a></li>
+<li class="chapter" data-level="2.5" data-path="03-aggregation-designer-mdx-sql3.html"><a href="#p%C3%A1ginas-interrelacionadas"><i class="fa fa-check"></i><b>2.5</b> Páginas interrelacionadas</a></li>
+<li class="chapter" data-level="" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#ejercicios"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path="powerbi-esquema.html"><a href="powerbi-esquema.html#ejercicio-elementos-del-esquema-multidimensional-en-power-bi"><i class="fa fa-check"></i>Ejercicio: Elementos del esquema multidimensional en Power BI</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="olap-sw.html"><a href="olap-sw.html"><i class="fa fa-check"></i><b>3</b> <em>Schema Workbench</em></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="olap-sw.html"><a href="olap-sw.html#olap-mondrian-punto-partida"><i class="fa fa-check"></i><b>3.1</b> Punto de partida</a></li>
+<li class="chapter" data-level="3.2" data-path="olap-sw.html"><a href="olap-sw.html#mondrian-esquema-multidimensional"><i class="fa fa-check"></i><b>3.2</b> Definición del esquema multidimensional</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03-aggregation-designer-mdx-sql3.html"><a href="#conexi%C3%B3n-con-la-bd"><i class="fa fa-check"></i><b>3.2.1</b> Conexión con la BD</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03-aggregation-designer-mdx-sql3.html"><a href="#definici%C3%B3n-del-esquema-y-el-cubo"><i class="fa fa-check"></i><b>3.2.2</b> Definición del esquema y el cubo</a></li>
+<li class="chapter" data-level="3.2.3" data-path="03-aggregation-designer-mdx-sql3.html"><a href="#definici%C3%B3n-de-dimensiones"><i class="fa fa-check"></i><b>3.2.3</b> Definición de dimensiones</a></li>
+<li class="chapter" data-level="3.2.4" data-path="03-aggregation-designer-mdx-sql3.html"><a href="#definici%C3%B3n-de-medidas"><i class="fa fa-check"></i><b>3.2.4</b> Definición de medidas</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="olap-sw.html"><a href="olap-sw.html#ejercicios-1"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#ejercicio-definici%C3%B3n-de-esquemas-para-mondrian"><i class="fa fa-check"></i>Ejercicio: Definición de esquemas para Mondrian</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="olap-ad-mdx-sql3.html"><a href="olap-ad-mdx-sql3.html"><i class="fa fa-check"></i><b>4</b> <em>Aggregation Designer</em>, <em>MDX</em> y <em>SQL3</em></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="olap-ad-mdx-sql3.html"><a href="olap-ad-mdx-sql3.html#olap-mondrian-punto-partida2"><i class="fa fa-check"></i><b>4.1</b> Punto de partida</a></li>
+<li class="chapter" data-level="4.2" data-path="olap-ad-mdx-sql3.html"><a href="olap-ad-mdx-sql3.html#olap-video-soporte"><i class="fa fa-check"></i><b>4.2</b> Vídeo de soporte</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="olap-ad-mdx-sql3.html"><a href="olap-ad-mdx-sql3.html#consultas-mdx"><i class="fa fa-check"></i><b>4.2.1</b> Consultas <em>MDX</em></a></li>
+<li class="chapter" data-level="4.2.2" data-path="olap-ad-mdx-sql3.html"><a href="olap-ad-mdx-sql3.html#consultas-sql3"><i class="fa fa-check"></i><b>4.2.2</b> Consultas <em>SQL3</em></a></li>
+<li class="chapter" data-level="4.2.3" data-path="03-aggregation-designer-mdx-sql3.html"><a href="#definici%C3%B3n-de-agregados"><i class="fa fa-check"></i><b>4.2.3</b> Definición de Agregados</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="olap-ad-mdx-sql3.html"><a href="olap-ad-mdx-sql3.html#ejercicios-2"><i class="fa fa-check"></i>Ejercicios</a>
+<ul>
+<li class="chapter" data-level="" data-path="olap-ad-mdx-sql3.html"><a href="olap-ad-mdx-sql3.html#ejercicio-mdx-sql3-y-agregados"><i class="fa fa-check"></i>Ejercicio: MDX, SQL3 y Agregados</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Diseño e Implementación de Esquemas de Bases de Datos Multidimensionales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="olap-ad-mdx-sql3" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> <em>Aggregation Designer</em>, <em>MDX</em> y <em>SQL3</em><a href="olap-ad-mdx-sql3.html#olap-ad-mdx-sql3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En esta actividad vamos a trabajar sobre diseños multidimensionales para Mondrian implementados sobre BD Relacionales, desarrollados en las actividades anteriores.</p>
+<div id="objetivos-del-capítulo-1" class="section level4 unnumbered hasAnchor">
+<h4>Objetivos del capítulo<a href="#objetivos-del-cap%C3%ADtulo-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>Formular consultas mediante <em>MDX</em>.</p></li>
+<li><p>Formular consultas mediante <em>SQL3</em>.</p></li>
+<li><p>Usar una herramienta de definición de agregados.</p></li>
+</ul>
+</div>
+<div id="olap-mondrian-punto-partida2" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Punto de partida<a href="olap-ad-mdx-sql3.html#olap-mondrian-punto-partida2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Tenemos dos BD OLAP en <em>PostgreSQL</em>:</p>
+<ul>
+<li><p>Ventas, a nivel de día y línea de ticket.</p></li>
+<li><p>Padrón Municipal de Habitantes: cada persona con los datos de la provincia asignada.</p></li>
+</ul>
+<p>En la actividad anterior hemos definido el esquema multidimensional para cada una de ellas (archivos en formato XML).</p>
+</div>
+<div id="olap-video-soporte" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Vídeo de soporte<a href="olap-ad-mdx-sql3.html#olap-video-soporte" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En el vídeo <a href="https://youtu.be/yWYoNV00NM0" class="uri">https://youtu.be/yWYoNV00NM0</a> se muestra cómo realizar las operaciones siguientes:</p>
+<div id="consultas-mdx" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Consultas <em>MDX</em><a href="olap-ad-mdx-sql3.html#consultas-mdx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="importe-total-por-año" class="section level4 unnumbered hasAnchor">
+<h4>Importe total por año<a href="#importe-total-por-a%C3%B1o" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="olap-ad-mdx-sql3.html#cb1-1" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb1-2"><a href="olap-ad-mdx-sql3.html#cb1-2" tabindex="-1"></a>  {[Measures].[Importe]} <span class="kw">ON</span> <span class="kw">COLUMNS</span>,</span>
+<span id="cb1-3"><a href="olap-ad-mdx-sql3.html#cb1-3" tabindex="-1"></a>  [Cuando].[Anio].Members <span class="kw">ON</span> <span class="kw">ROWS</span></span>
+<span id="cb1-4"><a href="olap-ad-mdx-sql3.html#cb1-4" tabindex="-1"></a><span class="kw">FROM</span> [Ventas dia]</span></code></pre></div>
+</div>
+<div id="cantidad-vendida-por-comunidad-autónoma-y-año" class="section level4 unnumbered hasAnchor">
+<h4>Cantidad vendida por comunidad autónoma y año<a href="#cantidad-vendida-por-comunidad-aut%C3%B3noma-y-a%C3%B1o" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb2-1"><a href="olap-ad-mdx-sql3.html#cb2-1" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb2-2"><a href="olap-ad-mdx-sql3.html#cb2-2" tabindex="-1"></a>  {[Measures].[Cantidad]} <span class="kw">ON</span> <span class="kw">COLUMNS</span>,</span>
+<span id="cb2-3"><a href="olap-ad-mdx-sql3.html#cb2-3" tabindex="-1"></a>  NON <span class="kw">EMPTY</span></span>
+<span id="cb2-4"><a href="olap-ad-mdx-sql3.html#cb2-4" tabindex="-1"></a>  CrossJoin(</span>
+<span id="cb2-5"><a href="olap-ad-mdx-sql3.html#cb2-5" tabindex="-1"></a>    [Cuando].[Anio].Members,</span>
+<span id="cb2-6"><a href="olap-ad-mdx-sql3.html#cb2-6" tabindex="-1"></a>    [Donde].[CA].Members</span>
+<span id="cb2-7"><a href="olap-ad-mdx-sql3.html#cb2-7" tabindex="-1"></a>  ) <span class="kw">ON</span> <span class="kw">ROWS</span></span>
+<span id="cb2-8"><a href="olap-ad-mdx-sql3.html#cb2-8" tabindex="-1"></a><span class="kw">FROM</span> [Ventas dia]</span></code></pre></div>
+</div>
+<div id="ventas-por-departamento-y-provincia-en-2024" class="section level4 unnumbered hasAnchor">
+<h4>Ventas por departamento y provincia en 2024<a href="olap-ad-mdx-sql3.html#ventas-por-departamento-y-provincia-en-2024" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="olap-ad-mdx-sql3.html#cb3-1" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb3-2"><a href="olap-ad-mdx-sql3.html#cb3-2" tabindex="-1"></a>  {[Measures].[Importe]} <span class="kw">ON</span> <span class="kw">COLUMNS</span>,</span>
+<span id="cb3-3"><a href="olap-ad-mdx-sql3.html#cb3-3" tabindex="-1"></a>  NON <span class="kw">EMPTY</span></span>
+<span id="cb3-4"><a href="olap-ad-mdx-sql3.html#cb3-4" tabindex="-1"></a>  CrossJoin(</span>
+<span id="cb3-5"><a href="olap-ad-mdx-sql3.html#cb3-5" tabindex="-1"></a>    [Donde].[Provincia].Members,</span>
+<span id="cb3-6"><a href="olap-ad-mdx-sql3.html#cb3-6" tabindex="-1"></a>    [Que].[Departamento].Members</span>
+<span id="cb3-7"><a href="olap-ad-mdx-sql3.html#cb3-7" tabindex="-1"></a>  ) <span class="kw">ON</span> <span class="kw">ROWS</span></span>
+<span id="cb3-8"><a href="olap-ad-mdx-sql3.html#cb3-8" tabindex="-1"></a><span class="kw">FROM</span> [Ventas dia]</span>
+<span id="cb3-9"><a href="olap-ad-mdx-sql3.html#cb3-9" tabindex="-1"></a><span class="kw">WHERE</span> ([Cuando].[Anio].[<span class="dv">2024</span>])</span></code></pre></div>
+</div>
+</div>
+<div id="consultas-sql3" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Consultas <em>SQL3</em><a href="olap-ad-mdx-sql3.html#consultas-sql3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="cantidad-por-departamento-y-tipo-de-producto" class="section level4 unnumbered hasAnchor">
+<h4>Cantidad por departamento y tipo de producto<a href="olap-ad-mdx-sql3.html#cantidad-por-departamento-y-tipo-de-producto" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="group-by-rollup" class="section level5 unnumbered hasAnchor">
+<h5>GROUP BY ROLLUP<a href="olap-ad-mdx-sql3.html#group-by-rollup" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="olap-ad-mdx-sql3.html#cb4-1" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb4-2"><a href="olap-ad-mdx-sql3.html#cb4-2" tabindex="-1"></a>  q.departamento,</span>
+<span id="cb4-3"><a href="olap-ad-mdx-sql3.html#cb4-3" tabindex="-1"></a>  q.tipo,</span>
+<span id="cb4-4"><a href="olap-ad-mdx-sql3.html#cb4-4" tabindex="-1"></a>  <span class="fu">SUM</span>(f.cantidad) <span class="kw">AS</span> total_cantidad</span>
+<span id="cb4-5"><a href="olap-ad-mdx-sql3.html#cb4-5" tabindex="-1"></a><span class="kw">FROM</span></span>
+<span id="cb4-6"><a href="olap-ad-mdx-sql3.html#cb4-6" tabindex="-1"></a>  fact_ventas_dia f</span>
+<span id="cb4-7"><a href="olap-ad-mdx-sql3.html#cb4-7" tabindex="-1"></a><span class="kw">JOIN</span> dim_que q <span class="kw">ON</span> f.dim_que_key <span class="op">=</span> q.dim_que_key</span>
+<span id="cb4-8"><a href="olap-ad-mdx-sql3.html#cb4-8" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">ROLLUP</span> (q.departamento, q.tipo)</span>
+<span id="cb4-9"><a href="olap-ad-mdx-sql3.html#cb4-9" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> q.departamento, q.tipo;</span></code></pre></div>
+</div>
+<div id="group-by-cube" class="section level5 unnumbered hasAnchor">
+<h5>GROUP BY CUBE<a href="olap-ad-mdx-sql3.html#group-by-cube" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="olap-ad-mdx-sql3.html#cb5-1" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb5-2"><a href="olap-ad-mdx-sql3.html#cb5-2" tabindex="-1"></a>  q.departamento,</span>
+<span id="cb5-3"><a href="olap-ad-mdx-sql3.html#cb5-3" tabindex="-1"></a>  q.tipo,</span>
+<span id="cb5-4"><a href="olap-ad-mdx-sql3.html#cb5-4" tabindex="-1"></a>  <span class="fu">SUM</span>(f.cantidad) <span class="kw">AS</span> total_cantidad</span>
+<span id="cb5-5"><a href="olap-ad-mdx-sql3.html#cb5-5" tabindex="-1"></a><span class="kw">FROM</span></span>
+<span id="cb5-6"><a href="olap-ad-mdx-sql3.html#cb5-6" tabindex="-1"></a>  fact_ventas_dia f</span>
+<span id="cb5-7"><a href="olap-ad-mdx-sql3.html#cb5-7" tabindex="-1"></a><span class="kw">JOIN</span> dim_que q <span class="kw">ON</span> f.dim_que_key <span class="op">=</span> q.dim_que_key</span>
+<span id="cb5-8"><a href="olap-ad-mdx-sql3.html#cb5-8" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">CUBE</span> (q.departamento, q.tipo)</span>
+<span id="cb5-9"><a href="olap-ad-mdx-sql3.html#cb5-9" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> q.departamento, q.tipo;</span></code></pre></div>
+</div>
+</div>
+<div id="importe-total-por-año-y-comunidad-autónoma" class="section level4 unnumbered hasAnchor">
+<h4>Importe total por año y comunidad autónoma<a href="#importe-total-por-a%C3%B1o-y-comunidad-aut%C3%B3noma" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="group-by-rollup-1" class="section level5 unnumbered hasAnchor">
+<h5>GROUP BY ROLLUP<a href="olap-ad-mdx-sql3.html#group-by-rollup-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="olap-ad-mdx-sql3.html#cb6-1" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb6-2"><a href="olap-ad-mdx-sql3.html#cb6-2" tabindex="-1"></a>  c.anio,</span>
+<span id="cb6-3"><a href="olap-ad-mdx-sql3.html#cb6-3" tabindex="-1"></a>  d.c_autonoma,</span>
+<span id="cb6-4"><a href="olap-ad-mdx-sql3.html#cb6-4" tabindex="-1"></a>  <span class="fu">SUM</span>(f.cantidad <span class="op">*</span> f.pvp) <span class="kw">AS</span> importe</span>
+<span id="cb6-5"><a href="olap-ad-mdx-sql3.html#cb6-5" tabindex="-1"></a><span class="kw">FROM</span></span>
+<span id="cb6-6"><a href="olap-ad-mdx-sql3.html#cb6-6" tabindex="-1"></a>  fact_ventas_dia f</span>
+<span id="cb6-7"><a href="olap-ad-mdx-sql3.html#cb6-7" tabindex="-1"></a><span class="kw">JOIN</span> dim_cuando c <span class="kw">ON</span> f.dim_cuando_key <span class="op">=</span> c.dim_cuando_key</span>
+<span id="cb6-8"><a href="olap-ad-mdx-sql3.html#cb6-8" tabindex="-1"></a><span class="kw">JOIN</span> dim_donde d <span class="kw">ON</span> f.dim_donde_key <span class="op">=</span> d.dim_donde_key</span>
+<span id="cb6-9"><a href="olap-ad-mdx-sql3.html#cb6-9" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">ROLLUP</span> (c.anio, d.c_autonoma)</span>
+<span id="cb6-10"><a href="olap-ad-mdx-sql3.html#cb6-10" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> c.anio, d.c_autonoma;</span></code></pre></div>
+</div>
+<div id="group-by-cube-1" class="section level5 unnumbered hasAnchor">
+<h5>GROUP BY CUBE<a href="olap-ad-mdx-sql3.html#group-by-cube-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="olap-ad-mdx-sql3.html#cb7-1" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb7-2"><a href="olap-ad-mdx-sql3.html#cb7-2" tabindex="-1"></a>  c.anio,</span>
+<span id="cb7-3"><a href="olap-ad-mdx-sql3.html#cb7-3" tabindex="-1"></a>  d.c_autonoma,</span>
+<span id="cb7-4"><a href="olap-ad-mdx-sql3.html#cb7-4" tabindex="-1"></a>  <span class="fu">SUM</span>(f.cantidad <span class="op">*</span> f.pvp) <span class="kw">AS</span> importe</span>
+<span id="cb7-5"><a href="olap-ad-mdx-sql3.html#cb7-5" tabindex="-1"></a><span class="kw">FROM</span></span>
+<span id="cb7-6"><a href="olap-ad-mdx-sql3.html#cb7-6" tabindex="-1"></a>  fact_ventas_dia f</span>
+<span id="cb7-7"><a href="olap-ad-mdx-sql3.html#cb7-7" tabindex="-1"></a><span class="kw">JOIN</span> dim_cuando c <span class="kw">ON</span> f.dim_cuando_key <span class="op">=</span> c.dim_cuando_key</span>
+<span id="cb7-8"><a href="olap-ad-mdx-sql3.html#cb7-8" tabindex="-1"></a><span class="kw">JOIN</span> dim_donde d <span class="kw">ON</span> f.dim_donde_key <span class="op">=</span> d.dim_donde_key</span>
+<span id="cb7-9"><a href="olap-ad-mdx-sql3.html#cb7-9" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">CUBE</span> (c.anio, d.c_autonoma)</span>
+<span id="cb7-10"><a href="olap-ad-mdx-sql3.html#cb7-10" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> c.anio, d.c_autonoma;</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="definición-de-agregados" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Definición de Agregados<a href="#definici%C3%B3n-de-agregados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mediante <em>Pentaho Aggregation Designer</em> se definen agregados para el diseño multidimensional.</p>
+</div>
+</div>
+<div id="ejercicios-2" class="section level2 unnumbered hasAnchor">
+<h2>Ejercicios<a href="olap-ad-mdx-sql3.html#ejercicios-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ejercicio-mdx-sql3-y-agregados" class="section level3 unnumbered hasAnchor">
+<h3>Ejercicio: MDX, SQL3 y Agregados<a href="olap-ad-mdx-sql3.html#ejercicio-mdx-sql3-y-agregados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Todos los apartados valen igual.</p>
+<p>Usando el la BD del <strong>Padrón Municipal de Habitantes</strong>, de forma similar a los ejemplos que se facilitan en el vídeo y en este documento:</p>
+<ol style="list-style-type: decimal">
+<li><p>Define <strong>una</strong> consulta <em>MDX</em>.</p></li>
+<li><p>Define <strong>una</strong> consulta <em>SQL3</em>.</p></li>
+<li><p>Define todos los agregados que proponga <em>Pentaho Aggregation Designer</em> (no es necesario implementarlos en la BD).</p></li>
+</ol>
+<p><strong>Documentación a entregar:</strong></p>
+<p>Genera un documento en formato PDF con la estructura y el contenido que se indica a continuación:</p>
+<ul>
+<li><p>En cada apartado <strong>una captura de pantalla completa</strong> donde:</p>
+<ul>
+<li><p>Para las consultas, indica el título e incluye la captura donde se pueda ver la consulta y el resultado obtenido.</p></li>
+<li><p>Para los agregados, los agregados definidos en la pantalla de la aplicación, de manera que <strong>se muestren los niveles del agregado con mayor número de instancias</strong>.</p></li>
+</ul></li>
+</ul>
+
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div class="csl-entry">
+Back, William D., Nicholas Goodman, and Julian Hyde. 2014. <em>Mondrian in Action. Open Source Business Analytics</em>. Manning.
+</div>
+<div class="csl-entry">
+Hyde, Julian. 2009. <em>Mondrian 3.0.4 Technical Guide. Developing <span>OLAP</span> Solutions with Mondrian/Jasper<span>A</span>nalysis</em>. Mondrian.
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="olap-sw.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": {}
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
